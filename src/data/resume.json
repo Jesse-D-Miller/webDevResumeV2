@@ -1,0 +1,625 @@
+{
+  "meta": {
+    "name": "JESSE MILLER",
+    "title": "Junior Full-Stack Developer",
+    "location": "Greater Vancouver Area",
+    "availability": "Open to full-time",
+    "links": {
+      "email": "jessedonaldmiller@gmail.com",
+      "github": "https://github.com/Jesse-D-Miller",
+      "linkedin": "https://www.linkedin.com/in/jesse-miller-962331363/",
+      "resumePdf": "/Jesse_Miller_WebDeveloper_Resume.pdf"
+    }
+  },
+  "summary": "Junior full-stack developer with hands-on experience building responsive, database-driven web applications using React, Node.js, Express, Ruby on Rails, and PostgreSQL. Lighthouse Labs full-stack graduate with strong problem-solving skills, clean coding habits, and a focus on building intuitive user experiences. Brings proven leadership, calm decision-making, and reliability from several years as a BC Wildfire Crew Supervisor.",
+  "skills": [
+    {
+      "name": "JavaScript",
+      "tags": ["language", "frontend", "backend"]
+    },
+    {
+      "name": "Ruby",
+      "tags": ["language", "backend"]
+    },
+    {
+      "name": "HTML5",
+      "tags": ["language", "markup", "frontend"]
+    },
+    {
+      "name": "CSS/SCSS",
+      "tags": ["language", "styling", "frontend"]
+    },
+    {
+      "name": "SQL",
+      "tags": ["language", "database"]
+    },
+    {
+      "name": "React",
+      "tags": ["framework", "frontend", "hooks", "state"]
+    },
+    {
+      "name": "Node.js",
+      "tags": ["runtime", "backend", "javascript"]
+    },
+    {
+      "name": "Express",
+      "tags": ["framework", "backend", "api"]
+    },
+    {
+      "name": "EJS",
+      "tags": ["templating", "backend"]
+    },
+    {
+      "name": "Rails",
+      "tags": ["framework", "backend", "ruby"]
+    },
+    {
+      "name": "Bootstrap",
+      "tags": ["framework", "css", "responsive"]
+    },
+    {
+      "name": "PostgreSQL",
+      "tags": ["database", "sql", "backend"]
+    },
+    {
+      "name": "Mocha",
+      "tags": ["testing", "javascript"]
+    },
+    {
+      "name": "Chai",
+      "tags": ["testing", "assertions"]
+    },
+    {
+      "name": "Cypress",
+      "tags": ["testing", "e2e", "frontend"]
+    },
+    {
+      "name": "Git",
+      "tags": ["version-control", "tooling"]
+    },
+    {
+      "name": "GitHub",
+      "tags": ["version-control", "collaboration"]
+    },
+    {
+      "name": "REST APIs",
+      "tags": ["api", "backend", "integration"]
+    },
+    {
+      "name": "Command Line",
+      "tags": ["tooling", "terminal"]
+    },
+    {
+      "name": "Responsive Design",
+      "tags": ["frontend", "css", "mobile"]
+    },
+    {
+      "name": "Strategic Thinking",
+      "tags": ["soft-skill", "planning"]
+    },
+    {
+      "name": "Problem Solving",
+      "tags": ["soft-skill", "analytical"]
+    },
+    {
+      "name": "Accountability",
+      "tags": ["soft-skill", "reliability"]
+    },
+    {
+      "name": "Communication",
+      "tags": ["soft-skill", "collaboration"]
+    },
+    {
+      "name": "Adaptability",
+      "tags": ["soft-skill", "growth"]
+    },
+    {
+      "name": "Reliability",
+      "tags": ["soft-skill", "dependability"]
+    },
+    {
+      "name": "Leadership",
+      "tags": ["soft-skill", "management"]
+    },
+    {
+      "name": "Mentorship",
+      "tags": ["soft-skill", "teaching"]
+    }
+  ],
+  "bonusSoftSkills": [
+    {
+      "name": "Kindness",
+      "tags": ["soft-skill-bonus", "professionalism"]
+    },
+    {
+      "name": "Work Ethic",
+      "tags": ["soft-skill-bonus", "discipline"]
+    },
+    {
+      "name": "Handling Ambiguity",
+      "tags": ["soft-skill-bonus", "adaptation"]
+    },
+    {
+      "name": "Time Prioritization",
+      "tags": ["soft-skill-bonus", "productivity"]
+    },
+    {
+      "name": "Emotional Regulation",
+      "tags": ["soft-skill-bonus", "self-management"]
+    },
+    {
+      "name": "Long-Horizon Thinking",
+      "tags": ["soft-skill-bonus", "planning"]
+    },
+    {
+      "name": "Working Under Pressure",
+      "tags": ["soft-skill-bonus", "performance"]
+    },
+    {
+      "name": "Clear Direction-Giving",
+      "tags": ["soft-skill-bonus", "coordination"]
+    },
+    {
+      "name": "Account Load Balancing",
+      "tags": ["soft-skill-bonus", "operations"]
+    },
+    {
+      "name": "Rapid Context Switching",
+      "tags": ["soft-skill-bonus", "cognitive"]
+    },
+    {
+      "name": "Knowing When to Speak Up",
+      "tags": ["soft-skill-bonus", "judgment"]
+    },
+    {
+      "name": "Situational Humor",
+      "tags": ["soft-skill-bonus", "culture"]
+    },
+    {
+      "name": "Showing Up Ready",
+      "tags": ["soft-skill-bonus", "reliability-adjacent"]
+    },
+    {
+      "name": "Mental Toughness",
+      "tags": ["soft-skill-bonus", "resilience"]
+    },
+    {
+      "name": "Clear Verbal Instruction",
+      "tags": ["soft-skill-bonus", "coordination"]
+    },
+    {
+      "name": "Non-Verbal Communication",
+      "tags": ["soft-skill-bonus", "coordination"]
+    },
+    {
+      "name": "Getting Stuff Done Anyway",
+      "tags": ["soft-skill-bonus", "execution"]
+    },
+    {
+      "name": "Handling Repetitive Grind",
+      "tags": ["soft-skill-bonus", "endurance"]
+    },
+    {
+      "name": "Decision Making Under Fatigue",
+      "tags": ["soft-skill-bonus", "judgment"]
+    },
+    {
+      "name": "Responsibility Without Recognition",
+      "tags": ["soft-skill-bonus", "maturity"]
+    },
+    {
+      "name": "Fatigue Recognition (Self & Others)",
+      "tags": ["soft-skill-bonus", "safety"]
+    },
+    {
+      "name": "Giving Feedback Without Being a Jerk",
+      "tags": ["soft-skill-bonus", "interpersonal"]
+    },
+    {
+      "name": "Task Delegation",
+      "tags": ["soft-skill-bonus", "management-adjacent"]
+    },
+    {
+      "name": "Reading a Room",
+      "tags": ["soft-skill-bonus", "social"]
+    },
+    {
+      "name": "Risk Assessment",
+      "tags": ["soft-skill-bonus", "safety"]
+    },
+    {
+      "name": "Staying Calm When Things Are On Fire",
+      "tags": ["soft-skill-bonus", "literally"]
+    },
+    {
+      "name": "Personal Accountability to the Team",
+      "tags": ["soft-skill-bonus", "trust"]
+    },
+    {
+      "name": "Handling Difficult Personalities",
+      "tags": ["soft-skill-bonus", "interpersonal"]
+    },
+    {
+      "name": "Receiving Feedback Without Ego",
+      "tags": ["soft-skill-bonus", "growth"]
+    },
+    {
+      "name": "Team Morale Maintenance",
+      "tags": ["soft-skill-bonus", "culture"]
+    },
+    {
+      "name": "Professional Composure",
+      "tags": ["soft-skill-bonus", "presence"]
+    },
+    {
+      "name": "Expectation Management",
+      "tags": ["soft-skill-bonus", "planning"]
+    },
+    {
+      "name": "Conflict De-escalation",
+      "tags": ["soft-skill-bonus", "interpersonal"]
+    },
+    {
+      "name": "Boundary Setting",
+      "tags": ["soft-skill-bonus", "interpersonal"]
+    },
+    {
+      "name": "Stress Tolerance",
+      "tags": ["soft-skill-bonus", "resilience"]
+    },
+    {
+      "name": "Customer Empathy",
+      "tags": ["soft-skill-bonus", "service"]
+    },
+    {
+      "name": "Situational Awareness",
+      "tags": ["soft-skill-bonus", "fieldwork"]
+    },
+    {
+      "name": "Operational Awareness",
+      "tags": ["soft-skill-bonus", "coordination"]
+    },
+    {
+      "name": "Shift-Level Planning",
+      "tags": ["soft-skill-bonus", "execution"]
+    },
+    {
+      "name": "Resource Awareness",
+      "tags": ["soft-skill-bonus", "logistics"]
+    },
+    {
+      "name": "Physical Endurance",
+      "tags": ["soft-skill-bonus", "stamina"]
+    },
+    {
+      "name": "If you can read this you certainly zoomed in",
+      "tags": ["soft-skill-bonus", "curiosity"]
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-4",
+      "title": "Web Dev Resume - Interactive Resume",
+      "period": "2025",
+      "stack": ["React", "Vite", "CSS", "Vitest", "Mocha", "Chai"],
+      "links": {
+        "live": "",
+        "code": "https://github.com/Jesse-D-Miller/webDevResume",
+        "video": ""
+      },
+      "highlights": [
+        "Built an interactive resume with standard/cyber themes, tabbed views, and animated UI",
+        "Structured reusable sections with stateful interactions and micro-interactions",
+        "Added unit + component tests to keep the UI stable as content evolves"
+      ],
+      "skills": ["React", "Vite", "CSS", "Testing", "UI/UX"],
+      "heroMessage": "You opened the Web Dev Resume project! I built this interactive resume to showcase my work in a fun, polished way while keeping it easy to navigate and update."
+    },
+    {
+      "id": "project-6",
+      "title": "KTSpeedrun - Kill Team Companion App",
+      "period": "2026",
+      "stack": ["React", "Vite", "React Router", "Express", "WebSocket", "CSS"],
+      "links": {
+        "live": "",
+        "code": "https://github.com/Jesse-D-Miller/KillTeamSpeedrun",
+        "video": ""
+      },
+      "highlights": [
+        "Built a multi-screen Kill Team flow (army, loadouts, strategy, turn transitions)",
+        "Added a real-time lobby with join codes and WebSocket sync",
+        "Shipped an attack workflow with dice tracking and damage previews"
+      ],
+      "skills": ["React", "Vite", "React Router", "Express", "WebSockets", "CSS"],
+      "heroMessage": "You opened the KillTeamSpeedrun project! I built this to help streamline Kill Team gameplay for my friends and I, with real-time syncing so no one has to keep track of anything manually."
+    },
+    {
+      "id": "project-5",
+      "title": "Across The Creek Organics - Seed Potato Catalog & Order Request",
+      "period": "2026",
+      "stack": ["React", "Vite", "React Router", "SendGrid", "CSS"],
+      "links": {
+        "live": "https://acrossthecreekorganics.jesse-miller.com/",
+        "code": "https://github.com/Jesse-D-Miller/AcrossTheCreekOrganics",
+        "video": ""
+      },
+      "highlights": [
+        "Built a responsive catalog with product pages, galleries, and structured data",
+        "Implemented a cart-style request flow with quantities and confirmations",
+        "Created secure serverless contact/order endpoints with validation"
+      ],
+      "skills": [
+        "React",
+        "Vite",
+        "React Router",
+        "SendGrid",
+        "CSS",
+        "Form Validation"
+      ],
+      "heroMessage": "You opened the Across The Creek Organics project! I built this to showcase a clean, real-world ordering flow for a small organic farm, from product discovery to request submission."
+    },
+    {
+      "id": "project-1",
+      "title": "Plot Twist - Collaborative Storytelling App",
+      "period": "2024",
+      "stack": ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
+      "links": {
+        "live": "",
+        "code": "https://github.com/wizbren/plot-twist",
+        "video": ""
+      },
+      "highlights": [
+        "Developed a full-stack web app where users can co-author and manage stories in real time",
+        "Implemented secure user authentication, story versioning, and a clean, responsive UI",
+        "Designed optimized SQL queries to improve story retrieval and database efficiency"
+      ],
+      "skills": ["React", "Node.js", "Express", "PostgreSQL", "CSS/SCSS"],
+      "heroMessage": "You opened the Plot Twist project! A classmate and I built this as a midterm project for my bootcamp. It was my first major full-stack app."
+    },
+    {
+      "id": "project-2",
+      "title": "What's Cookin' - AI Assisted Recipe Book",
+      "period": "2024",
+      "stack": ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
+      "links": {
+        "live": "",
+        "code": "https://github.com/wizbren/whats-cookin",
+        "video": ""
+      },
+      "highlights": [
+        "Created a full-stack recipe app integrating two external APIs for recipe discovery and AI-powered curation via ChatGPT",
+        "Engineered dynamic search and filtering features with persistent user data storage",
+        "Streamlined state management for a smooth, intuitive user experience"
+      ],
+      "skills": ["React", "Node.js", "Express", "PostgreSQL", "REST APIs"],
+      "heroMessage": "Diving into the What's Cookin' project! This was my bootcamp final project, where I teamed up with classmates to build an AI-assisted recipe app."
+    },
+    {
+      "id": "project-3",
+      "title": "Jungle Rails - Amazon Clone e-Commerce App",
+      "period": "2024",
+      "stack": ["Ruby on Rails", "PostgreSQL", "SCSS", "Bootstrap"],
+      "links": {
+        "live": "",
+        "code": "https://github.com/Jesse-D-Miller/jungle-rails",
+        "video": ""
+      },
+      "highlights": [
+        "Developed a full-stack e-commerce site replicating Amazon's core functionality, including carts and payments",
+        "Implemented admin dashboards for inventory and order management",
+        "Applied MVC design principles and RESTful routing to improve scalability and maintainability"
+      ],
+      "skills": ["Rails", "PostgreSQL", "Bootstrap", "Ruby"],
+      "heroMessage": "Exploring the Jungle Rails project! I made this Amazon clone as a Lighthouse Labs Bootcamp project."
+    }
+  ],
+  "experience": [
+    {
+      "id": "experience-1",
+      "role": "Crew Supervisor",
+      "company": "BC Wildfire Service",
+      "period": "May 2023 - March 2025",
+      "location": "British Columbia, Canada",
+      "bullets": [
+        "Supervised five Initial Attack crews across two bases, ensuring safety, readiness, and performance",
+        "Designed and implemented a custom crew-tracking system to optimize deployment and resource allocation",
+        "Mentored and trained new leaders through structured coaching programs to enhance team performance and cohesion",
+        "Coordinated emergency logistics and personnel movements during high-pressure wildfire incidents"
+      ],
+      "skills": [
+        "Leadership",
+        "Problem Solving",
+        "Strategic Thinking",
+        "Accountability",
+        "Mentorship"
+      ]
+    },
+    {
+      "id": "experience-2",
+      "role": "Crew Leader / Member",
+      "company": "BC Wildfire Service",
+      "period": "2018 - 2023",
+      "location": "British Columbia, Canada",
+      "bullets": [
+        "Led and supported wildfire suppression operations in rapidly changing environments",
+        "Promoted to informal leadership roles, managing on-the-ground coordination and communication",
+        "Facilitated clear communication between crews, command centers, and the public during interface emergencies"
+      ],
+      "skills": ["Leadership", "Communication", "Adaptability", "Reliability"]
+    }
+  ],
+  "education": [
+    {
+      "school": "Lighthouse Labs",
+      "program": "Full-Stack Web Development Bootcamp",
+      "period": "2024",
+      "details": [
+        "Completed intensive 12-week program covering full-stack JavaScript and Ruby on Rails",
+        "Built multiple production-ready web applications using React, Node.js, Express, and PostgreSQL"
+      ]
+    }
+  ],
+  "hobbies": [
+    "Board Games",
+    "Basketball",
+    "Cooking",
+    "Snowboarding",
+    "Hiking",
+    "Biking",
+    "Reading"
+  ],
+  "bonusHobbies": [
+    "3D Printing",
+    "Videogames",
+    "Dad Jokes",
+    "Woodworking",
+    "Traveling",
+    "Miniature Painting",
+    "Gardening",
+    "DIY Projects"
+  ],
+  "mapNodes": {
+    "education": [
+      {
+        "id": 1,
+        "color": "green",
+        "x": 12,
+        "y": 337,
+        "institution": "High School",
+        "intel": "Subject graduates in 2013. Awarded Governor General's Academic Medal for top academic standing in graduating class."
+      },
+      {
+        "id": 2,
+        "color": "green",
+        "x": 170,
+        "y": 337,
+        "institution": "Capilano University",
+        "intel": "Enrolls in engineering transfer program (Year 1)."
+      },
+      {
+        "id": 3,
+        "color": "green",
+        "x": 267,
+        "y": 238,
+        "institution": "Simon Fraser University",
+        "intel": "Continues engineering education (Years 2-3). Coursework: calculus, physics, chemistry, programming."
+      },
+      {
+        "id": 4,
+        "color": "green",
+        "x": 447,
+        "y": 79,
+        "institution": "Lighthouse Labs",
+        "intel": "Completed 12-week full-stack web development bootcamp."
+      }
+    ],
+    "career": [
+      {
+        "id": 5,
+        "color": "red",
+        "x": 463,
+        "y": 393,
+        "vocation": "Tree Planter (1)",
+        "intel": "Season 1: remote BC deployment. Objective: fund education."
+      },
+      {
+        "id": 6,
+        "color": "red",
+        "x": 267,
+        "y": 298,
+        "vocation": "Tree Planter (2)",
+        "intel": "Season 2: return deployment. Objective: fund travel expenses."
+      },
+      {
+        "id": 7,
+        "color": "red",
+        "x": 168,
+        "y": 18,
+        "vocation": "Brewery Bartender",
+        "intel": "Winter work: craft brewery bartender, Pemberton BC."
+      },
+      {
+        "id": 8,
+        "color": "red",
+        "x": 267,
+        "y": 177,
+        "vocation": "Wildfire Crew Member",
+        "intel": "Joined BC Wildfire Service, Unit Crew Crew Member."
+      },
+      {
+        "id": 9,
+        "color": "red",
+        "x": 267,
+        "y": 80,
+        "vocation": "Wildfire Crew Leader",
+        "intel": "Promoted to leadership role; managed four personnel, field coordination, crew logistics."
+      },
+      {
+        "id": 10,
+        "color": "red",
+        "x": 370,
+        "y": 80,
+        "vocation": "Wildfire Crew Supervisor",
+        "intel": "Supervised five Initial Attack crews across two bases; ensured safety, readiness, performance."
+      },
+      {
+        "id": 11,
+        "color": "red",
+        "x": 590,
+        "y": 119,
+        "vocation": "Jr. Web Dev",
+        "intel": "Status: Applicant has been building their web development skills. Currently seeking first role."
+      }
+    ],
+    "skills": [
+      {
+        "id": 12,
+        "color": "yellow",
+        "x": 12,
+        "y": 250,
+        "achievement": "Governor General's Award",
+        "intel": "Awarded for highest academic standing in graduating class."
+      },
+      {
+        "id": 13,
+        "color": "yellow",
+        "x": 12,
+        "y": 37,
+        "achievement": "Outrigger World Championships",
+        "intel": "Competed as member of Canadian National Team."
+      },
+      {
+        "id": 14,
+        "color": "yellow",
+        "x": 168,
+        "y": 117,
+        "achievement": "BC Wildfire Hiring",
+        "intel": "Selected for BC Wildfire Hiring task force."
+      },
+      {
+        "id": 15,
+        "color": "yellow",
+        "x": 320,
+        "y": 117,
+        "achievement": "BC Wildfire Operations Conference",
+        "intel": "Invited presenter, annual BC Wildfire Operations Conference (role typically reserved for senior personnel)."
+      },
+      {
+        "id": 16,
+        "color": "yellow",
+        "x": 447,
+        "y": 180,
+        "achievement": "Above & Beyond",
+        "intel": "Recognized with Above & Beyond award for exceptional performance during 2024 wildfire season."
+      },
+      {
+        "id": 17,
+        "color": "yellow",
+        "x": 447,
+        "y": 100,
+        "achievement": "Row to Podium",
+        "intel": "Joins high level rowing club; trains extensively and learns about discipline and teamwork."
+      }
+    ]
+  }
+}
