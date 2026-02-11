@@ -1,0 +1,32 @@
+.welcome {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.welcome__title {
+  font-family: var(--font-display);
+  margin-bottom: 12px;
+}
+
+.welcome__text {
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+
+.welcome__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.welcome__button {
+  border: 1px solid transparent;
+  padding: 10px 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}

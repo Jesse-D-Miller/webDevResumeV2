@@ -66,11 +66,6 @@ body {
   line-height: 1.5;
 }
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-}
-
 button {
   background: var(--accent);
   color: var(--bg);
