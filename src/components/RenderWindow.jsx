@@ -11,8 +11,8 @@ import "./RenderWindow.css";
 
 function RenderWindow() {
   return (
-    <div className="renderwindow">
-      <h1 className="renderwindow__title">RenderWindow</h1>
+    <div className="render-window">
+      <h1 className="render-window-title">RenderWindow</h1>
     </div>
   );
 }

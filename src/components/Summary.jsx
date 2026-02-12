@@ -1,7 +1,7 @@
 function Summary() {
   return (
     <div className="summary">
-      <h1 className="summary__title">Summary Page</h1>
+      <h1 className="summary-title">Summary Page</h1>
     </div>
   );
 }

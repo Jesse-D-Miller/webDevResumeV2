@@ -9,12 +9,12 @@ import PixelHero from "../components/PixelHero";
 function Explorer() {
   return (
     <div className="explorer">
-      <div className="explorer__navside">
+      <div className="explorer-navside">
         <NavSide />
       </div>
-      <div className="explorer__main">
+      <div className="explorer-main">
         <NavTop />
-        <div className="explorer__character">
+        <div className="explorer-character">
           <PixelHero />
           <Gear />
           <SkillsPills />

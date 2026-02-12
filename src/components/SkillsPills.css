@@ -1,8 +1,8 @@
-.skillspills {
+.skills-pills {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px 20px 20px;
+  padding: 0 1.25rem 1.25rem 1.25rem;
   border: 0.125rem solid var(--border);
   background: var(--surface);
   width: 100%;
@@ -10,14 +10,14 @@
   overflow-y: auto;
 }
 
-.skillspills__title {
+.skills-pills-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 1rem;
 }
 
-.skillspills__pills {
+.skills-pills-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
@@ -26,7 +26,7 @@
   padding-top: 1rem;
 }
 
-.skillspills__pill {
+.skills-pills-pill {
   background: var(--surface-2);
   border: 0.125rem solid var(--border);
   border-radius: 999rem;

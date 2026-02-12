@@ -2,16 +2,16 @@ import "./SkillsPills.css";
 
 function SkillsPills() {
   return (
-    <div className="skillspills">
-      <h1 className="skillspills__title">SKILLS</h1>
-      <div className="skillspills__pills">
-        <span className="skillspills__pill">JavaScript</span>
-        <span className="skillspills__pill">React</span>
-        <span className="skillspills__pill">CSS</span>
-        <span className="skillspills__pill">HTML</span>
-        <span className="skillspills__pill">Node.js</span>
-        <span className="skillspills__pill">Express</span>
-        <span className="skillspills__pill">MongoDB</span>
+    <div className="skills-pills">
+      <h1 className="skills-pills-title">SKILLS</h1>
+      <div className="skills-pills-list">
+        <span className="skills-pills-pill">JavaScript</span>
+        <span className="skills-pills-pill">React</span>
+        <span className="skills-pills-pill">CSS</span>
+        <span className="skills-pills-pill">HTML</span>
+        <span className="skills-pills-pill">Node.js</span>
+        <span className="skills-pills-pill">Express</span>
+        <span className="skills-pills-pill">MongoDB</span>
       </div>
     </div>
   );

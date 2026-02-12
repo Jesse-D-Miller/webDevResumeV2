@@ -8,7 +8,7 @@
   height: 100vh;
 }
 
-.explorer__main {
+.explorer-main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -18,7 +18,7 @@
   min-height: 0;
 }
 
-.explorer__character {
+.explorer-character {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
@@ -27,12 +27,12 @@
   min-height: 0;
 }
 
-.explorer__character > * {
+.explorer-character > * {
   flex: 1 1 0;
   min-width: 0;
 }
 
-.renderwindow {
+.render-window {
   flex: 1;
   min-height: 0;
 }

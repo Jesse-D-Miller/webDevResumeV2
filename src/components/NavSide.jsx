@@ -5,31 +5,36 @@ function NavSide() {
 const navigate = useNavigate();
 
   return (
-    <nav className="navside">
-      <ul className="navside__list">
-        <li className="navside__item">
-          <button className="navside__title">Summary</button>
+    <nav className="nav-side">
+      <ul className="nav-side-list">
+        <li className="nav-side-item">
+          <button className="nav-side-title">Summary</button>
         </li>
-        <li className="navside__item">
-          <button className="navside__title">Projects</button>
+        <li className="nav-side-item">
+          <button className="nav-side-title">Projects</button>
         </li>
-        <li className="navside__item">
-          <button className="navside__title">Experience</button>
+        <li className="nav-side-item">
+          <button className="nav-side-title">Experience</button>
         </li>
-        <li className="navside__item">
-          <button className="navside__title">Map</button>
+        <li className="nav-side-item">
+          <button className="nav-side-title">Map</button>
         </li>
-        <li className="navside__item">
-          <button className="navside__title">Levels</button>
+        <li className="nav-side-item">
+          <button className="nav-side-title">Levels</button>
         </li>
-        <li className="navside__item">
-          <button className="navside__title">Statistics</button>
+        <li className="nav-side-item">
+          <button className="nav-side-title">Statistics</button>
         </li>
-        <li className="navside__item">
-          <button className="navside__title">About</button>
+        <li className="nav-side-item">
+          <button className="nav-side-title">About</button>
         </li>
-        <li className="navside__item navside__item--resume">
-          <button className="navside__title" onClick={() => navigate("/resume")}>Resume</button>
+        <li className="nav-side-item nav-side-item--resume">
+          <button
+            className="nav-side-title"
+            onClick={() => navigate("/resume")}
+          >
+            Resume
+          </button>
         </li>
       </ul>
     </nav>

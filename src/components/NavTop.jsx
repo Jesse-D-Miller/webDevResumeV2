@@ -6,21 +6,21 @@ function NavTop() {
   const { links } = meta;
 
   return (
-    <header className="navtop">
-      <div className="navtop__name">
-        <h1 className="navtop__title">{meta.name}</h1>
-        <p className="navtop__location">{meta.location}</p>
+    <header className="nav-top">
+      <div className="nav-top-name">
+        <h1 className="nav-top-title">{meta.name}</h1>
+        <p className="nav-top-location">{meta.location}</p>
       </div>
-      <div className="navtop__availability">
-        <span className="navtop__job-title">{meta.title}</span>
-        <span className="navtop__availability-status">{meta.availability}</span>
+      <div className="nav-top-availability">
+        <span className="nav-top-job-title">{meta.title}</span>
+        <span className="nav-top-availability-status">{meta.availability}</span>
       </div>
-      <address className="navtop__contact">
-        <ul className="navtop__contact-list">
+      <address className="nav-top-contact">
+        <ul className="nav-top-contact-list">
           <li>
             <a
               href={`mailto:${links.email}`}
-              className="navtop__contact-link"
+              className="nav-top-contact-link"
             >
               Email
             </a>
@@ -28,7 +28,7 @@ function NavTop() {
           <li>
             <a
               href={links.github}
-              className="navtop__contact-link"
+              className="nav-top-contact-link"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -38,7 +38,7 @@ function NavTop() {
           <li>
             <a
               href={links.linkedin}
-              className="navtop__contact-link"
+              className="nav-top-contact-link"
               target="_blank"
               rel="noopener noreferrer"
             >

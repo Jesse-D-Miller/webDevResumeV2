@@ -1,4 +1,4 @@
-.navtop {
+.nav-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,48 +10,48 @@
   background: var(--surface);
 }
 
-.navtop__name {
+.nav-top-name {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.navtop__title {
+.nav-top-title {
   font-family: var(--font-display);
   font-size: 1.5rem;
   margin: 0;
 }
 
-.navtop__location {
+.nav-top-location {
   margin: 0;
   color: var(--text-dim);
 }
 
-.navtop__availability {
+.nav-top-availability {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
   text-align: center;
 }
 
-.navtop__job-title {
+.nav-top-job-title {
   font-weight: 600;
 }
 
-.navtop__availability-status {
+.nav-top-availability-status {
   color: var(--success);
   font-size: 0.95rem;
-  border: 0.1245rem solid var(--success);
+  border: 0.125rem solid var(--success);
   padding: 0.25rem 0.75rem;
   border-radius: 999rem;
   background: var(--surface-2);
 }
 
-.navtop__contact {
+.nav-top-contact {
   font-style: normal;
 }
 
-.navtop__contact-list {
+.nav-top-contact-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -61,7 +61,7 @@
   justify-content: flex-end;
 }
 
-.navtop__contact-link {
+.nav-top-contact-link {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
@@ -71,6 +71,6 @@
   transition: border-color 0.2s ease;
   background: var(--surface-2);
 }
-.navtop__contact-link:hover {
+.nav-top-contact-link:hover {
   border-color: var(--accent-strong);
 }

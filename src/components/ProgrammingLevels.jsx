@@ -1,7 +1,7 @@
 function ProgrammingLevels() {
   return (
-    <div className="programminglevels">
-      <h1 className="programminglevels__title">ProgrammingLevels Page</h1>
+    <div className="programming-levels">
+      <h1 className="programming-levels-title">ProgrammingLevels Page</h1>
     </div>
   );
 }

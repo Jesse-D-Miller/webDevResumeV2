@@ -1,4 +1,4 @@
-.navside {
+.nav-side {
   width: 12.5rem;
   height: 100%;
   padding: 1.25rem;
@@ -7,7 +7,7 @@
   overflow-y: auto;
 }
 
-.navside__list {
+.nav-side-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -17,15 +17,15 @@
   min-height: 100%;
 }
 
-.navside__item {
+.nav-side-item {
   margin: 0;
 }
 
-.navside__item--resume {
+.nav-side-item--resume {
   margin-top: auto;
 }
 
-.navside__title {
+.nav-side-title {
   width: 100%;
   font-size: 1.25rem;
   font-weight: 600;
