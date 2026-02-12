@@ -299,13 +299,14 @@
   "projects": [
     {
       "id": "project-4",
-      "title": "Web Dev Resume - Interactive Resume",
+      "title": "Web Dev Resume",
+      "subtitle": "Interactive Resume & Portfolio",
       "period": "2025",
       "stack": ["React", "Vite", "CSS", "Vitest", "Mocha", "Chai"],
       "links": {
         "live": "",
         "code": "https://github.com/Jesse-D-Miller/webDevResume",
-        "video": ""
+        "video": "https://www.youtube.com/watch?v=L_zxtbRcubA"
       },
       "highlights": [
         "Built an interactive resume with standard/cyber themes, tabbed views, and animated UI",
@@ -317,7 +318,8 @@
     },
     {
       "id": "project-6",
-      "title": "KTSpeedrun - Kill Team Companion App",
+      "title": "KTSpeedrun",
+      "subtitle": "Kill Team Companion App",
       "period": "2026",
       "stack": ["React", "Vite", "React Router", "Express", "WebSocket", "CSS"],
       "links": {
@@ -335,7 +337,8 @@
     },
     {
       "id": "project-5",
-      "title": "Across The Creek Organics - Seed Potato Catalog & Order Request",
+      "title": "Across The Creek Organics",
+      "subtitle": "Seed Potato Catalog & Order Request",
       "period": "2026",
       "stack": ["React", "Vite", "React Router", "SendGrid", "CSS"],
       "links": {
@@ -360,7 +363,8 @@
     },
     {
       "id": "project-1",
-      "title": "Plot Twist - Collaborative Storytelling App",
+      "title": "Plot Twist",
+      "subtitle": "Collaborative Storytelling App",
       "period": "2024",
       "stack": ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
       "links": {
@@ -378,7 +382,8 @@
     },
     {
       "id": "project-2",
-      "title": "What's Cookin' - AI Assisted Recipe Book",
+      "title": "What's Cookin'",
+      "subtitle": "AI Assisted Recipe Book",
       "period": "2024",
       "stack": ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
       "links": {
@@ -396,7 +401,8 @@
     },
     {
       "id": "project-3",
-      "title": "Jungle Rails - Amazon Clone e-Commerce App",
+      "title": "Jungle Rails",
+      "subtitle": "Amazon Clone e-Commerce App",
       "period": "2024",
       "stack": ["Ruby on Rails", "PostgreSQL", "SCSS", "Bootstrap"],
       "links": {
