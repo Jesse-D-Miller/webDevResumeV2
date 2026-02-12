@@ -4,6 +4,7 @@
   padding: 1.25rem;
   border: 0.125rem solid var(--border);
   background: var(--surface);
+  overflow-y: auto;
 }
 
 .navside__list {
