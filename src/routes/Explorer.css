@@ -1,10 +1,11 @@
 .explorer {
   display: flex;
   margin: 0 auto;
-  padding: 3rem 1.5rem;
+  padding: 1rem 1rem;
   text-align: center;
   gap: 1.5rem;
   width: 100%;
+  height: 100vh;
 }
 
 .explorer__main {
@@ -13,12 +14,27 @@
   gap: 1.5rem;
   flex: 1;
   min-width: 0;
+  height: 100%;
+  min-height: 0;
 }
 
 .explorer__character {
   display: flex;
   flex-direction: row;
   gap: 1.5rem;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+
+.explorer__character > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.renderwindow {
+  flex: 1;
+  min-height: 0;
 }
 
 

@@ -6,11 +6,13 @@ import Map from "../components/Map";
 import ProgrammingLevels from "../components/ProgrammingLevels";
 import Projects from "../components/Projects";
 
+import "./RenderWindow.css";
+
 
 function RenderWindow() {
   return (
     <div className="renderwindow">
-      <h1 className="renderwindow__title">RenderWindow Page</h1>
+      <h1 className="renderwindow__title">RenderWindow</h1>
     </div>
   );
 }

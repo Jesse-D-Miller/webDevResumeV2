@@ -1,0 +1,36 @@
+.skillspills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 20px 20px;
+  border: 0.125rem solid var(--border);
+  background: var(--surface);
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.skillspills__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.skillspills__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  border-top: 0.125rem solid var(--border);
+  padding-top: 1rem;
+}
+
+.skillspills__pill {
+  background: var(--surface-2);
+  border: 0.125rem solid var(--border);
+  border-radius: 999rem;
+  padding: 0.25rem 1rem;
+  font-weight: 700;
+  color: var(--text);
+}

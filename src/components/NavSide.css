@@ -1,6 +1,6 @@
 .navside {
   width: 12.5rem;
-  height: calc(100vh - 6rem);
+  height: 100%;
   padding: 1.25rem;
   border: 0.125rem solid var(--border);
   background: var(--surface);
