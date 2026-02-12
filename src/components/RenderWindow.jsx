@@ -8,7 +8,7 @@ import Projects from "../components/Projects";
 
 import "./RenderWindow.css";
 
-function RenderWindow({ activePage }) {
+function RenderWindow({ activePage, buildStates, startBuild }) {
   return (
     <div className="render-window">
       {activePage === "Summary" && <Summary />}
@@ -16,7 +16,7 @@ function RenderWindow({ activePage }) {
       {activePage === "Experience" && <Experience />}
       {activePage === "Map" && <Map />}
       {activePage === "ProgrammingLevels" && <ProgrammingLevels />}
-      {activePage === "Projects" && <Projects />}
+      {activePage === "Projects" && <Projects buildStates={buildStates} startBuild={startBuild} />}
       {activePage === "Stats" && <Stats />}
     </div>
   );

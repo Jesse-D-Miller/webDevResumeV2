@@ -1,7 +1,7 @@
 import data from "../data/resume.json";
 import "./Projects.css";
 
-function Projects() {
+function Projects({ buildStates, startBuild }) {
   return (
     <div className="projects">
       {data.projects.map((project) => (
