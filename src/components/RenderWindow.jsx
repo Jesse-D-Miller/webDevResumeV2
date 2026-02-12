@@ -8,11 +8,16 @@ import Projects from "../components/Projects";
 
 import "./RenderWindow.css";
 
-
-function RenderWindow() {
+function RenderWindow({ activePage }) {
   return (
     <div className="render-window">
-      <h1 className="render-window-title">RenderWindow</h1>
+      {activePage === "Summary" && <Summary />}
+      {activePage === "About" && <About />}
+      {activePage === "Experience" && <Experience />}
+      {activePage === "Map" && <Map />}
+      {activePage === "ProgrammingLevels" && <ProgrammingLevels />}
+      {activePage === "Projects" && <Projects />}
+      {activePage === "Stats" && <Stats />}
     </div>
   );
 }

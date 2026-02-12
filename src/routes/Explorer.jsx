@@ -6,11 +6,15 @@ import Gear from "../components/Gear";
 import NavTop from "../components/NavTop";
 import PixelHero from "../components/PixelHero";
 
+import { useState } from "react";
+
 function Explorer() {
+  const [activePage, setActivePage] = useState("Summary");
+
   return (
     <div className="explorer">
       <div className="explorer-navside">
-        <NavSide />
+        <NavSide activePage={activePage} setActivePage={setActivePage} />
       </div>
       <div className="explorer-main">
         <NavTop />
@@ -19,7 +23,7 @@ function Explorer() {
           <Gear />
           <SkillsPills />
         </div>
-        <RenderWindow />
+        <RenderWindow activePage={activePage} />
       </div>
     </div>
   );

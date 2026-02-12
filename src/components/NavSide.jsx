@@ -1,32 +1,32 @@
 import "./NavSide.css";
 import { useNavigate } from "react-router-dom";
 
-function NavSide() {
+function NavSide({ activePage, setActivePage }) {
 const navigate = useNavigate();
 
   return (
     <nav className="nav-side">
       <ul className="nav-side-list">
         <li className="nav-side-item">
-          <button className="nav-side-title">Summary</button>
+          <button className="nav-side-title" onClick={() => setActivePage("Summary")}>Summary</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title">Projects</button>
+          <button className="nav-side-title" onClick={() => setActivePage("Projects")}>Projects</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title">Experience</button>
+          <button className="nav-side-title" onClick={() => setActivePage("Experience")}>Experience</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title">Map</button>
+          <button className="nav-side-title" onClick={() => setActivePage("Map")}>Map</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title">Levels</button>
+          <button className="nav-side-title" onClick={() => setActivePage("ProgrammingLevels")}>Levels</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title">Statistics</button>
+          <button className="nav-side-title" onClick={() => setActivePage("Stats")}>Statistics</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title">About</button>
+          <button className="nav-side-title" onClick={() => setActivePage("About")}>About</button>
         </li>
         <li className="nav-side-item nav-side-item--resume">
           <button
