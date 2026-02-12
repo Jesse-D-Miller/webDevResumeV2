@@ -67,8 +67,11 @@ body {
 }
 
 button {
-  background: var(--accent);
-  color: var(--bg);
+  border: 0.0625rem solid transparent;
+  background: transparent;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
 }
 
 button:hover {
@@ -76,5 +79,5 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: 0.25rem auto -webkit-focus-ring-color;
 }

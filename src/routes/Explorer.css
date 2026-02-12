@@ -1,0 +1,21 @@
+.explorer {
+  display: flex;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.explorer__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.explorer__character {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+

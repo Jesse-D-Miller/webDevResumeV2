@@ -1,32 +1,32 @@
 .welcome {
-  max-width: 720px;
+  max-width: 45rem;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 3rem 1.5rem;
   text-align: center;
 }
 
 .welcome__title {
   font-family: var(--font-display);
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .welcome__text {
   color: var(--text-dim);
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .welcome__actions {
   display: flex;
-  gap: 12px;
+  gap: 0.75rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .welcome__button {
   border: 1px solid transparent;
-  padding: 10px 16px;
+  padding: 0.625rem 1rem;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: border-color 0.2s ease;
 }

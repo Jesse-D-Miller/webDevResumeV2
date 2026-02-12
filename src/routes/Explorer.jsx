@@ -1,4 +1,4 @@
-import "./routes/Explorer.css";
+import "./Explorer.css";
 import NavSide from "../components/NavSide";
 import RenderWindow from "../components/RenderWindow";
 import SkillsPills from "../components/SkillsPills";

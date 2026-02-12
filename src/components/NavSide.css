@@ -1,0 +1,30 @@
+.navside {
+  width: 12.5rem;
+  height: calc(100vh - 6rem);
+  padding: 1.25rem;
+  border: 0.125rem solid var(--border);
+  background: var(--surface);
+}
+
+.navside__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.navside__item {
+  margin: 0;
+}
+
+.navside__title {
+  width: 100%;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: 0.125rem solid var(--border);
+  padding: 0.5rem;
+  background: var(--surface-2);
+  color: var(--text);
+  text-align: left;
+}
