@@ -1,6 +1,9 @@
 import "./NavSide.css";
+import { useNavigate } from "react-router-dom";
 
 function NavSide() {
+const navigate = useNavigate();
+
   return (
     <nav className="navside">
       <ul className="navside__list">
@@ -24,6 +27,9 @@ function NavSide() {
         </li>
         <li className="navside__item">
           <button className="navside__title">About</button>
+        </li>
+        <li className="navside__item navside__item--resume">
+          <button className="navside__title" onClick={() => navigate("/resume")}>Resume</button>
         </li>
       </ul>
     </nav>
