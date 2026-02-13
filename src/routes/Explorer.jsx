@@ -20,10 +20,20 @@ function Explorer() {
     );
   });
 
+  //build a Set of skill names from projects that are "built"
+  const activeSkills = new Set(
+    Object.entries(buildStates)
+      .filter(([, state]) => state === "built")
+      .flatMap(([projectId]) => {
+        const project = data.projects.find((p) => p.id === projectId);
+        return project?.skillsDetailed?.map((skill) => skill.name) || [];
+      }),
+  );
+
   // Load build states from localStorage on initial render
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if(!stored) return;
+    if (!stored) return;
     const parsed = JSON.parse(stored);
 
     setBuildStates((prev) => ({
@@ -31,7 +41,7 @@ function Explorer() {
       ...parsed,
     }));
   }, []);
-  
+
   // Save build states to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(buildStates));
@@ -61,7 +71,7 @@ function Explorer() {
         <div className="explorer-character">
           <PixelHero />
           <Gear />
-          <SkillsPills />
+          <SkillsPills activeSkills={activeSkills} />
         </div>
         <RenderWindow
           activePage={activePage}

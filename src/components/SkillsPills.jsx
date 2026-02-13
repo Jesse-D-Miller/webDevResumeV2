@@ -1,7 +1,7 @@
 import "./SkillsPills.css";
 import data from "../data/resume.json";
 
-function SkillsPills() {
+function SkillsPills({ activeSkills = new Set() }) {
   const skillsByName = new Map(
     data.skills.map((skill) => [skill.name, skill])
   );
@@ -31,9 +31,11 @@ function SkillsPills() {
           <div
             key={skill.name}
             className={`skills-pills-pill ${
-              skill.category === "Soft Skills"
-                ? "skills-pills-pill--soft"
-                : "skills-pills-pill--tech"
+              activeSkills.has(skill.name)
+                ? skill.category === "Soft Skills"
+                  ? "skills-pills-pill--soft"
+                  : "skills-pills-pill--tech"
+                : ""
             }`}
           >
             {skill.name}

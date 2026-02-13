@@ -31,7 +31,7 @@
   border: 0.125rem solid var(--border);
   border-radius: 999rem;
   padding: 0.025rem 0.35rem;
-  color: var(--text);
+  color: var(--text-muted);
 }
 
 .skills-pills-pill--tech {

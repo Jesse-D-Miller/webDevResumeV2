@@ -22,7 +22,7 @@
       "category": "Languages"
     },
     {
-      "name": "HTML5",
+      "name": "HTML",
       "category": "Languages"
     },
     {
@@ -86,7 +86,7 @@
       "category": "Testing"
     },
     {
-      "name": "Testing",
+      "name": "Playwright",
       "category": "Testing"
     },
     {
@@ -181,7 +181,7 @@
         {"name": "React", "category": "Frameworks"},
         {"name": "Vite", "category": "Tools"},
         {"name": "CSS", "category": "Languages"},
-        {"name": "Testing", "category": "Testing"},
+        {"name": "Playwright", "category": "Testing"},
         {"name": "UI/UX", "category": "Tools"}
       ],
       "heroMessage": "You opened the Web Dev Resume project! I built this interactive resume to showcase my work in a fun, polished way while keeping it easy to navigate and update."
