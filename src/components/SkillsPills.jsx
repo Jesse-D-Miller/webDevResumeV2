@@ -32,9 +32,11 @@ function SkillsPills({ activeSkills = new Set() }) {
             key={skill.name}
             className={`skills-pills-pill ${
               activeSkills.has(skill.name)
-                ? skill.category === "Soft Skills"
-                  ? "skills-pills-pill--soft"
-                  : "skills-pills-pill--tech"
+                ? `skills-pills-pill--active ${
+                    skill.category === "Soft Skills"
+                      ? "skills-pills-pill--soft"
+                      : "skills-pills-pill--tech"
+                  }`
                 : ""
             }`}
           >
