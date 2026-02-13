@@ -10,7 +10,7 @@ import data from "../data/resume.json";
 import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "project-build-states";
-const BUILD_MS = 1200;
+const BUILD_MS = 2400;
 
 function Explorer() {
   const [activePage, setActivePage] = useState("Summary");

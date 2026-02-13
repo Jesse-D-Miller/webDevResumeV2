@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react'
+import { act, fireEvent, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
@@ -14,11 +14,11 @@ const renderExplorer = () => {
   )
 }
 
-const openProjects = async () => {
-  const user = userEvent.setup()
+const openProjects = async (user) => {
   await user.click(screen.getByRole('button', { name: 'Projects' }))
-  return user
 }
+
+const BUILD_MS = 2400
 
 describe('Project build flow', () => {
   beforeEach(() => {
@@ -31,33 +31,42 @@ describe('Project build flow', () => {
 
   it('shows unbuilt state by default', async () => {
     renderExplorer()
-    await openProjects()
+    const user = userEvent.setup()
+    await openProjects(user)
 
     expect(
-      screen.getByRole('button', { name: 'Build: Web Dev Resume' })
+      screen.getByRole('button', {
+        name: /click to build project web dev resume/i,
+      })
     ).toBeInTheDocument()
   })
 
   it('builds a project and persists state', async () => {
     vi.useFakeTimers()
     renderExplorer()
-    const user = await openProjects()
-
-    const buildButton = screen.getByRole('button', {
-      name: 'Build: Web Dev Resume',
-    })
-
-    await user.click(buildButton)
+    fireEvent.click(screen.getByRole('button', { name: 'Projects' }))
 
     const card = screen.getByRole('article', {
       name: 'Project: Web Dev Resume',
     })
+    const buildButton = within(card).getByRole('button', {
+      name: /click to build project web dev resume/i,
+    })
+
+    await act(async () => {
+      fireEvent.click(buildButton)
+    })
 
     expect(card).toHaveAttribute('aria-busy', 'true')
-    expect(buildButton).toBeDisabled()
-    expect(buildButton).toHaveTextContent('Building...')
+    const buildingButton = within(card).getByRole('button', {
+      name: /building/i,
+    })
+    expect(buildingButton).toBeDisabled()
+    expect(buildingButton).toHaveTextContent('Building...')
 
-    await vi.runAllTimersAsync()
+    await act(async () => {
+      vi.advanceTimersByTime(BUILD_MS + 50)
+    })
 
     expect(card).toHaveAttribute('aria-busy', 'false')
     expect(
@@ -72,16 +81,21 @@ describe('Project build flow', () => {
   it('does not start multiple builds while building', async () => {
     vi.useFakeTimers()
     renderExplorer()
-    const user = await openProjects()
+    fireEvent.click(screen.getByRole('button', { name: 'Projects' }))
 
     const buildButton = screen.getByRole('button', {
-      name: 'Build: Web Dev Resume',
+      name: /click to build project web dev resume/i,
     })
 
-    await user.click(buildButton)
+    await act(async () => {
+      fireEvent.click(buildButton)
+    })
     const timersAfterFirstClick = vi.getTimerCount()
 
-    await user.click(buildButton)
+    const buildingButton = screen.getByRole('button', { name: /building/i })
+    await act(async () => {
+      fireEvent.click(buildingButton)
+    })
     expect(vi.getTimerCount()).toBe(timersAfterFirstClick)
   })
 
@@ -92,7 +106,8 @@ describe('Project build flow', () => {
     )
 
     renderExplorer()
-    await openProjects()
+    const user = userEvent.setup()
+    await openProjects(user)
 
     const card = screen.getByRole('article', {
       name: 'Project: Web Dev Resume',
