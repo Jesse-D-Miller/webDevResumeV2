@@ -32,6 +32,11 @@
   background: var(--surface-2);
 }
 
+.gear-item--locked {
+  filter: grayscale(1) brightness(0.7);
+  opacity: 0.6;
+}
+
 .gear-name {
   font-weight: 700;
 }
