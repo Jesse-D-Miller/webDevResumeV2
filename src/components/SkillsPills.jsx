@@ -28,6 +28,19 @@ function SkillsPills({ activeSkills = new Set() }) {
     });
   });
 
+  data.education.forEach((edu) => {
+    (edu.skills || []).forEach((skillName) => {
+      if (skillsByName.has(skillName)) {
+        return;
+      }
+
+      skillsByName.set(skillName, {
+        name: skillName,
+        category: "Tools",
+      });
+    });
+  });
+
   const skills = Array.from(skillsByName.values()).sort((a, b) => {
     const aSoft = a.category === "Soft Skills";
     const bSoft = b.category === "Soft Skills";

@@ -19,10 +19,11 @@ function Explorer() {
     return Object.fromEntries([
       ...data.projects.map((project) => [project.id, "unbuilt"]),
       ...experienceData.experience.map((item) => [item.id, "unbuilt"]),
+      ...data.education.map((edu) => [edu.id, "unbuilt"]),
     ]);
   });
 
-  //build a Set of skill names from projects + experience that are "built"
+  //build a Set of skill names from projects + experience + education that are "built"
   const activeSkills = new Set(
     Object.entries(buildStates)
       .filter(([, state]) => state === "built")
@@ -35,7 +36,12 @@ function Explorer() {
         const experience = experienceData.experience.find(
           (item) => item.id === entryId,
         );
-        return experience?.skills || [];
+        if (experience) {
+          return experience?.skills || [];
+        }
+
+        const education = data.education.find((edu) => edu.id === entryId);
+        return education?.skills || [];
       }),
   );
 

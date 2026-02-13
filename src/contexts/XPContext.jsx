@@ -31,6 +31,13 @@ export function XPProvider({ children }) {
     });
   }, [topProjects]);
 
+  const educationBuildEntries = useMemo(() => {
+    return (resumeData.education || []).map((edu) => [
+      `education-build-${edu.id}`,
+      7,
+    ]);
+  }, []);
+
   const xpClickValues = useMemo(() => {
     return new Map([
       ["experience-tabs", 1],
@@ -56,9 +63,10 @@ export function XPProvider({ children }) {
       ["project-build-project-1", 3],
       ["project-build-project-2", 2],
       ["project-build-project-3", 1],
+      ...educationBuildEntries,
       ...projectLinkEntries,
     ]);
-  }, [projectLinkEntries, topProjects]);
+  }, [educationBuildEntries, projectLinkEntries, topProjects]);
 
   const maxXpPoints = useMemo(() => {
     return Array.from(xpClickValues.values()).reduce(

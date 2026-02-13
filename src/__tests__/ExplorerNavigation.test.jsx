@@ -54,7 +54,11 @@ describe('Explorer navigation', () => {
     ).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Levels' }))
-    expect(screen.getByText('ProgrammingLevels Page')).toBeInTheDocument()
+    expect(
+      screen.getByRole('button', {
+        name: /click to build education lighthouse labs/i,
+      })
+    ).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Statistics' }))
     expect(screen.getByText('Stats Page')).toBeInTheDocument()

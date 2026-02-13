@@ -17,10 +17,10 @@ const navigate = useNavigate();
           <button className="nav-side-title" onClick={() => setActivePage("Experience")}>Experience</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("Map")}>Map</button>
+          <button className="nav-side-title" onClick={() => setActivePage("ProgrammingLevels")}>Levels</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("ProgrammingLevels")}>Levels</button>
+          <button className="nav-side-title" onClick={() => setActivePage("Map")}>Map</button>
         </li>
         <li className="nav-side-item">
           <button className="nav-side-title" onClick={() => setActivePage("Stats")}>Statistics</button>

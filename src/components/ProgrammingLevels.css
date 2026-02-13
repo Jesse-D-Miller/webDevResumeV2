@@ -1,0 +1,178 @@
+.programming-levels {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+	height: 100%;
+	overflow-x: auto;
+}
+
+.programming-levels-item {
+	border: 0.125rem solid var(--border);
+	border-radius: 0.25rem;
+	padding: 1rem;
+	background: var(--surface-2);
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	height: 100%;
+	width: 30rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.programming-levels-unbuilt {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	gap: 0.5rem;
+	height: 100%;
+	padding-top: 4rem;
+	border: 0.0625rem solid transparent;
+}
+
+.programming-levels-building {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	gap: 0.5rem;
+	height: 100%;
+	padding-top: 4rem;
+	border: 0.0625rem solid transparent;
+	color: var(--text-muted);
+}
+
+.programming-levels-unbuilt:hover,
+.programming-levels-building:hover {
+	border-color: transparent;
+}
+
+.programming-levels-unbuilt:focus,
+.programming-levels-unbuilt:focus-visible,
+.programming-levels-building:focus,
+.programming-levels-building:focus-visible {
+	outline: none;
+}
+
+.programming-levels-unbuilt p {
+	margin: 0;
+	font-weight: 600;
+	font-size: 1.75rem;
+	border: 0.125rem solid var(--error);
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.75rem;
+	background: var(--surface);
+	color: var(--error);
+	width: 100%;
+	text-align: center;
+}
+
+.programming-levels-building p {
+	margin: 0;
+	font-weight: 600;
+	font-size: 1.75rem;
+	border: 0.125rem solid var(--success);
+	border-radius: 0.25rem;
+	padding: 0.25rem 0.75rem;
+	background: var(--surface);
+	color: var(--success);
+	width: 100%;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+
+.programming-levels-building p::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(74, 222, 128, 0.2);
+	transform: scaleX(0);
+	transform-origin: left;
+	animation: programming-levels-build-fill 2400ms linear forwards;
+	pointer-events: none;
+	z-index: 0;
+}
+
+.programming-levels-building p > * {
+	position: relative;
+	z-index: 1;
+}
+
+@keyframes programming-levels-build-fill {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.programming-levels-building p::before {
+		animation: none;
+		transform: scaleX(1);
+	}
+}
+
+.programming-levels-education {
+	margin: 0;
+}
+
+.programming-levels-program {
+	margin: 0;
+	color: var(--text-dim);
+	font-style: italic;
+	font-size: 0.75rem;
+}
+
+.programming-levels-period {
+	border: 0.0625rem solid var(--border);
+	border-radius: 0.25rem;
+	padding: 0.125rem 2.5rem;
+	background: var(--surface);
+	color: var(--text-dim);
+	font-size: 0.75rem;
+}
+
+.programming-levels-period--top {
+	position: absolute;
+	top: 4rem;
+	left: -1rem;
+	transform: rotate(-35deg);
+	transform-origin: left center;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+	pointer-events: none;
+}
+
+.programming-levels-skills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: center;
+	color: var(--text-dim);
+}
+
+.programming-levels-skill-pill {
+	border: 0.125rem solid var(--error);
+	border-radius: 999rem;
+	padding: 0.0625rem 0.4rem;
+	background: var(--surface);
+	font-weight: 600;
+	font-size: 0.75rem;
+	color: var(--error);
+}
+
+.programming-levels-details {
+	margin: 0;
+	padding-left: 1.25rem;
+	display: grid;
+	gap: 0.5rem;
+	text-align: left;
+}
+
+.programming-levels-detail {
+	margin: 0;
+}

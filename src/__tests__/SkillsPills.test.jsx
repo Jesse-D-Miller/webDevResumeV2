@@ -60,4 +60,16 @@ describe('SkillsPills activation', () => {
     const skillPill = skill.closest('.skills-pills-pill')
     expect(skillPill).toHaveClass('skills-pills-pill--active')
   })
+
+  it('activates education skills when built', () => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ 'education-1': 'built' })
+    )
+
+    renderExplorer()
+
+    const gitPill = screen.getByText('Git')
+    expect(gitPill).toHaveClass('skills-pills-pill--tech')
+  })
 })
