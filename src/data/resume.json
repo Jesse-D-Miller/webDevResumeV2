@@ -15,285 +15,148 @@
   "skills": [
     {
       "name": "JavaScript",
-      "tags": ["language", "frontend", "backend"]
+      "category": "Languages"
     },
     {
       "name": "Ruby",
-      "tags": ["language", "backend"]
+      "category": "Languages"
     },
     {
       "name": "HTML5",
-      "tags": ["language", "markup", "frontend"]
+      "category": "Languages"
     },
     {
-      "name": "CSS/SCSS",
-      "tags": ["language", "styling", "frontend"]
+      "name": "SCSS",
+      "category": "Languages"
+    },
+    {
+      "name": "CSS",
+      "category": "Languages"
     },
     {
       "name": "SQL",
-      "tags": ["language", "database"]
+      "category": "Languages"
     },
     {
       "name": "React",
-      "tags": ["framework", "frontend", "hooks", "state"]
+      "category": "Frameworks"
     },
     {
       "name": "Node.js",
-      "tags": ["runtime", "backend", "javascript"]
+      "category": "Platforms"
     },
     {
       "name": "Express",
-      "tags": ["framework", "backend", "api"]
+      "category": "Frameworks"
     },
     {
       "name": "EJS",
-      "tags": ["templating", "backend"]
+      "category": "Libraries"
     },
     {
       "name": "Rails",
-      "tags": ["framework", "backend", "ruby"]
+      "category": "Frameworks"
     },
     {
       "name": "Bootstrap",
-      "tags": ["framework", "css", "responsive"]
+      "category": "Frameworks"
+    },
+    {
+      "name": "React Router",
+      "category": "Libraries"
     },
     {
       "name": "PostgreSQL",
-      "tags": ["database", "sql", "backend"]
+      "category": "Databases"
     },
     {
       "name": "Mocha",
-      "tags": ["testing", "javascript"]
+      "category": "Testing"
     },
     {
       "name": "Chai",
-      "tags": ["testing", "assertions"]
+      "category": "Testing"
     },
     {
       "name": "Cypress",
-      "tags": ["testing", "e2e", "frontend"]
+      "category": "Testing"
+    },
+    {
+      "name": "Vitest",
+      "category": "Testing"
+    },
+    {
+      "name": "Testing",
+      "category": "Testing"
+    },
+    {
+      "name": "Vite",
+      "category": "Tools"
     },
     {
       "name": "Git",
-      "tags": ["version-control", "tooling"]
+      "category": "Tools"
     },
     {
       "name": "GitHub",
-      "tags": ["version-control", "collaboration"]
+      "category": "Tools"
     },
     {
       "name": "REST APIs",
-      "tags": ["api", "backend", "integration"]
+      "category": "APIs"
+    },
+    {
+      "name": "WebSockets",
+      "category": "APIs"
+    },
+    {
+      "name": "SendGrid",
+      "category": "APIs"
     },
     {
       "name": "Command Line",
-      "tags": ["tooling", "terminal"]
+      "category": "Tools"
     },
     {
       "name": "Responsive Design",
-      "tags": ["frontend", "css", "mobile"]
+      "category": "Tools"
+    },
+    {
+      "name": "Form Validation",
+      "category": "Tools"
+    },
+    {
+      "name": "UI/UX",
+      "category": "Tools"
     },
     {
       "name": "Strategic Thinking",
-      "tags": ["soft-skill", "planning"]
+      "category": "Soft Skills"
     },
     {
       "name": "Problem Solving",
-      "tags": ["soft-skill", "analytical"]
+      "category": "Soft Skills"
     },
     {
       "name": "Accountability",
-      "tags": ["soft-skill", "reliability"]
+      "category": "Soft Skills"
     },
     {
       "name": "Communication",
-      "tags": ["soft-skill", "collaboration"]
-    },
-    {
-      "name": "Adaptability",
-      "tags": ["soft-skill", "growth"]
+      "category": "Soft Skills",
+      "tags": ["soft-skill"]
     },
     {
       "name": "Reliability",
-      "tags": ["soft-skill", "dependability"]
+      "category": "Soft Skills"
     },
     {
       "name": "Leadership",
-      "tags": ["soft-skill", "management"]
+      "category": "Soft Skills"
     },
     {
       "name": "Mentorship",
-      "tags": ["soft-skill", "teaching"]
-    }
-  ],
-  "bonusSoftSkills": [
-    {
-      "name": "Kindness",
-      "tags": ["soft-skill-bonus", "professionalism"]
-    },
-    {
-      "name": "Work Ethic",
-      "tags": ["soft-skill-bonus", "discipline"]
-    },
-    {
-      "name": "Handling Ambiguity",
-      "tags": ["soft-skill-bonus", "adaptation"]
-    },
-    {
-      "name": "Time Prioritization",
-      "tags": ["soft-skill-bonus", "productivity"]
-    },
-    {
-      "name": "Emotional Regulation",
-      "tags": ["soft-skill-bonus", "self-management"]
-    },
-    {
-      "name": "Long-Horizon Thinking",
-      "tags": ["soft-skill-bonus", "planning"]
-    },
-    {
-      "name": "Working Under Pressure",
-      "tags": ["soft-skill-bonus", "performance"]
-    },
-    {
-      "name": "Clear Direction-Giving",
-      "tags": ["soft-skill-bonus", "coordination"]
-    },
-    {
-      "name": "Account Load Balancing",
-      "tags": ["soft-skill-bonus", "operations"]
-    },
-    {
-      "name": "Rapid Context Switching",
-      "tags": ["soft-skill-bonus", "cognitive"]
-    },
-    {
-      "name": "Knowing When to Speak Up",
-      "tags": ["soft-skill-bonus", "judgment"]
-    },
-    {
-      "name": "Situational Humor",
-      "tags": ["soft-skill-bonus", "culture"]
-    },
-    {
-      "name": "Showing Up Ready",
-      "tags": ["soft-skill-bonus", "reliability-adjacent"]
-    },
-    {
-      "name": "Mental Toughness",
-      "tags": ["soft-skill-bonus", "resilience"]
-    },
-    {
-      "name": "Clear Verbal Instruction",
-      "tags": ["soft-skill-bonus", "coordination"]
-    },
-    {
-      "name": "Non-Verbal Communication",
-      "tags": ["soft-skill-bonus", "coordination"]
-    },
-    {
-      "name": "Getting Stuff Done Anyway",
-      "tags": ["soft-skill-bonus", "execution"]
-    },
-    {
-      "name": "Handling Repetitive Grind",
-      "tags": ["soft-skill-bonus", "endurance"]
-    },
-    {
-      "name": "Decision Making Under Fatigue",
-      "tags": ["soft-skill-bonus", "judgment"]
-    },
-    {
-      "name": "Responsibility Without Recognition",
-      "tags": ["soft-skill-bonus", "maturity"]
-    },
-    {
-      "name": "Fatigue Recognition (Self & Others)",
-      "tags": ["soft-skill-bonus", "safety"]
-    },
-    {
-      "name": "Giving Feedback Without Being a Jerk",
-      "tags": ["soft-skill-bonus", "interpersonal"]
-    },
-    {
-      "name": "Task Delegation",
-      "tags": ["soft-skill-bonus", "management-adjacent"]
-    },
-    {
-      "name": "Reading a Room",
-      "tags": ["soft-skill-bonus", "social"]
-    },
-    {
-      "name": "Risk Assessment",
-      "tags": ["soft-skill-bonus", "safety"]
-    },
-    {
-      "name": "Staying Calm When Things Are On Fire",
-      "tags": ["soft-skill-bonus", "literally"]
-    },
-    {
-      "name": "Personal Accountability to the Team",
-      "tags": ["soft-skill-bonus", "trust"]
-    },
-    {
-      "name": "Handling Difficult Personalities",
-      "tags": ["soft-skill-bonus", "interpersonal"]
-    },
-    {
-      "name": "Receiving Feedback Without Ego",
-      "tags": ["soft-skill-bonus", "growth"]
-    },
-    {
-      "name": "Team Morale Maintenance",
-      "tags": ["soft-skill-bonus", "culture"]
-    },
-    {
-      "name": "Professional Composure",
-      "tags": ["soft-skill-bonus", "presence"]
-    },
-    {
-      "name": "Expectation Management",
-      "tags": ["soft-skill-bonus", "planning"]
-    },
-    {
-      "name": "Conflict De-escalation",
-      "tags": ["soft-skill-bonus", "interpersonal"]
-    },
-    {
-      "name": "Boundary Setting",
-      "tags": ["soft-skill-bonus", "interpersonal"]
-    },
-    {
-      "name": "Stress Tolerance",
-      "tags": ["soft-skill-bonus", "resilience"]
-    },
-    {
-      "name": "Customer Empathy",
-      "tags": ["soft-skill-bonus", "service"]
-    },
-    {
-      "name": "Situational Awareness",
-      "tags": ["soft-skill-bonus", "fieldwork"]
-    },
-    {
-      "name": "Operational Awareness",
-      "tags": ["soft-skill-bonus", "coordination"]
-    },
-    {
-      "name": "Shift-Level Planning",
-      "tags": ["soft-skill-bonus", "execution"]
-    },
-    {
-      "name": "Resource Awareness",
-      "tags": ["soft-skill-bonus", "logistics"]
-    },
-    {
-      "name": "Physical Endurance",
-      "tags": ["soft-skill-bonus", "stamina"]
-    },
-    {
-      "name": "If you can read this you certainly zoomed in",
-      "tags": ["soft-skill-bonus", "curiosity"]
+      "category": "Soft Skills"
     }
   ],
   "projects": [
@@ -314,6 +177,13 @@
         "Added unit + component tests to keep the UI stable as content evolves"
       ],
       "skills": ["React", "Vite", "CSS", "Testing", "UI/UX"],
+      "skillsDetailed": [
+        {"name": "React", "category": "Frameworks"},
+        {"name": "Vite", "category": "Tools"},
+        {"name": "CSS", "category": "Languages"},
+        {"name": "Testing", "category": "Testing"},
+        {"name": "UI/UX", "category": "Tools"}
+      ],
       "heroMessage": "You opened the Web Dev Resume project! I built this interactive resume to showcase my work in a fun, polished way while keeping it easy to navigate and update."
     },
     {
@@ -333,6 +203,14 @@
         "Shipped an attack workflow with dice tracking and damage previews"
       ],
       "skills": ["React", "Vite", "React Router", "Express", "WebSockets", "CSS"],
+      "skillsDetailed": [
+        {"name": "React", "category": "Frameworks"},
+        {"name": "Vite", "category": "Tools"},
+        {"name": "React Router", "category": "Libraries"},
+        {"name": "Express", "category": "Frameworks"},
+        {"name": "WebSockets", "category": "APIs"},
+        {"name": "CSS", "category": "Languages"}
+      ],
       "heroMessage": "You opened the KillTeamSpeedrun project! I built this to help streamline Kill Team gameplay for my friends and I, with real-time syncing so no one has to keep track of anything manually."
     },
     {
@@ -359,6 +237,14 @@
         "CSS",
         "Form Validation"
       ],
+      "skillsDetailed": [
+        {"name": "React", "category": "Frameworks"},
+        {"name": "Vite", "category": "Tools"},
+        {"name": "React Router", "category": "Libraries"},
+        {"name": "SendGrid", "category": "APIs"},
+        {"name": "CSS", "category": "Languages"},
+        {"name": "Form Validation", "category": "Tools"}
+      ],
       "heroMessage": "You opened the Across The Creek Organics project! I built this to showcase a clean, real-world ordering flow for a small organic farm, from product discovery to request submission."
     },
     {
@@ -377,7 +263,14 @@
         "Implemented secure user authentication, story versioning, and a clean, responsive UI",
         "Designed optimized SQL queries to improve story retrieval and database efficiency"
       ],
-      "skills": ["React", "Node.js", "Express", "PostgreSQL", "CSS/SCSS"],
+      "skills": ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
+      "skillsDetailed": [
+        {"name": "React", "category": "Frameworks"},
+        {"name": "Node.js", "category": "Platforms"},
+        {"name": "Express", "category": "Frameworks"},
+        {"name": "PostgreSQL", "category": "Databases"},
+        {"name": "SCSS", "category": "Languages"}
+      ],
       "heroMessage": "You opened the Plot Twist project! A classmate and I built this as a midterm project for my bootcamp. It was my first major full-stack app."
     },
     {
@@ -397,6 +290,13 @@
         "Streamlined state management for a smooth, intuitive user experience"
       ],
       "skills": ["React", "Node.js", "Express", "PostgreSQL", "REST APIs"],
+      "skillsDetailed": [
+        {"name": "React", "category": "Frameworks"},
+        {"name": "Node.js", "category": "Platforms"},
+        {"name": "Express", "category": "Frameworks"},
+        {"name": "PostgreSQL", "category": "Databases"},
+        {"name": "REST APIs", "category": "APIs"}
+      ],
       "heroMessage": "Diving into the What's Cookin' project! This was my bootcamp final project, where I teamed up with classmates to build an AI-assisted recipe app."
     },
     {
@@ -416,6 +316,12 @@
         "Applied MVC design principles and RESTful routing to improve scalability and maintainability"
       ],
       "skills": ["Rails", "PostgreSQL", "Bootstrap", "Ruby"],
+      "skillsDetailed": [
+        {"name": "Rails", "category": "Frameworks"},
+        {"name": "PostgreSQL", "category": "Databases"},
+        {"name": "Bootstrap", "category": "Frameworks"},
+        {"name": "Ruby", "category": "Languages"}
+      ],
       "heroMessage": "Exploring the Jungle Rails project! I made this Amazon clone as a Lighthouse Labs Bootcamp project."
     }
   ],

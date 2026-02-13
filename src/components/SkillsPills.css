@@ -30,7 +30,16 @@
   background: var(--surface-2);
   border: 0.125rem solid var(--border);
   border-radius: 999rem;
-  padding: 0.25rem 1rem;
-  font-weight: 700;
+  padding: 0.025rem 0.35rem;
   color: var(--text);
+}
+
+.skills-pills-pill--tech {
+  border-color: var(--error);
+  color: var(--error);
+}
+
+.skills-pills-pill--soft {
+  border-color: #60a5fa;
+  color: #60a5fa;
 }
