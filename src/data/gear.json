@@ -1,0 +1,106 @@
+{
+	"items": [
+		{
+			"id": "copper-byteblade",
+			"name": "Copper Byteblade",
+			"level": 5,
+			"img": ""
+		},
+		{
+			"id": "bronze-helm-of-reasoning",
+			"name": "Bronze Helm of Reasoning",
+			"level": 9,
+			"img": ""
+		},
+		{
+			"id": "circuit-stitched-boots",
+			"name": "Circuit-Stitched Boots",
+			"level": 13,
+			"img": ""
+		},
+		{
+			"id": "iron-gauntlets-of-automation",
+			"name": "Iron Gauntlets of Automation",
+			"level": 17,
+			"img": ""
+		},
+		{
+			"id": "steel-mail-of-deployment",
+			"name": "Steel Mail of Deployment",
+			"level": 22,
+			"img": ""
+		},
+		{
+			"id": "ring-of-versioning",
+			"name": "Ring of Versioning",
+			"level": 27,
+			"img": ""
+		},
+		{
+			"id": "vector-edge-longsword",
+			"name": "Vector-Edge Longsword",
+			"level": 33,
+			"img": ""
+		},
+		{
+			"id": "runic-logic-helm",
+			"name": "Runic Logic Helm",
+			"level": 39,
+			"img": ""
+		},
+		{
+			"id": "pipeline-striders",
+			"name": "Pipeline Striders",
+			"level": 45,
+			"img": ""
+		},
+		{
+			"id": "debugger-gauntlets",
+			"name": "Debugger Gauntlets",
+			"level": 51,
+			"img": ""
+		},
+		{
+			"id": "framework-plating",
+			"name": "Framework Plating",
+			"level": 58,
+			"img": ""
+		},
+		{
+			"id": "amulet-of-observability",
+			"name": "Amulet of Observability",
+			"level": 65,
+			"img": ""
+		},
+		{
+			"id": "plasma-api-greatsword",
+			"name": "Plasma API Greatsword",
+			"level": 72,
+			"img": ""
+		},
+		{
+			"id": "aether-linked-crownhelm",
+			"name": "Aether-Linked Crownhelm",
+			"level": 79,
+			"img": ""
+		},
+		{
+			"id": "quantum-treaders",
+			"name": "Quantum Treaders",
+			"level": 86,
+			"img": ""
+		},
+		{
+			"id": "signal-forged-gauntlets",
+			"name": "Signal-Forged Gauntlets",
+			"level": 93,
+			"img": ""
+		},
+		{
+			"id": "runic-testing-cuirass",
+			"name": "Runic Testing Cuirass",
+			"level": 99,
+			"img": ""
+		}
+	]
+}
