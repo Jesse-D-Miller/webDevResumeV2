@@ -21,7 +21,7 @@
 .xp-bar {
   position: relative;
   flex: 1;
-  height: 1rem;
+  height: 2rem;
   border: 0.125rem solid var(--border);
   border-radius: 999rem;
   background: var(--surface-2);
@@ -39,12 +39,15 @@
 .xp-bar-text {
   position: relative;
   z-index: 1;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   text-align: center;
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--text);
-  line-height: 0.75rem;
+  line-height: 1;
 }
 
 .hero-level {
@@ -82,4 +85,21 @@
   .hero-level--flash {
     animation: none;
   }
+}
+
+.hero-sprite {
+  width: 256px;
+  height: 256px;
+  background-image: url("../assets/pixelHeroLevel1.png");
+  background-repeat: no-repeat;
+  background-size: 768px 256px;
+  image-rendering: pixelated;
+
+  /* animation config */
+  animation: hero-walk 1400ms steps(3) infinite;
+}
+
+@keyframes hero-walk {
+  from { background-position: 0 0; }
+  to { background-position: -768px 0; }
 }

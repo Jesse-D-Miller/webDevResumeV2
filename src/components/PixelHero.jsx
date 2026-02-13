@@ -2,6 +2,7 @@ import "./PixelHero.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useXP } from "../hooks/useXP";
 import levelThresholds from "../data/levelThresholds";
+import heroSprite1 from "../assets/pixelHeroLevel1.png";
 
 function PixelHero() {
   const { xp } = useXP();
@@ -165,7 +166,9 @@ function PixelHero() {
           lvl {displayLevel}
         </span>
       </div>
-      <div className="pixel-hero-body">Hero</div>
+      <div className="pixel-hero-body">
+        <div className="hero-sprite" aria-hidden="true" />
+      </div>
     </div>
   );
 }
