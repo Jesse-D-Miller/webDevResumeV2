@@ -1,5 +1,6 @@
 import "./SkillsPills.css";
 import data from "../data/resume.json";
+import experienceData from "../data/expandedExperience.json";
 
 function SkillsPills({ activeSkills = new Set() }) {
   const skillsByName = new Map(
@@ -11,6 +12,19 @@ function SkillsPills({ activeSkills = new Set() }) {
       if (!skillsByName.has(skill.name)) {
         skillsByName.set(skill.name, skill);
       }
+    });
+  });
+
+  experienceData.experience.forEach((experience) => {
+    (experience.skills || []).forEach((skillName) => {
+      if (skillsByName.has(skillName)) {
+        return;
+      }
+
+      skillsByName.set(skillName, {
+        name: skillName,
+        category: "Soft Skills",
+      });
     });
   });
 

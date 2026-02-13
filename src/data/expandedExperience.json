@@ -1,0 +1,50 @@
+{
+  "experience": [
+    {
+      "id": "experience-1",
+      "role": "Crew Supervisor",
+      "company": "BC Wildfire Service",
+      "period": "2023 - 2025",
+      "location": "British Columbia, Canada",
+      "bullets": [
+        "Supervised five Initial Attack crews across two bases, ensuring safety, readiness, and performance",
+        "Designed and implemented a custom crew-tracking system to optimize deployment and resource allocation",
+        "Mentored and trained new leaders through structured coaching programs to enhance team performance and cohesion",
+        "Coordinated emergency logistics and personnel movements during high-pressure wildfire incidents"
+      ],
+      "skills": [
+        "Leadership",
+        "Problem Solving",
+        "Strategic Thinking",
+        "Accountability",
+        "Mentorship"
+      ]
+    },
+    {
+      "id": "experience-2",
+      "role": "Crew Leader",
+      "company": "BC Wildfire Service",
+      "period": "2021 - 2023",
+      "location": "British Columbia, Canada",
+      "bullets": [
+        "Led wildfire suppression operations in rapidly changing environments",
+        "Managed on-the-ground coordination and communication during deployments",
+        "Facilitated clear communication between crews, command centers, and the public during interface emergencies"
+      ],
+      "skills": ["Leadership", "Communication", "Adaptability", "Reliability"]
+    },
+    {
+      "id": "experience-3",
+      "role": "Crew Member",
+      "company": "BC Wildfire Service",
+      "period": "2018 - 2021",
+      "location": "British Columbia, Canada",
+      "bullets": [
+        "Supported wildfire suppression operations in rapidly changing environments",
+        "Executed field tasks with a focus on safety, speed, and team coordination",
+        "Adapted to shifting priorities during interface emergencies"
+      ],
+      "skills": ["Adaptability", "Reliability", "Teamwork", "Communication"]
+    }
+  ]
+}

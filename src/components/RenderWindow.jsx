@@ -13,7 +13,7 @@ function RenderWindow({ activePage, buildStates, startBuild }) {
     <div className="render-window">
       {activePage === "Summary" && <Summary />}
       {activePage === "About" && <About />}
-      {activePage === "Experience" && <Experience />}
+      {activePage === "Experience" && <Experience buildStates={buildStates} startBuild={startBuild} />}
       {activePage === "Map" && <Map />}
       {activePage === "ProgrammingLevels" && <ProgrammingLevels />}
       {activePage === "Projects" && <Projects buildStates={buildStates} startBuild={startBuild} />}

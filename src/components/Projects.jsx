@@ -10,6 +10,7 @@ function Projects({ buildStates, startBuild }) {
   const startTimesRef = useRef({});
   const awardedRef = useRef(new Set());
   const { grantXp, hasClicked } = useXP();
+  const projectIds = useRef(new Set(data.projects.map((project) => project.id)));
 
   const buildXpByProjectId = useRef({
     "project-1": 3,
@@ -22,6 +23,10 @@ function Projects({ buildStates, startBuild }) {
 
   useEffect(() => {
     Object.entries(buildStates).forEach(([projectId, state]) => {
+      if (!projectIds.current.has(projectId)) {
+        return;
+      }
+
       if (state !== "built") {
         return;
       }
@@ -99,6 +104,7 @@ function Projects({ buildStates, startBuild }) {
       return changed ? next : prev;
     });
   }, [buildStates]);
+  
   return (
     <div className="projects">
       {data.projects.map((project) => {

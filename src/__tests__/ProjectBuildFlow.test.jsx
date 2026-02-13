@@ -6,6 +6,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import Explorer from '../routes/Explorer'
 import { XPContext, XPProvider } from '../contexts/XPContext'
 import data from '../data/resume.json'
+import Projects from '../components/Projects'
+import Experience from '../components/Experience'
 
 const STORAGE_KEY = 'project-build-states'
 
@@ -31,6 +33,20 @@ const renderExplorerWithXpDisplay = () => {
       <MemoryRouter>
         <Explorer />
       </MemoryRouter>
+    </XPProvider>
+  )
+}
+
+const renderWithXpDisplay = (ui) => {
+  const XPDisplay = () => {
+    const { xp } = useContext(XPContext)
+    return <span data-testid="xp-total">{xp}</span>
+  }
+
+  return render(
+    <XPProvider>
+      <XPDisplay />
+      <MemoryRouter>{ui}</MemoryRouter>
     </XPProvider>
   )
 }
@@ -185,4 +201,26 @@ describe('Project build flow', () => {
       )
     }
   )
+
+  it('does not award experience XP for built projects', async () => {
+    renderWithXpDisplay(
+      <Experience
+        buildStates={{ 'project-4': 'built' }}
+        startBuild={() => {}}
+      />
+    )
+
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('0')
+  })
+
+  it('does not award project XP for built experiences', async () => {
+    renderWithXpDisplay(
+      <Projects
+        buildStates={{ 'experience-1': 'built' }}
+        startBuild={() => {}}
+      />
+    )
+
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('0')
+  })
 })

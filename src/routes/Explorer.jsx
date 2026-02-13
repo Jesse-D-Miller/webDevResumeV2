@@ -6,6 +6,7 @@ import Gear from "../components/Gear";
 import NavTop from "../components/NavTop";
 import PixelHero from "../components/PixelHero";
 import data from "../data/resume.json";
+import experienceData from "../data/expandedExperience.json";
 
 import { useState, useEffect } from "react";
 
@@ -15,18 +16,26 @@ const BUILD_MS = 2400;
 function Explorer() {
   const [activePage, setActivePage] = useState("Summary");
   const [buildStates, setBuildStates] = useState(() => {
-    return Object.fromEntries(
-      data.projects.map((project) => [project.id, "unbuilt"]),
-    );
+    return Object.fromEntries([
+      ...data.projects.map((project) => [project.id, "unbuilt"]),
+      ...experienceData.experience.map((item) => [item.id, "unbuilt"]),
+    ]);
   });
 
-  //build a Set of skill names from projects that are "built"
+  //build a Set of skill names from projects + experience that are "built"
   const activeSkills = new Set(
     Object.entries(buildStates)
       .filter(([, state]) => state === "built")
-      .flatMap(([projectId]) => {
-        const project = data.projects.find((p) => p.id === projectId);
-        return project?.skillsDetailed?.map((skill) => skill.name) || [];
+      .flatMap(([entryId]) => {
+        const project = data.projects.find((p) => p.id === entryId);
+        if (project) {
+          return project?.skillsDetailed?.map((skill) => skill.name) || [];
+        }
+
+        const experience = experienceData.experience.find(
+          (item) => item.id === entryId,
+        );
+        return experience?.skills || [];
       }),
   );
 

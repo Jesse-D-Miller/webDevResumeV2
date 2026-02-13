@@ -45,4 +45,19 @@ describe('SkillsPills activation', () => {
     expect(vitePill).toHaveClass('skills-pills-pill--tech')
     expect(leadershipPill).not.toHaveClass('skills-pills-pill--soft')
   })
+
+  it('adds experience skills and activates them when built', async () => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ 'experience-1': 'built' })
+    )
+
+    renderExplorer()
+
+    const skill = await screen.findByText('Strategic Thinking')
+    expect(skill).toBeInTheDocument()
+
+    const skillPill = skill.closest('.skills-pills-pill')
+    expect(skillPill).toHaveClass('skills-pills-pill--active')
+  })
 })

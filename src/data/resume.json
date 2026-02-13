@@ -378,17 +378,8 @@
     "Snowboarding",
     "Hiking",
     "Biking",
-    "Reading"
-  ],
-  "bonusHobbies": [
     "3D Printing",
-    "Videogames",
-    "Dad Jokes",
-    "Woodworking",
-    "Traveling",
-    "Miniature Painting",
-    "Gardening",
-    "DIY Projects"
+    "Reading"
   ],
   "mapNodes": {
     "education": [
