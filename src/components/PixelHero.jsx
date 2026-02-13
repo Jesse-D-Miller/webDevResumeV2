@@ -150,6 +150,7 @@ function PixelHero() {
           aria-valuemin={0}
           aria-valuemax={xpForLevel}
           aria-valuenow={xpIntoLevel}
+          style={{ "--xp-units": xpForLevel }}
         >
           <span
             className="xp-bar-fill"
