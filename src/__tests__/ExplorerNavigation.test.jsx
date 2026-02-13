@@ -3,12 +3,15 @@ import userEvent from '@testing-library/user-event'
 import { describe, it, expect } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import Explorer from '../routes/Explorer'
+import { XPProvider } from '../contexts/XPContext'
 
 const renderExplorer = () => {
   return render(
-    <MemoryRouter>
-      <Explorer />
-    </MemoryRouter>
+    <XPProvider>
+      <MemoryRouter>
+        <Explorer />
+      </MemoryRouter>
+    </XPProvider>
   )
 }
 

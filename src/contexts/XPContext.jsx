@@ -1,4 +1,4 @@
-import { createContext, useCallback, useMemo, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import resumeData from "../data/resume.json";
 
 export const XPContext = createContext();
@@ -11,8 +11,9 @@ const getProjectNumber = (id) => {
 export function XPProvider({ children }) {
   const [xp, setXp] = useState(0);
   const [clickedIds, setClickedIds] = useState(new Set());
+  const clickedIdsRef = useRef(new Set());
   const [heroMessage, setHeroMessage] = useState("");
-  const maxXp = 12;
+  const maxXp = 1000;
   const topProjects = useMemo(() => {
     return [...resumeData.projects]
       .sort((a, b) => getProjectNumber(b.id) - getProjectNumber(a.id))
@@ -49,6 +50,12 @@ export function XPProvider({ children }) {
       ["technical-skills-section", 1],
       ["battery-click", 1],
       ["power-click", 1],
+      ["project-build-project-4", 5],
+      ["project-build-project-6", 5],
+      ["project-build-project-5", 4],
+      ["project-build-project-1", 3],
+      ["project-build-project-2", 2],
+      ["project-build-project-3", 1],
       ...projectLinkEntries,
     ]);
   }, [projectLinkEntries, topProjects]);
@@ -67,9 +74,13 @@ export function XPProvider({ children }) {
     );
   }, [clickedIds, xpClickValues]);
 
+  useEffect(() => {
+    clickedIdsRef.current = clickedIds;
+  }, [clickedIds]);
+
   const grantXp = useCallback((id, amount = 1, message = "") => {
     setClickedIds((prev) => {
-      if (prev.has(id)) {
+      if (prev.has(id) || clickedIdsRef.current.has(id)) {
         return prev;
       }
 
@@ -80,6 +91,7 @@ export function XPProvider({ children }) {
 
       const next = new Set(prev);
       next.add(id);
+      clickedIdsRef.current = next;
       return next;
     });
   }, []);

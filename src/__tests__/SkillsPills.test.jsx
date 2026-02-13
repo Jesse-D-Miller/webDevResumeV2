@@ -2,14 +2,17 @@ import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect, beforeEach } from 'vitest'
 import Explorer from '../routes/Explorer'
+import { XPProvider } from '../contexts/XPContext'
 
 const STORAGE_KEY = 'project-build-states'
 
 const renderExplorer = () => {
   return render(
-    <MemoryRouter>
-      <Explorer />
-    </MemoryRouter>
+    <XPProvider>
+      <MemoryRouter>
+        <Explorer />
+      </MemoryRouter>
+    </XPProvider>
   )
 }
 

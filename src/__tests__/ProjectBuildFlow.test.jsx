@@ -1,16 +1,37 @@
 import { act, fireEvent, render, screen, within } from '@testing-library/react'
+import { useContext } from 'react'
 import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import Explorer from '../routes/Explorer'
+import { XPContext, XPProvider } from '../contexts/XPContext'
+import data from '../data/resume.json'
 
 const STORAGE_KEY = 'project-build-states'
 
 const renderExplorer = () => {
   return render(
-    <MemoryRouter>
-      <Explorer />
-    </MemoryRouter>
+    <XPProvider>
+      <MemoryRouter>
+        <Explorer />
+      </MemoryRouter>
+    </XPProvider>
+  )
+}
+
+const renderExplorerWithXpDisplay = () => {
+  const XPDisplay = () => {
+    const { xp } = useContext(XPContext)
+    return <span data-testid="xp-total">{xp}</span>
+  }
+
+  return render(
+    <XPProvider>
+      <XPDisplay />
+      <MemoryRouter>
+        <Explorer />
+      </MemoryRouter>
+    </XPProvider>
   )
 }
 
@@ -19,6 +40,26 @@ const openProjects = async (user) => {
 }
 
 const BUILD_MS = 2400
+const buildXpByProjectId = {
+  'project-1': 3,
+  'project-2': 2,
+  'project-3': 1,
+  'project-4': 5,
+  'project-5': 4,
+  'project-6': 5,
+}
+
+const escapeRegExp = (value) => {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+const projectCases = Object.entries(buildXpByProjectId).map(
+  ([id, expected]) => ({
+    id,
+    expected,
+    title: data.projects.find((project) => project.id === id)?.title ?? id,
+  })
+)
 
 describe('Project build flow', () => {
   beforeEach(() => {
@@ -119,4 +160,29 @@ describe('Project build flow', () => {
     ).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Code' })).toBeInTheDocument()
   })
+
+  it.each(projectCases)(
+    'awards $expected XP for $title build',
+    async ({ title, expected }) => {
+      vi.useFakeTimers()
+      renderExplorerWithXpDisplay()
+      fireEvent.click(screen.getByRole('button', { name: 'Projects' }))
+
+      const buildButton = screen.getByRole('button', {
+        name: new RegExp(`click to build project ${escapeRegExp(title)}`, 'i'),
+      })
+
+      await act(async () => {
+        fireEvent.click(buildButton)
+      })
+
+      await act(async () => {
+        vi.advanceTimersByTime(BUILD_MS + 50)
+      })
+
+      expect(screen.getByTestId('xp-total')).toHaveTextContent(
+        String(expected)
+      )
+    }
+  )
 })

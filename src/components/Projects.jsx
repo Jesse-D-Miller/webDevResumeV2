@@ -1,12 +1,44 @@
 import { useEffect, useRef, useState } from "react";
 import data from "../data/resume.json";
 import "./Projects.css";
+import { useXP } from "../hooks/useXP";
 
 const BUILD_MS = 2400;
 
 function Projects({ buildStates, startBuild }) {
   const [progressById, setProgressById] = useState({});
   const startTimesRef = useRef({});
+  const awardedRef = useRef(new Set());
+  const { grantXp, hasClicked } = useXP();
+
+  const buildXpByProjectId = useRef({
+    "project-1": 3,
+    "project-2": 2,
+    "project-3": 1,
+    "project-4": 5,
+    "project-5": 4,
+    "project-6": 5,
+  });
+
+  useEffect(() => {
+    Object.entries(buildStates).forEach(([projectId, state]) => {
+      if (state !== "built") {
+        return;
+      }
+
+      const xpId = `project-build-${projectId}`;
+      if (awardedRef.current.has(xpId) || hasClicked(xpId)) {
+        return;
+      }
+
+      awardedRef.current.add(xpId);
+
+      const amount = buildXpByProjectId.current[projectId] ?? 1;
+      const project = data.projects.find((item) => item.id === projectId);
+      const title = project?.title ?? "Project";
+      grantXp(xpId, amount, `Built ${title}`);
+    });
+  }, [buildStates, grantXp, hasClicked]);
 
   useEffect(() => {
     const buildingIds = Object.entries(buildStates)

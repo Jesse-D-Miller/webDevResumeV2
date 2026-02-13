@@ -13,12 +13,38 @@
 .pixel-hero-header {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
   width: 100%;
 }
 
 .xp-bar {
+  position: relative;
+  flex: 1;
+  height: 1rem;
+  border: 0.125rem solid var(--border);
+  border-radius: 999rem;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.xp-bar-fill {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: var(--success);
+  transition: width 0.4s ease-in-out;
+}
+
+.xp-bar-text {
+  position: relative;
+  z-index: 1;
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--text-dim);
+  color: var(--text);
+  line-height: 0.75rem;
 }
 
 .hero-level {
@@ -28,4 +54,32 @@
   padding: 0.125rem 2.75rem;
   background: var(--surface-2);
   color: var(--success);
+}
+
+.hero-level--flash {
+  animation: hero-level-flash 300ms ease-out;
+}
+
+@keyframes hero-level-flash {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0.5rem rgba(74, 222, 128, 0.5);
+    filter: brightness(1.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-level--flash {
+    animation: none;
+  }
 }
