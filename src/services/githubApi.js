@@ -112,14 +112,14 @@ const parseLastPage = (linkHeader) => {
   const parts = linkHeader.split(",");
   const lastPart = parts.find((part) => part.includes('rel="last"'));
   if (!lastPart) return null;
-  const match = lastPart.match(/page=(\d+)/);
+  const match = lastPart.match(/[?&]page=(\d+)>;\s*rel="last"/);
   return match ? Number(match[1]) : null;
 };
 
-const fetchRepoCommitCount = async ({ repo, token, username }) => {
+const fetchRepoCommitCount = async ({ repo, token }) => {
   const headers = buildHeaders(token);
   const response = await fetch(
-    `https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=1&author=${username}`,
+    `https://api.github.com/repos/${repo.owner.login}/${repo.name}/commits?per_page=1`,
     { headers }
   );
   if (!response.ok) {
@@ -442,7 +442,9 @@ export const fetchRecruiterStats = async ({
 
   const nonForkRepos = includeForks ? repos : repos.filter((repo) => !repo.fork);
   const publicRepos = nonForkRepos.filter((repo) => !repo.private);
-  const reposForCommits = includePrivate ? nonForkRepos : publicRepos;
+  const reposForCommits = (includePrivate ? repos : publicRepos).filter(
+    (repo) => !repo.fork
+  );
   const languageStats = await fetchLanguageStats({
     username,
     token,
@@ -470,7 +472,7 @@ export const fetchRecruiterStats = async ({
   const commitCounts = await withConcurrency(
     reposForCommits,
     Math.min(DEFAULT_CONCURRENCY, 4),
-    (repo) => fetchRepoCommitCount({ repo, token, username })
+    (repo) => fetchRepoCommitCount({ repo, token })
   );
   const totalCommits = commitCounts.reduce((sum, value) => sum + value, 0);
   const openIssues = publicRepos.reduce(

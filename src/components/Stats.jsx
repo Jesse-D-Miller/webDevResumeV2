@@ -35,7 +35,14 @@ const formatRepoSize = (value) => {
   return `${megabytes.toFixed(1)} MB`;
 };
 
-function StatCard({ title, value, subtitle, children, wide = false, tall = false }) {
+function StatCard({
+  title,
+  value,
+  subtitle,
+  children,
+  wide = false,
+  tall = false,
+}) {
   return (
     <article
       className={`stats-card${wide ? " stats-card--wide" : ""}${
@@ -73,7 +80,7 @@ function Stats() {
       const result = await fetchRecruiterStats({
         username: githubUsername,
         token: githubToken,
-           includePrivate: Boolean(githubToken),
+        includePrivate: Boolean(githubToken),
         eventsPages: 3,
         ttlMs,
       });
@@ -110,10 +117,14 @@ function Stats() {
 
   const eventSummary = stats?.eventSummary;
   const languageStats = stats?.languageStats;
-  const updatedAtMs = stats?.updatedAt ? new Date(stats.updatedAt).getTime() : null;
+  const updatedAtMs = stats?.updatedAt
+    ? new Date(stats.updatedAt).getTime()
+    : null;
   const elapsedMs = updatedAtMs ? Math.max(0, now - updatedAtMs) : null;
-  const elapsedMinutes = elapsedMs !== null ? Math.floor(elapsedMs / 60000) : null;
-  const elapsedHours = elapsedMs !== null ? Math.floor(elapsedMinutes / 60) : null;
+  const elapsedMinutes =
+    elapsedMs !== null ? Math.floor(elapsedMs / 60000) : null;
+  const elapsedHours =
+    elapsedMs !== null ? Math.floor(elapsedMinutes / 60) : null;
   const elapsedDays = elapsedMs !== null ? Math.floor(elapsedHours / 24) : null;
   const elapsedLabel = (() => {
     if (elapsedMinutes === null) return "--";
@@ -122,7 +133,9 @@ function Stats() {
     if (elapsedHours < 24) return `${elapsedHours} hr ago`;
     return `${elapsedDays} day${elapsedDays === 1 ? "" : "s"} ago`;
   })();
-  const lastPushMs = stats?.latestPush ? new Date(stats.latestPush).getTime() : null;
+  const lastPushMs = stats?.latestPush
+    ? new Date(stats.latestPush).getTime()
+    : null;
   const lastPushElapsedMs = lastPushMs ? Math.max(0, now - lastPushMs) : null;
   const lastPushMinutes =
     lastPushElapsedMs !== null ? Math.floor(lastPushElapsedMs / 60000) : null;
@@ -142,11 +155,7 @@ function Stats() {
     <section className="stats">
       <header className="stats-header">
         <div>
-          <h1 className="stats-title">GitHub Recruiter Stats Grid</h1>
-          <p className="stats-subtitle">
-            Aggregated from public GitHub data. Event-based metrics use the latest
-            {` ${eventSummary?.sampleSize ?? 0}`} public events (pulling up to 300).
-          </p>
+          <h1 className="stats-title">GitHub Stats Grid</h1>
         </div>
         <div className="stats-meta">
           <div className="stats-meta-row">
@@ -172,16 +181,14 @@ function Stats() {
 
       {status === "ready" && stats && (
         <div className="stats-grid">
-          <StatCard title="Public repos" value={formatNumber(stats.totalRepos)} />
+          <StatCard
+            title="Public repos"
+            value={formatNumber(stats.totalRepos)}
+          />
           <StatCard
             title="Total repo size"
             value={formatRepoSize(stats.totalRepoSizeKb)}
             subtitle="Sum of public repos"
-          />
-          <StatCard
-            title="Total commits"
-            value={formatNumber(stats.totalCommits)}
-            subtitle="All-time across public repos"
           />
           <StatCard title="Recent activity" tall>
             <ul className="stats-list">
@@ -200,22 +207,8 @@ function Stats() {
             </ul>
           </StatCard>
           <StatCard
-            title="Recent push"
-            value={lastPushLabel}
-            subtitle={formatDate(stats?.latestPush)}
-          />
-          <StatCard
             title="Top language"
             value={languageStats?.languages?.[0]?.name || "--"}
-          />
-          <StatCard
-            title="Language diversity"
-            value={stats.languageDiversity ? stats.languageDiversity.toFixed(2) : "--"}
-            subtitle="Shannon index"
-          />
-          <StatCard
-            title="Top 6 language bytes"
-            value={formatNumber(stats.top6Bytes)}
           />
           <StatCard
             title="Recent primary language"
@@ -223,9 +216,31 @@ function Stats() {
             subtitle="From latest pushes"
           />
           <StatCard
+            title="Language diversity"
+            value={
+              stats.languageDiversity
+                ? stats.languageDiversity.toFixed(2)
+                : "--"
+            }
+            subtitle="Shannon index"
+          />
+          <StatCard
+            title="Total commits"
+            value={formatNumber(stats.totalCommits)}
+            subtitle="All-time across public repos"
+          />
+          <StatCard
+            title="Top 6 language bytes"
+            value={formatNumber(stats.top6Bytes)}
+          />
+          <StatCard
+            title="Recent push"
+            value={lastPushLabel}
+            subtitle={formatDate(stats?.latestPush)}
+          />
+          <StatCard
             title="Peak activity day"
             value={eventSummary?.peakDay?.label || "--"}
-            subtitle="PST"
           />
           <StatCard
             title="Peak activity hour"
