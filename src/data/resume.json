@@ -412,31 +412,31 @@
       "name": "Snowboarding",
       "photo": "public/hobbySnowboarding.jpeg",
       "alt": "Snowboarding hobby photo",
-      "context": ""
+      "context": "I grew up skiing but have really come to love snowboarding in the last few years. There's something about the flow and style of snowboarding that really resonates with me. I mostly stick to my local mountains, but I also enjoy traveling to new resorts. This photo is from a solo riding day on Whistler Mountain."
     },
     {
       "name": "Hiking",
       "photo": "public/hobbyHiking.jpeg",
       "alt": "Hiking hobby photo",
-      "context": ""
+      "context": "Working in wildfire suppression gave me a deep appreciation for the outdoors. I love the nostalgia of hiking the same trails and areas over and over again. This photo is from Skywalk near Whistler, which has some of the most stunning views and a breathtaking glacial lake."
     },
     {
       "name": "Biking",
       "photo": "public/hobbyBiking.jpeg",
       "alt": "Biking hobby photo",
-      "context": ""
+      "context": "I enjoy several types of biking, but  mountain biking is my favorite. There's something exhilarating about navigating trails and challenging terrains. This photo is from a recent ride on a local mountain trail with my dog, Finnegan. "
     },
     {
       "name": "3D Printing",
       "photo": "public/hobby3DPrinting.jpeg",
       "alt": "3D printing hobby photo",
-      "context": ""
+      "context": "I have surprisingly few photos to represent this hobby, considering it's one of my favourites! I got into 3D printing a few years ago and have been having a blast creating all sorts of things, from practical household items to fun figurines. It's a great way to combine creativity with technical skills, and I love seeing an idea come to life layer by layer. This photo is of a moonlamp I printed to avoid throwing away a broken lamp - I just printed a new shade for it and now it's one of my favourite pieces of decor!"
     },
     {
       "name": "Reading",
       "photo": "public/hobbyReading.jpeg",
       "alt": "Reading hobby photo",
-      "context": ""
+      "context": "I love to read as a way to wind down and escape into different worlds. I enjoy a wide range of genres, but I'm especially drawn to science fiction and fantasy. This is a photo from a used book store where I scored big by finding the entire Redwall series by Brian Jacques - a childhood favourite of mine."
     }
   ],
   "mapNodes": {

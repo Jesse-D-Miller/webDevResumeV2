@@ -140,3 +140,8 @@
   border-color: var(--accent-strong);
   outline: none;
 }
+
+.about-hobby--active {
+  color: var(--success);
+  border-color: var(--success);
+}

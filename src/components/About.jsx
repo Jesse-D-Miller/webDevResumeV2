@@ -1,17 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./About.css";
 import data from "../data/resume.json";
+import { useXP } from "../hooks/useXP";
 
 function About() {
   const hobbies = Array.isArray(data.hobbies) ? data.hobbies : [];
   const defaultHobby =
     hobbies.find((hobby) => hobby.name === "Board Games") || hobbies[0];
   const [selectedHobby, setSelectedHobby] = useState(defaultHobby);
+  const { grantXp, hasClicked } = useXP();
   const photoGrid = Array.isArray(selectedHobby?.photos)
     ? selectedHobby.photos.filter((photo) => photo?.src)
     : [];
   const hasPhotoGrid = photoGrid.length > 0;
   const isCooking = selectedHobby?.name === "Cooking";
+
+  useEffect(() => {
+    if (!defaultHobby?.name) return;
+    grantXp(`hobby-open-${defaultHobby.name}`, 3);
+  }, [defaultHobby?.name, grantXp]);
 
   return (
     <div className="about">
@@ -23,8 +30,15 @@ function About() {
               <button
                 key={hobby.name}
                 type="button"
-                className="about-hobby"
-                onClick={() => setSelectedHobby(hobby)}
+                className={
+                  hasClicked(`hobby-open-${hobby.name}`)
+                    ? "about-hobby about-hobby--active"
+                    : "about-hobby"
+                }
+                onClick={() => {
+                  setSelectedHobby(hobby);
+                  grantXp(`hobby-open-${hobby.name}`, 3);
+                }}
               >
                 {hobby.name}
               </button>
