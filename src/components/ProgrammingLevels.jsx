@@ -6,7 +6,7 @@ import { fetchLanguageStats } from "../services/githubApi";
 
 const BUILD_MS = 2400;
 
-function ProgrammingLevels({ buildStates, startBuild }) {
+function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
   const [progressById, setProgressById] = useState({});
   const [languageStats, setLanguageStats] = useState(null);
   const [statsStatus, setStatsStatus] = useState("idle");
@@ -19,13 +19,21 @@ function ProgrammingLevels({ buildStates, startBuild }) {
   const { grantXp, hasClicked } = useXP();
   const educationIds = useRef(new Set(data.education.map((edu) => edu.id)));
   const buildXpByEducationId = useRef(
-    Object.fromEntries(data.education.map((edu) => [edu.id, 15]))
+    Object.fromEntries(data.education.map((edu) => [edu.id, 7]))
   );
   const githubUsername = useMemo(() => {
     const url = data.meta?.links?.github || "";
     const match = url.match(/github\.com\/([^/]+)/i);
     return match ? match[1] : "";
   }, []);
+
+  const handleInstallApi = () => {
+    const xpId = "github-api-install";
+    if (!hasClicked(xpId)) {
+      grantXp(xpId, 4, "Installed GitHub API");
+    }
+    setIsApiInstalled(true);
+  };
 
 
   const primaryEducationId = data.education[0]?.id;
@@ -140,6 +148,22 @@ function ProgrammingLevels({ buildStates, startBuild }) {
       setIsApiInstalled(false);
     }
   }, [isEducationBuilt]);
+
+  useEffect(() => {
+    if (typeof onLanguagesReady !== "function") {
+      return;
+    }
+
+    if (!isApiInstalled || statsStatus !== "ready" || !languageStats) {
+      onLanguagesReady([]);
+      return;
+    }
+
+    const topLanguages = languageStats.languages
+      .slice(0, 6)
+      .map((lang) => lang.name);
+    onLanguagesReady(topLanguages);
+  }, [isApiInstalled, statsStatus, languageStats, onLanguagesReady]);
 
   useEffect(() => {
     const canAnimate = isEducationBuilt && isApiInstalled && statsStatus === "ready";
@@ -287,7 +311,7 @@ function ProgrammingLevels({ buildStates, startBuild }) {
             <button
               className="programming-levels-install programming-levels-install--ready"
               type="button"
-              onClick={() => setIsApiInstalled(true)}
+              onClick={handleInstallApi}
             >
               Install API
             </button>

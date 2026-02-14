@@ -15,6 +15,7 @@ const BUILD_MS = 2400;
 
 function Explorer() {
   const [activePage, setActivePage] = useState("Summary");
+  const [githubLanguages, setGithubLanguages] = useState([]);
   const [buildStates, setBuildStates] = useState(() => {
     return Object.fromEntries([
       ...data.projects.map((project) => [project.id, "unbuilt"]),
@@ -44,6 +45,8 @@ function Explorer() {
         return education?.skills || [];
       }),
   );
+
+  const githubLanguageSet = new Set(githubLanguages);
 
   // Load build states from localStorage on initial render
   useEffect(() => {
@@ -86,12 +89,16 @@ function Explorer() {
         <div className="explorer-character">
           <PixelHero />
           <Gear />
-          <SkillsPills activeSkills={activeSkills} />
+          <SkillsPills
+            activeSkills={activeSkills}
+            highlightedSkills={githubLanguageSet}
+          />
         </div>
         <RenderWindow
           activePage={activePage}
           buildStates={buildStates}
           startBuild={startBuild}
+          onLanguagesReady={setGithubLanguages}
         />
       </div>
     </div>

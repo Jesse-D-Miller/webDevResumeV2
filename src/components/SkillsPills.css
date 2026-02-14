@@ -48,6 +48,11 @@
   color: #60a5fa;
 }
 
+.skills-pills-pill--github {
+  border-color: var(--success);
+  color: var(--success);
+}
+
 @keyframes skills-pill-activate {
   0% {
     transform: scale(1);

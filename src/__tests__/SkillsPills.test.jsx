@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom'
 import { describe, it, expect, beforeEach } from 'vitest'
 import Explorer from '../routes/Explorer'
 import { XPProvider } from '../contexts/XPContext'
+import SkillsPills from '../components/SkillsPills'
 
 const STORAGE_KEY = 'project-build-states'
 
@@ -71,5 +72,18 @@ describe('SkillsPills activation', () => {
 
     const gitPill = screen.getByText('Git')
     expect(gitPill).toHaveClass('skills-pills-pill--tech')
+  })
+
+  it('uses GitHub highlight styling when a top language is provided', () => {
+    render(
+      <SkillsPills
+        activeSkills={new Set(['React'])}
+        highlightedSkills={new Set(['React'])}
+      />
+    )
+
+    const reactPill = screen.getByText('React')
+    expect(reactPill).toHaveClass('skills-pills-pill--github')
+    expect(reactPill).not.toHaveClass('skills-pills-pill--tech')
   })
 })

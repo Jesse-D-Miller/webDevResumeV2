@@ -8,13 +8,19 @@ import Projects from "../components/Projects";
 
 import "./RenderWindow.css";
 
-function RenderWindow({ activePage, buildStates, startBuild }) {
+function RenderWindow({ activePage, buildStates, startBuild, onLanguagesReady }) {
   return (
     <div className="render-window">
       {activePage === "Summary" && <Summary />}
       {activePage === "About" && <About />}
       {activePage === "Experience" && <Experience buildStates={buildStates} startBuild={startBuild} />}
-      {activePage === "ProgrammingLevels" && <ProgrammingLevels buildStates={buildStates} startBuild={startBuild} />}
+      {activePage === "ProgrammingLevels" && (
+        <ProgrammingLevels
+          buildStates={buildStates}
+          startBuild={startBuild}
+          onLanguagesReady={onLanguagesReady}
+        />
+      )}
       {activePage === "Map" && <Map />}
       {activePage === "Projects" && <Projects buildStates={buildStates} startBuild={startBuild} />}
       {activePage === "Stats" && <Stats />}

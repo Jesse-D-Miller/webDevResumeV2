@@ -2,7 +2,7 @@ import "./SkillsPills.css";
 import data from "../data/resume.json";
 import experienceData from "../data/expandedExperience.json";
 
-function SkillsPills({ activeSkills = new Set() }) {
+function SkillsPills({ activeSkills = new Set(), highlightedSkills = new Set() }) {
   const skillsByName = new Map(
     data.skills.map((skill) => [skill.name, skill])
   );
@@ -57,15 +57,21 @@ function SkillsPills({ activeSkills = new Set() }) {
         {skills.map((skill) => (
           <div
             key={skill.name}
-            className={`skills-pills-pill ${
-              activeSkills.has(skill.name)
-                ? `skills-pills-pill--active ${
-                    skill.category === "Soft Skills"
-                      ? "skills-pills-pill--soft"
-                      : "skills-pills-pill--tech"
-                  }`
-                : ""
-            }`}
+            className={`skills-pills-pill ${(() => {
+              const isHighlighted = highlightedSkills.has(skill.name);
+              const isActive = isHighlighted || activeSkills.has(skill.name);
+              if (!isActive) {
+                return "";
+              }
+
+              const variantClass = isHighlighted
+                ? "skills-pills-pill--github"
+                : skill.category === "Soft Skills"
+                  ? "skills-pills-pill--soft"
+                  : "skills-pills-pill--tech";
+
+              return `skills-pills-pill--active ${variantClass}`;
+            })()}`}
           >
             {skill.name}
           </div>
