@@ -61,7 +61,9 @@ describe('Explorer navigation', () => {
     ).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: 'Statistics' }))
-    expect(screen.getByText('Stats Page')).toBeInTheDocument()
+    expect(
+      screen.getByText(/install api first to unlock github stats/i)
+    ).toBeInTheDocument()
   })
 
   it('does not grant extra XP when navigating between Projects and Experience', async () => {

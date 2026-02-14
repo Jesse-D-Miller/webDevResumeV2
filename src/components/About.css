@@ -1,0 +1,52 @@
+.about {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 0.125rem solid var(--border);
+  border-radius: 0.25rem;
+  background: var(--surface-2);
+  width: 30rem;
+  height: 100%;
+}
+
+.about-title {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.about-hobbies {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.about-hobby {
+  border: 0.125rem solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.9rem;
+  cursor: default;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+  width: 66.6667%;
+}
+
+.about-hobby:hover,
+.about-hobby:focus,
+.about-hobby:focus-visible {
+  border-color: var(--accent-strong);
+  outline: none;
+}
