@@ -1,18 +1,36 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import data from "../data/resume.json";
 import "./ProgrammingLevels.css";
 import { useXP } from "../hooks/useXP";
+import { fetchLanguageStats } from "../services/githubApi";
 
 const BUILD_MS = 2400;
 
 function ProgrammingLevels({ buildStates, startBuild }) {
   const [progressById, setProgressById] = useState({});
+  const [languageStats, setLanguageStats] = useState(null);
+  const [statsStatus, setStatsStatus] = useState("idle");
+  const [statsError, setStatsError] = useState("");
+  const [isApiInstalled, setIsApiInstalled] = useState(false);
+  const [animateBars, setAnimateBars] = useState(false);
+  const [displayPercents, setDisplayPercents] = useState({});
   const startTimesRef = useRef({});
   const awardedRef = useRef(new Set());
   const { grantXp, hasClicked } = useXP();
   const educationIds = useRef(new Set(data.education.map((edu) => edu.id)));
   const buildXpByEducationId = useRef(
-    Object.fromEntries(data.education.map((edu) => [edu.id, 7]))
+    Object.fromEntries(data.education.map((edu) => [edu.id, 15]))
+  );
+  const githubUsername = useMemo(() => {
+    const url = data.meta?.links?.github || "";
+    const match = url.match(/github\.com\/([^/]+)/i);
+    return match ? match[1] : "";
+  }, []);
+
+
+  const primaryEducationId = data.education[0]?.id;
+  const isEducationBuilt = Boolean(
+    primaryEducationId && buildStates?.[primaryEducationId] === "built"
   );
 
   useEffect(() => {
@@ -90,6 +108,92 @@ function ProgrammingLevels({ buildStates, startBuild }) {
     return () => window.clearInterval(intervalId);
   }, [buildStates]);
 
+
+  useEffect(() => {
+    if (!githubUsername || typeof fetch !== "function") {
+      return;
+    }
+
+    let isActive = true;
+    const loadStats = async () => {
+      try {
+        setStatsStatus("loading");
+        const result = await fetchLanguageStats({ username: githubUsername });
+        if (!isActive) return;
+        setLanguageStats(result);
+        setStatsStatus("ready");
+      } catch (error) {
+        if (!isActive) return;
+        setStatsError(error?.message || "Failed to load GitHub stats");
+        setStatsStatus("error");
+      }
+    };
+
+    loadStats();
+    return () => {
+      isActive = false;
+    };
+  }, [githubUsername]);
+
+  useEffect(() => {
+    if (!isEducationBuilt) {
+      setIsApiInstalled(false);
+    }
+  }, [isEducationBuilt]);
+
+  useEffect(() => {
+    const canAnimate = isEducationBuilt && isApiInstalled && statsStatus === "ready";
+    setAnimateBars(canAnimate);
+  }, [isEducationBuilt, isApiInstalled, statsStatus]);
+
+  useEffect(() => {
+    if (!languageStats || !animateBars) {
+      setDisplayPercents({});
+      return;
+    }
+
+    const topLanguages = languageStats.languages.slice(0, 6);
+    const totalBytes = languageStats.totalBytes || 1;
+    const targetPercents = Object.fromEntries(
+      topLanguages.map((lang) => [
+        lang.name,
+        Math.min(100, Math.ceil((lang.bytes / totalBytes) * 100)),
+      ])
+    );
+
+    let frameId;
+    let start;
+    const duration = 3000;
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+    const tick = (timestamp) => {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const progress = Math.min(1, elapsed / duration);
+      const eased = easeOutCubic(progress);
+
+      setDisplayPercents(() => {
+        const next = {};
+        topLanguages.forEach((lang) => {
+          const target = targetPercents[lang.name] ?? 0;
+          next[lang.name] = Math.max(0, Math.round(target * eased));
+        });
+        return next;
+      });
+
+      if (progress < 1) {
+        frameId = window.requestAnimationFrame(tick);
+      }
+    };
+
+    frameId = window.requestAnimationFrame(tick);
+    return () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
+  }, [languageStats, animateBars]);
+
   useEffect(() => {
     if (!buildStates) {
       return;
@@ -166,6 +270,77 @@ function ProgrammingLevels({ buildStates, startBuild }) {
           </article>
         );
       })}
+      <article className="programming-levels-item programming-levels-item--stats">
+        <h2 className="programming-levels-education">
+          GitHub Language Data
+          <span className="programming-levels-title-note">
+            Total bytes across top 6 languages
+          </span>
+        </h2>
+        <div className="programming-levels-stats">
+          {!isEducationBuilt && (
+            <div className="programming-levels-locked-message">
+              Attend Lighthouse Labs to learn about APIs
+            </div>
+          )}
+          {isEducationBuilt && !isApiInstalled && (
+            <button
+              className="programming-levels-install programming-levels-install--ready"
+              type="button"
+              onClick={() => setIsApiInstalled(true)}
+            >
+              Install API
+            </button>
+          )}
+          {statsStatus === "loading" && (
+            <p className="programming-levels-status">Loading stats...</p>
+          )}
+          {statsStatus === "error" && (
+            <p className="programming-levels-status programming-levels-status--error">
+              {statsError}
+            </p>
+          )}
+          {statsStatus === "ready" && languageStats && isApiInstalled && (
+            <ul className="programming-levels-language-list">
+              {(() => {
+                const topLanguages = languageStats.languages.slice(0, 6);
+                const maxBytes = topLanguages[0]?.bytes || 1;
+                const totalBytes = languageStats.totalBytes || 1;
+
+                return topLanguages.map((lang) => {
+                  const ratio = lang.bytes / maxBytes;
+                  const fillPercent = Math.min(100, Math.ceil(ratio * 100));
+                  const sharePercent = Math.min(
+                    100,
+                    Math.ceil((lang.bytes / totalBytes) * 100)
+                  );
+                  const displayPercent = animateBars
+                    ? displayPercents[lang.name] ?? 0
+                    : sharePercent;
+
+                  return (
+                    <li
+                      key={lang.name}
+                      className="programming-levels-language-item"
+                      style={{ "--lang-percent": animateBars ? fillPercent : 0 }}
+                    >
+                      <span className="programming-levels-language-name">
+                        {lang.name}
+                        <span className="programming-levels-language-bytes">
+                          ({lang.bytes.toLocaleString()} bytes)
+                        </span>
+                      </span>
+                      <span className="programming-levels-language-percent">
+                        {displayPercent}%
+                      </span>
+                    </li>
+                  );
+                });
+              })()}
+            </ul>
+          )}
+        </div>
+      </article>
     </div>
   );
 }

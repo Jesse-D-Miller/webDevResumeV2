@@ -3,6 +3,8 @@
 	flex-direction: row;
 	gap: 1rem;
 	height: 100%;
+	width: 100%;
+	min-width: 0;
 	overflow-x: auto;
 }
 
@@ -18,6 +20,26 @@
 	width: 30rem;
 	position: relative;
 	overflow: hidden;
+}
+
+.programming-levels-item--stats {
+	gap: 1rem;
+	flex: 0 0 calc(100% - 31rem);
+	width: calc(100% - 31rem);
+	min-width: 0;
+	position: relative;
+}
+
+.programming-levels-item--stats .programming-levels-education {
+	align-self: flex-start;
+	text-align: left;
+}
+
+.programming-levels-title-note {
+	display: block;
+	font-size: 0.7rem;
+	color: var(--text-muted);
+	font-weight: 500;
 }
 
 .programming-levels-unbuilt {
@@ -127,6 +149,7 @@
 	font-size: 0.75rem;
 }
 
+
 .programming-levels-period {
 	border: 0.0625rem solid var(--border);
 	border-radius: 0.25rem;
@@ -175,4 +198,134 @@
 
 .programming-levels-detail {
 	margin: 0;
+}
+
+.programming-levels-stats {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	position: relative;
+	flex: 1;
+	height: 100%;
+	min-height: 0;
+}
+
+.programming-levels-locked-message {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	border: 0.125rem dashed var(--border);
+	border-radius: 0.5rem;
+	padding: 1.5rem;
+	text-align: center;
+	color: var(--text-dim);
+	background: var(--surface);
+	font-weight: 600;
+	opacity: 0.7;
+}
+
+.programming-levels-locked-message::before {
+	content: "LOCKED";
+	display: block;
+	font-size: 0.75rem;
+	letter-spacing: 0.2em;
+	color: var(--text-muted);
+	margin-bottom: 0.75rem;
+}
+
+.programming-levels-install {
+	flex: 1;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 0.125rem solid var(--success);
+	border-radius: 0.5rem;
+	padding: 1.5rem;
+	background: var(--surface);
+	color: var(--success);
+	font-weight: 700;
+	font-size: 1.25rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.programming-levels-install--ready {
+	border-color: var(--success);
+	color: var(--success);
+}
+
+.programming-levels-status {
+	margin: 0;
+	color: var(--text-dim);
+}
+
+.programming-levels-status--error {
+	color: var(--error);
+}
+
+.programming-levels-language-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	min-height: 0;
+	gap: 0.5rem;
+}
+
+.programming-levels-language-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex: 1 1 0;
+	border: 0.125rem solid var(--border);
+	border-radius: 0.25rem;
+	padding: 0.35rem 0.5rem;
+	background: var(--surface);
+	gap: 0.5rem;
+	flex-wrap: nowrap;
+	position: relative;
+	overflow: hidden;
+}
+
+.programming-levels-language-item::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	width: calc(var(--lang-percent, 0) * 1%);
+	background: rgba(74, 222, 128, 0.25);
+	transition: width 3000ms cubic-bezier(0.2, 0.9, 0.1, 1);
+	z-index: 0;
+}
+
+
+.programming-levels-language-name {
+	font-weight: 600;
+	position: relative;
+	z-index: 2;
+}
+
+.programming-levels-language-bytes {
+	margin-left: 0.35rem;
+	font-size: 0.7rem;
+	color: var(--text-muted);
+	font-weight: 500;
+}
+
+.programming-levels-language-percent {
+	color: var(--text-dim);
+	position: relative;
+	z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.programming-levels-language-item::before {
+		transition: none;
+	}
 }

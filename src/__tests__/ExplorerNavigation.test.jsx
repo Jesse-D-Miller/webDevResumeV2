@@ -56,7 +56,7 @@ describe('Explorer navigation', () => {
     await user.click(screen.getByRole('button', { name: 'Levels' }))
     expect(
       screen.getByRole('button', {
-        name: /click to build education lighthouse labs/i,
+        name: /click to enroll lighthouse labs/i,
       })
     ).toBeInTheDocument()
 

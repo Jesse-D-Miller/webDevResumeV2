@@ -55,7 +55,7 @@ describe('ProgrammingLevels build flow', () => {
 
     expect(
       screen.getByRole('button', {
-        name: /click to build education lighthouse labs/i,
+        name: /click to enroll lighthouse labs/i,
       })
     ).toBeInTheDocument()
   })
@@ -69,7 +69,7 @@ describe('ProgrammingLevels build flow', () => {
       name: 'Education: Lighthouse Labs',
     })
     const buildButton = within(card).getByRole('button', {
-      name: /click to build education lighthouse labs/i,
+      name: /click to enroll lighthouse labs/i,
     })
 
     await act(async () => {
@@ -78,10 +78,10 @@ describe('ProgrammingLevels build flow', () => {
 
     expect(card).toHaveAttribute('aria-busy', 'true')
     const buildingButton = within(card).getByRole('button', {
-      name: /building/i,
+      name: /studying/i,
     })
     expect(buildingButton).toBeDisabled()
-    expect(buildingButton).toHaveTextContent('Building...')
+    expect(buildingButton).toHaveTextContent('Studying...')
 
     await act(async () => {
       vi.advanceTimersByTime(BUILD_MS + 50)
@@ -102,7 +102,7 @@ describe('ProgrammingLevels build flow', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Levels' }))
 
     const buildButton = screen.getByRole('button', {
-      name: /click to build education lighthouse labs/i,
+      name: /click to enroll lighthouse labs/i,
     })
 
     await act(async () => {
