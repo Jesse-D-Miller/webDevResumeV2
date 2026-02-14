@@ -374,14 +374,70 @@
     }
   ],
   "hobbies": [
-    "Board Games",
-    "Basketball",
-    "Cooking",
-    "Snowboarding",
-    "Hiking",
-    "Biking",
-    "3D Printing",
-    "Reading"
+    {
+      "name": "Board Games",
+      "photo": "public/hobbyBoardGame.jpeg",
+      "alt": "Board games hobby photo",
+      "context": "Here is a funny one of a stack I built up playing Wingspan with my partner. I love board games and tabletop gaming in general - it's a great way to connect with friends and family while engaging in strategic thinking and fun competition."
+    },
+    {
+      "name": "Basketball",
+      "photo": "public/hobbyBasketball.jpeg",
+      "alt": "Basketball hobby photo",
+      "context": "I've been playing basketball since I was a kid and it's still one of my favourite ways to stay active and socialize. I enjoy the fast pace, teamwork, and skill development that basketball offers. This photo is from a league tournament we won a few years back."
+    },
+    {
+      "name": "Cooking",
+      "photos": [
+        {
+          "src": "public/hobbyCooking-1.jpeg",
+          "alt": "Cooking hobby photo 1"
+        },
+        {
+          "src": "public/hobbyCooking-2.jpeg",
+          "alt": "Cooking hobby photo 2"
+        },
+        {
+          "src": "public/hobbyCooking-3.jpeg",
+          "alt": "Cooking hobby photo 3"
+        },
+        {
+          "src": "public/hobbyCooking-4.jpeg",
+          "alt": "Cooking hobby photo 4"
+        }
+      ],
+      "context": "I enjoy cooking so much that I spent the time to adjust my code to allow for multiple photos here! I find cooking to be a great creative outlet and a way to unwind after a day of coding. I especially love trying new recipes and cuisines, and sharing meals with friends and family."
+    },
+    {
+      "name": "Snowboarding",
+      "photo": "public/hobbySnowboarding.jpeg",
+      "alt": "Snowboarding hobby photo",
+      "context": ""
+    },
+    {
+      "name": "Hiking",
+      "photo": "public/hobbyHiking.jpeg",
+      "alt": "Hiking hobby photo",
+      "context": ""
+    },
+    {
+      "name": "Biking",
+      "photo": "public/hobbyBiking.jpeg",
+      "alt": "Biking hobby photo",
+      "context": ""
+    },
+    {
+      "name": "3D Printing",
+      "photo": "public/hobby3DPrinting.jpeg",
+      "alt": "3D printing hobby photo",
+      "context": ""
+    },
+    {
+      "name": "Reading",
+      "photo": "public/hobbyReading.jpeg",
+      "alt": "Reading hobby photo",
+      "context": ""
+    }
   ],
   "mapNodes": {
     "education": [

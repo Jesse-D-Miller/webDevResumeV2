@@ -8,5 +8,45 @@
   background-color: var(--surface);
   border: 0.125rem solid var(--border);
   padding: 1.5rem;
-  overflow-x: auto;
+  overflow: hidden;
+}
+
+.render-window-body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.render-window-content {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.render-window-rail {
+  width: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.render-window-link {
+  border: 0.125rem solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--surface-2);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  text-align: left;
+}
+
+.render-window-link:hover,
+.render-window-link:focus,
+.render-window-link:focus-visible {
+  border-color: var(--accent-strong);
+  outline: none;
 }
