@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import "./Stats.css";
 import data from "../data/resume.json";
 import { fetchRecruiterStats } from "../services/githubApi";
+import { useXP } from "../hooks/useXP";
 
 const formatNumber = (value) =>
   value === null || value === undefined ? "--" : value.toLocaleString();
@@ -57,11 +58,14 @@ function StatCard({
   );
 }
 
-function Stats() {
-  const [status, setStatus] = useState("idle");
-  const [stats, setStats] = useState(null);
-  const [error, setError] = useState("");
+function Stats({
+  languageStatsReady = false,
+  githubStatsState,
+  setGithubStatsState,
+}) {
+  const { status, stats, error, isEnhanced } = githubStatsState;
   const [now, setNow] = useState(() => Date.now());
+  const { grantXp, hasClicked } = useXP();
 
   const githubUsername = useMemo(() => {
     const url = data.meta?.links?.github || "";
@@ -69,14 +73,16 @@ function Stats() {
     return match ? match[1] : "";
   }, []);
   const githubToken = import.meta.env.VITE_GITHUB_TOKEN || null;
+  const hasToken = Boolean(githubToken);
+  const canAccessStats = hasToken && languageStatsReady;
 
   const loadStats = async ({ ttlMs } = {}) => {
-    if (!githubUsername || typeof fetch !== "function") {
+    if (!githubUsername || !canAccessStats || typeof fetch !== "function") {
       return;
     }
 
     try {
-      setStatus("loading");
+      setGithubStatsState((prev) => ({ ...prev, status: "loading", error: "" }));
       const result = await fetchRecruiterStats({
         username: githubUsername,
         token: githubToken,
@@ -84,11 +90,17 @@ function Stats() {
         eventsPages: 3,
         ttlMs,
       });
-      setStats(result);
-      setStatus("ready");
+      setGithubStatsState((prev) => ({
+        ...prev,
+        stats: result,
+        status: "ready",
+      }));
     } catch (loadError) {
-      setError(loadError?.message || "Failed to load GitHub stats");
-      setStatus("error");
+      setGithubStatsState((prev) => ({
+        ...prev,
+        error: loadError?.message || "Failed to load GitHub stats",
+        status: "error",
+      }));
     }
   };
 
@@ -105,7 +117,13 @@ function Stats() {
     return () => {
       isActive = false;
     };
-  }, [githubUsername, githubToken]);
+  }, [githubUsername, githubToken, hasToken, canAccessStats]);
+
+  useEffect(() => {
+    if (!canAccessStats) {
+      setGithubStatsState((prev) => ({ ...prev, isEnhanced: false }));
+    }
+  }, [canAccessStats]);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -161,25 +179,50 @@ function Stats() {
           <div className="stats-meta-row">
             <span className="stats-meta-label">Last updated:</span>
             <span className="stats-meta-value">{elapsedLabel}</span>
-            <button
-              className="stats-refresh"
-              type="button"
-              onClick={() => loadStats({ ttlMs: 0 })}
-            >
-              Refresh stats
-            </button>
+            {canAccessStats && isEnhanced && (
+              <button
+                className="stats-refresh"
+                type="button"
+                onClick={() => loadStats({ ttlMs: 0 })}
+              >
+                Refresh stats
+              </button>
+            )}
           </div>
         </div>
       </header>
 
-      {status === "loading" && (
+      {!canAccessStats && (
+        <div className="stats-gate stats-locked">
+          <span className="stats-locked-label">Locked</span>
+          <span>Install API first to unlock GitHub stats</span>
+        </div>
+      )}
+
+      {canAccessStats && status === "loading" && (
         <div className="stats-status">Loading GitHub stats...</div>
       )}
-      {status === "error" && (
+      {canAccessStats && status === "error" && (
         <div className="stats-status stats-status--error">{error}</div>
       )}
 
-      {status === "ready" && stats && (
+      {canAccessStats && status === "ready" && !isEnhanced && (
+        <button
+          className="stats-gate stats-enhance"
+          type="button"
+          onClick={() => {
+            const xpId = "stats-enhance-api";
+            if (!hasClicked(xpId)) {
+              grantXp(xpId, 5, "Enhanced GitHub stats");
+            }
+            setGithubStatsState((prev) => ({ ...prev, isEnhanced: true }));
+          }}
+        >
+          Enhance API
+        </button>
+      )}
+
+      {canAccessStats && status === "ready" && stats && isEnhanced && (
         <div className="stats-grid">
           <StatCard
             title="Public repos"

@@ -16,6 +16,19 @@ const BUILD_MS = 2400;
 function Explorer() {
   const [activePage, setActivePage] = useState("Summary");
   const [githubLanguages, setGithubLanguages] = useState([]);
+  const [languageStatsReady, setLanguageStatsReady] = useState(false);
+  const [languageStatsState, setLanguageStatsState] = useState({
+    isApiInstalled: false,
+    statsStatus: "idle",
+    statsError: "",
+    languageStats: null,
+  });
+  const [githubStatsState, setGithubStatsState] = useState({
+    status: "idle",
+    stats: null,
+    error: "",
+    isEnhanced: false,
+  });
   const [buildStates, setBuildStates] = useState(() => {
     return Object.fromEntries([
       ...data.projects.map((project) => [project.id, "unbuilt"]),
@@ -99,6 +112,12 @@ function Explorer() {
           buildStates={buildStates}
           startBuild={startBuild}
           onLanguagesReady={setGithubLanguages}
+          onLanguageStatsReady={setLanguageStatsReady}
+          languageStatsReady={languageStatsReady}
+          languageStatsState={languageStatsState}
+          setLanguageStatsState={setLanguageStatsState}
+          githubStatsState={githubStatsState}
+          setGithubStatsState={setGithubStatsState}
         />
       </div>
     </div>

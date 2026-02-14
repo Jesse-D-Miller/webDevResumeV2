@@ -41,6 +41,7 @@ export function XPProvider({ children }) {
   const xpClickValues = useMemo(() => {
     return new Map([
       ["experience-tabs", 1],
+      ["stats-enhance-api", 5],
       ...topProjects
         .slice(1)
         .map((project) => [`project-tab-${project.id}`, 1]),

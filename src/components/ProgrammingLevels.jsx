@@ -6,12 +6,21 @@ import { fetchLanguageStats } from "../services/githubApi";
 
 const BUILD_MS = 2400;
 
-function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
+function ProgrammingLevels({
+  buildStates,
+  startBuild,
+  onLanguagesReady,
+  onLanguageStatsReady,
+  languageStatsState,
+  setLanguageStatsState,
+}) {
   const [progressById, setProgressById] = useState({});
-  const [languageStats, setLanguageStats] = useState(null);
-  const [statsStatus, setStatsStatus] = useState("idle");
-  const [statsError, setStatsError] = useState("");
-  const [isApiInstalled, setIsApiInstalled] = useState(false);
+  const {
+    languageStats,
+    statsStatus,
+    statsError,
+    isApiInstalled,
+  } = languageStatsState;
   const [animateBars, setAnimateBars] = useState(false);
   const [displayPercents, setDisplayPercents] = useState({});
   const startTimesRef = useRef({});
@@ -33,7 +42,10 @@ function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
     if (!hasClicked(xpId)) {
       grantXp(xpId, 4, "Installed GitHub API");
     }
-    setIsApiInstalled(true);
+    setLanguageStatsState((prev) => ({
+      ...prev,
+      isApiInstalled: true,
+    }));
   };
 
 
@@ -126,18 +138,28 @@ function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
     let isActive = true;
     const loadStats = async () => {
       try {
-        setStatsStatus("loading");
+        setLanguageStatsState((prev) => ({
+          ...prev,
+          statsStatus: "loading",
+          statsError: "",
+        }));
         const result = await fetchLanguageStats({
           username: githubUsername,
           token: githubToken,
         });
         if (!isActive) return;
-        setLanguageStats(result);
-        setStatsStatus("ready");
+        setLanguageStatsState((prev) => ({
+          ...prev,
+          languageStats: result,
+          statsStatus: "ready",
+        }));
       } catch (error) {
         if (!isActive) return;
-        setStatsError(error?.message || "Failed to load GitHub stats");
-        setStatsStatus("error");
+        setLanguageStatsState((prev) => ({
+          ...prev,
+          statsError: error?.message || "Failed to load GitHub stats",
+          statsStatus: "error",
+        }));
       }
     };
 
@@ -149,7 +171,10 @@ function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
 
   useEffect(() => {
     if (!isEducationBuilt) {
-      setIsApiInstalled(false);
+      setLanguageStatsState((prev) => ({
+        ...prev,
+        isApiInstalled: false,
+      }));
     }
   }, [isEducationBuilt]);
 
@@ -168,6 +193,17 @@ function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
       .map((lang) => lang.name);
     onLanguagesReady(topLanguages);
   }, [isApiInstalled, statsStatus, languageStats, onLanguagesReady]);
+
+  useEffect(() => {
+    if (typeof onLanguageStatsReady !== "function") {
+      return;
+    }
+
+    const isReady = Boolean(
+      isApiInstalled && statsStatus === "ready" && languageStats
+    );
+    onLanguageStatsReady(isReady);
+  }, [isApiInstalled, statsStatus, languageStats, onLanguageStatsReady]);
 
   useEffect(() => {
     const canAnimate = isEducationBuilt && isApiInstalled && statsStatus === "ready";

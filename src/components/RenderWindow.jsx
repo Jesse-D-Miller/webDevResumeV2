@@ -8,7 +8,18 @@ import Projects from "../components/Projects";
 
 import "./RenderWindow.css";
 
-function RenderWindow({ activePage, buildStates, startBuild, onLanguagesReady }) {
+function RenderWindow({
+  activePage,
+  buildStates,
+  startBuild,
+  onLanguagesReady,
+  onLanguageStatsReady,
+  languageStatsReady,
+  languageStatsState,
+  setLanguageStatsState,
+  githubStatsState,
+  setGithubStatsState,
+}) {
   return (
     <div className="render-window">
       {activePage === "Summary" && <Summary />}
@@ -19,11 +30,20 @@ function RenderWindow({ activePage, buildStates, startBuild, onLanguagesReady })
           buildStates={buildStates}
           startBuild={startBuild}
           onLanguagesReady={onLanguagesReady}
+          onLanguageStatsReady={onLanguageStatsReady}
+          languageStatsState={languageStatsState}
+          setLanguageStatsState={setLanguageStatsState}
         />
       )}
       {activePage === "Map" && <Map />}
       {activePage === "Projects" && <Projects buildStates={buildStates} startBuild={startBuild} />}
-      {activePage === "Stats" && <Stats />}
+      {activePage === "Stats" && (
+        <Stats
+          languageStatsReady={languageStatsReady}
+          githubStatsState={githubStatsState}
+          setGithubStatsState={setGithubStatsState}
+        />
+      )}
     </div>
   );
 }
