@@ -26,6 +26,7 @@ function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
     const match = url.match(/github\.com\/([^/]+)/i);
     return match ? match[1] : "";
   }, []);
+  const githubToken = import.meta.env.VITE_GITHUB_TOKEN || null;
 
   const handleInstallApi = () => {
     const xpId = "github-api-install";
@@ -126,7 +127,10 @@ function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
     const loadStats = async () => {
       try {
         setStatsStatus("loading");
-        const result = await fetchLanguageStats({ username: githubUsername });
+        const result = await fetchLanguageStats({
+          username: githubUsername,
+          token: githubToken,
+        });
         if (!isActive) return;
         setLanguageStats(result);
         setStatsStatus("ready");
@@ -141,7 +145,7 @@ function ProgrammingLevels({ buildStates, startBuild, onLanguagesReady }) {
     return () => {
       isActive = false;
     };
-  }, [githubUsername]);
+  }, [githubUsername, githubToken]);
 
   useEffect(() => {
     if (!isEducationBuilt) {
