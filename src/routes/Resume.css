@@ -101,6 +101,20 @@
   color: var(--color-ink);
 }
 
+.resume-front .project-link {
+  color: var(--color-ink-blue);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  outline: none;
+  box-shadow: none;
+}
+
+.resume-front .project-link:hover {
+  text-decoration: underline;
+}
+
 .resume-front .tech-stack,
 .resume-front .company-period,
 .resume-front .program-period {

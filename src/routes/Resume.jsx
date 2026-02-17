@@ -61,20 +61,43 @@ function Resume() {
               <p>{resumeData.summary}</p>
             </div>
 
-            {topProjects.map((project, index) => (
-              <div key={project.id} className={`box-${index + 3}`}>
-                {index === 0 && <h3>Projects</h3>}
-                <div className="project-item">
-                  <h4>{project.title} - {project.subtitle}</h4>
-                  <p className="tech-stack">{project.stack.join(", ")}</p>
-                  <ul>
-                    {project.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
+            {topProjects.map((project, index) => {
+              const liveUrl = project.links?.live;
+              const codeUrl = project.links?.code;
+              const projectUrl = liveUrl || codeUrl;
+              const projectLabel = liveUrl ? "LIVE" : "CODE";
+
+              return (
+                <div key={project.id} className={`box-${index + 3}`}>
+                  {index === 0 && <h3>Projects</h3>}
+                  <div className="project-item">
+                    <h4>
+                      {project.title} - {project.subtitle}
+                      {projectUrl && (
+                        <>
+                          {" ("}
+                          <a
+                            className="project-link"
+                            href={projectUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {projectLabel}
+                          </a>
+                          {")"}
+                        </>
+                      )}
+                    </h4>
+                    <p className="tech-stack">{project.stack.join(", ")}</p>
+                    <ul>
+                      {project.highlights.map((highlight) => (
+                        <li key={highlight}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {resumeData.experience.map((job, index) => (
               <div key={job.id} className={`box-${index + 6}`}>

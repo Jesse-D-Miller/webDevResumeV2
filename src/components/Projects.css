@@ -17,7 +17,7 @@
   box-sizing: border-box;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-padding-inline: 1.5rem;
   scrollbar-gutter: stable both-edges;
   overscroll-behavior-x: contain;
