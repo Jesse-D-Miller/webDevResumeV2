@@ -7,7 +7,6 @@ import ProgrammingLevels from "../components/ProgrammingLevels";
 import Projects from "../components/Projects";
 
 import "./RenderWindow.css";
-import data from "../data/resume.json";
 
 function RenderWindow({
   activePage,
@@ -21,15 +20,6 @@ function RenderWindow({
   githubStatsState,
   setGithubStatsState,
 }) {
-  const links = data?.meta?.links || {};
-  const contactLinks = [
-    links.email
-      ? { label: "Email", href: `mailto:${links.email}` }
-      : null,
-    links.github ? { label: "GitHub", href: links.github } : null,
-    links.linkedin ? { label: "LinkedIn", href: links.linkedin } : null,
-  ].filter(Boolean);
-
   return (
     <div className="render-window">
       <div className="render-window-body">
@@ -57,21 +47,6 @@ function RenderWindow({
             />
           )}
         </div>
-        {activePage === "About" && (
-          <aside className="render-window-rail">
-            {contactLinks.map((link) => (
-              <a
-                key={link.label}
-                className="render-window-link"
-                href={link.href}
-                target={link.label === "Email" ? undefined : "_blank"}
-                rel={link.label === "Email" ? undefined : "noreferrer"}
-              >
-                {link.label}
-              </a>
-            ))}
-          </aside>
-        )}
       </div>
     </div>
   );
