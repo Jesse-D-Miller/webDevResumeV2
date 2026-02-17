@@ -6,6 +6,19 @@ import { useXP } from "../hooks/useXP";
 
 function Gear() {
   const { xp } = useXP();
+  const iconMap = import.meta.glob("../assets/gearIcons/*.png", {
+    eager: true,
+    import: "default",
+  });
+  const resolveGearIcon = (filename) => {
+    if (!filename) return "";
+    if (filename.startsWith("http")) {
+      return filename;
+    }
+    const baseName = filename.split("/").pop();
+    const key = `../assets/gearIcons/${baseName}`;
+    return iconMap[key] || "";
+  };
   const cumulativeThresholds = useMemo(() => {
     return levelThresholds.reduce((acc, threshold) => {
       const lastValue = acc.length > 0 ? acc[acc.length - 1] : 0;
@@ -31,7 +44,14 @@ function Gear() {
               currentLevel < item.level ? " gear-item--locked" : ""
             }`}
           >
-            <span className="gear-img">{item.img}</span>
+            <img
+              className="gear-img"
+              src={resolveGearIcon(item.img)}
+              alt={`${item.name} icon`}
+              width={32}
+              height={32}
+              loading="lazy"
+            />
             <span className="gear-name">{item.name}</span>
             <span className="gear-level">lvl {item.level}</span>
           </li>

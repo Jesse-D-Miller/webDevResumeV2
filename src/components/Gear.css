@@ -32,6 +32,13 @@
   background: var(--surface-2);
 }
 
+.gear-img {
+  width: 32px;
+  height: 32px;
+  image-rendering: pixelated;
+  flex: 0 0 32px;
+}
+
 .gear-item--locked {
   filter: grayscale(1) brightness(0.7);
   opacity: 0.6;

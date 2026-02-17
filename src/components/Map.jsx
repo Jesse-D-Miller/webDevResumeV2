@@ -1,7 +1,13 @@
+import "./Map.css";
+
 function Map() {
   return (
     <div className="map">
-      <h1 className="map-title">Map Page</h1>
+      <img
+        className="map-image"
+        src={new URL("../assets/resumeMap.png", import.meta.url).href}
+        alt="Resume map"
+      />
     </div>
   );
 }
