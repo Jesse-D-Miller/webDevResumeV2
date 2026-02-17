@@ -7,10 +7,12 @@ const BUILD_MS = 2400;
 
 function Projects({ buildStates, startBuild }) {
   const [progressById, setProgressById] = useState({});
+  const [scrollState, setScrollState] = useState({ atStart: true, atEnd: false });
   const startTimesRef = useRef({});
   const awardedRef = useRef(new Set());
   const { grantXp, hasClicked } = useXP();
   const projectIds = useRef(new Set(data.projects.map((project) => project.id)));
+  const scrollRef = useRef(null);
 
   const buildXpByProjectId = useRef({
     "project-1": 3,
@@ -88,6 +90,22 @@ function Projects({ buildStates, startBuild }) {
     return () => window.clearInterval(intervalId);
   }, [buildStates]);
 
+  const updateScrollState = () => {
+    const node = scrollRef.current;
+    if (!node) return;
+    const maxScroll = node.scrollWidth - node.clientWidth;
+    setScrollState({
+      atStart: node.scrollLeft <= 0,
+      atEnd: node.scrollLeft >= maxScroll - 1,
+    });
+  };
+
+  useEffect(() => {
+    updateScrollState();
+    window.addEventListener("resize", updateScrollState);
+    return () => window.removeEventListener("resize", updateScrollState);
+  }, []);
+
   useEffect(() => {
     setProgressById((prev) => {
       let changed = false;
@@ -104,90 +122,130 @@ function Projects({ buildStates, startBuild }) {
       return changed ? next : prev;
     });
   }, [buildStates]);
+
+  const handleScrollBy = (amount) => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
+
   
   return (
-    <div className="projects">
-      {data.projects.map((project) => {
-        const state = buildStates[project.id];
+    <div className="projects-wrap">
+      <button
+        className={
+          scrollState.atStart
+            ? "scroll-control scroll-control--left scroll-control--disabled"
+            : "scroll-control scroll-control--left"
+        }
+        type="button"
+        onClick={() => handleScrollBy(-360)}
+        aria-label="Scroll projects left"
+      >
+        ◀
+      </button>
+      <div
+        className="projects"
+        ref={scrollRef}
+        onScroll={updateScrollState}
+        role="region"
+        aria-label="Projects"
+        tabIndex={0}
+      >
+        {data.projects.map((project) => {
+          const state = buildStates[project.id];
 
-        return (
-          <article
-            key={project.id}
-            className="project"
-            aria-label={`Project: ${project.title}`}
-            aria-busy={state === "building"}
-          >
-            {state === "unbuilt" && (
-              <button
-                className="project-unbuilt"
-                onClick={() => startBuild(project.id)}
-              >
-                <h3>CLICK TO BUILD PROJECT</h3>
-                <p>{project.title}</p>
-              </button>
-            )}
+          return (
+            <article
+              key={project.id}
+              className="project"
+              aria-label={`Project: ${project.title}`}
+              aria-busy={state === "building"}
+            >
+              {state === "unbuilt" && (
+                <button
+                  className="project-unbuilt"
+                  onClick={() => startBuild(project.id)}
+                >
+                  <h3>CLICK TO BUILD PROJECT</h3>
+                  <p>{project.title}</p>
+                </button>
+              )}
 
-            {state === "building" && (
-              <button className="project-building" disabled>
-                <h3>Building...</h3>
-                <p>{progressById[project.id] ?? 0}%</p>
-              </button>
-            )}
+              {state === "building" && (
+                <button className="project-building" disabled>
+                  <h3>Building...</h3>
+                  <p>{progressById[project.id] ?? 0}%</p>
+                </button>
+              )}
 
-            {state === "built" && (
-              <>
-                <h2 className="project-title">{project.title}</h2>
-                <h3 className="project-subtitle">{project.subtitle}</h3>
-                <div className="project-stack">
-                  {project.stack.map((item) => (
-                    <span key={item} className="project-stack-pill">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <ul className="project-highlights">
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight} className="project-highlight">
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-                <div className="project-links">
-                  {[
-                    { key: "live", label: "Live" },
-                    { key: "code", label: "Code" },
-                    { key: "video", label: "Video" },
-                  ].map(({ key, label }) => {
-                    const href = project.links?.[key] || "";
-                    if (!href) {
+              {state === "built" && (
+                <>
+                  <h2 className="project-title">{project.title}</h2>
+                  <h3 className="project-subtitle">{project.subtitle}</h3>
+                  <div className="project-stack">
+                    {project.stack.map((item) => (
+                      <span key={item} className="project-stack-pill">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <ul className="project-highlights">
+                    {project.highlights.map((highlight) => (
+                      <li key={highlight} className="project-highlight">
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="project-links">
+                    {[
+                      { key: "live", label: "Live" },
+                      { key: "code", label: "Code" },
+                      { key: "video", label: "Video" },
+                    ].map(({ key, label }) => {
+                      const href = project.links?.[key] || "";
+                      if (!href) {
+                        return (
+                          <span
+                            key={key}
+                            className="project-link project-link--disabled"
+                          >
+                            {label}
+                          </span>
+                        );
+                      }
+
                       return (
-                        <span
+                        <a
                           key={key}
-                          className="project-link project-link--disabled"
+                          href={href}
+                          className="project-link project-link--active"
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           {label}
-                        </span>
+                        </a>
                       );
-                    }
-
-                    return (
-                      <a
-                        key={key}
-                        href={href}
-                        className="project-link project-link--active"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {label}
-                      </a>
-                    );
-                  })}
-                </div>
-              </>
-            )}
-          </article>
-        );
-      })}
+                    })}
+                  </div>
+                </>
+              )}
+            </article>
+          );
+        })}
+      </div>
+      <button
+        className={
+          scrollState.atEnd
+            ? "scroll-control scroll-control--right scroll-control--disabled"
+            : "scroll-control scroll-control--right"
+        }
+        type="button"
+        onClick={() => handleScrollBy(360)}
+        aria-label="Scroll projects right"
+      >
+        ▶
+      </button>
     </div>
   );
 }
