@@ -53,6 +53,7 @@
   transform: translate(-50%, -50%);
   background: #ffffff;
   box-shadow: none;
+  transition: filter 150ms ease;
 }
 
 .map-node:focus,
@@ -70,6 +71,14 @@
 
 .map-node--yellow {
   background: #fff700;
+}
+
+.map-node--dim {
+  filter: grayscale(1) brightness(0.7);
+}
+
+.map-node--lit {
+  filter: none;
 }
 
 .node-tooltip {
@@ -91,6 +100,16 @@
   z-index: 3;
   pointer-events: none;
   box-shadow: 0 6px 12px rgba(15, 8, 4, 0.45), inset 0 0 10px rgba(200, 160, 106, 0.25);
+}
+
+.node-tooltip--above {
+  top: auto;
+  bottom: 120%;
+}
+
+.node-tooltip--below {
+  top: 120%;
+  bottom: auto;
 }
 
 .node-tooltip strong {

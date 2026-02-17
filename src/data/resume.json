@@ -444,142 +444,108 @@
       {
         "id": 1,
         "color": "green",
-        "x": 12,
-        "y": 337,
         "institution": "High School",
-        "intel": "Subject graduates in 2013. Awarded Governor General's Academic Medal for top academic standing in graduating class."
+        "intel": "Chronicle, 2013: wins the Governor General's Academic Medal for highest standing in the graduating class."
       },
       {
         "id": 2,
         "color": "green",
-        "x": 170,
-        "y": 337,
         "institution": "Capilano University",
-        "intel": "Enrolls in engineering transfer program (Year 1)."
+        "intel": "Chapter: begins the engineering transfer path (Year 1) at Capilano University."
       },
       {
         "id": 3,
         "color": "green",
-        "x": 267,
-        "y": 238,
         "institution": "Simon Fraser University",
-        "intel": "Continues engineering education (Years 2-3). Coursework: calculus, physics, chemistry, programming."
+        "intel": "Chapter: continues engineering studies (Years 2-3): calculus, physics, chemistry, programming."
       },
       {
         "id": 4,
         "color": "green",
-        "x": 447,
-        "y": 79,
         "institution": "Lighthouse Labs",
-        "intel": "Completed 12-week full-stack web development bootcamp."
+        "intel": "Chapter: completes a 12-week full-stack web development bootcamp."
       }
     ],
     "career": [
       {
         "id": 5,
         "color": "red",
-        "x": 463,
-        "y": 393,
         "vocation": "Tree Planter (1)",
-        "intel": "Season 1: remote BC deployment. Objective: fund education."
+        "intel": "Campaign, Season 1: remote BC deployment to fund education."
       },
       {
         "id": 6,
         "color": "red",
-        "x": 267,
-        "y": 298,
         "vocation": "Tree Planter (2)",
-        "intel": "Season 2: return deployment. Objective: fund travel expenses."
+        "intel": "Campaign, Season 2: return deployment to fund travel expenses."
       },
       {
         "id": 7,
         "color": "red",
-        "x": 168,
-        "y": 18,
         "vocation": "Brewery Bartender",
-        "intel": "Winter work: craft brewery bartender, Pemberton BC."
+        "intel": "Winter post: craft brewery bartender in Pemberton, BC."
       },
       {
         "id": 8,
         "color": "red",
-        "x": 267,
-        "y": 177,
         "vocation": "Wildfire Crew Member",
-        "intel": "Joined BC Wildfire Service, Unit Crew Crew Member."
+        "intel": "Oath taken: joins BC Wildfire Service as a unit crew member."
       },
       {
         "id": 9,
         "color": "red",
-        "x": 267,
-        "y": 80,
         "vocation": "Wildfire Crew Leader",
-        "intel": "Promoted to leadership role; managed four personnel, field coordination, crew logistics."
+        "intel": "Promotion: leads four personnel with field coordination and crew logistics."
       },
       {
         "id": 10,
         "color": "red",
-        "x": 370,
-        "y": 80,
         "vocation": "Wildfire Crew Supervisor",
-        "intel": "Supervised five Initial Attack crews across two bases; ensured safety, readiness, performance."
+        "intel": "Command: supervises five Initial Attack crews across two bases; ensures safety, readiness, performance."
       },
       {
         "id": 11,
         "color": "red",
-        "x": 590,
-        "y": 119,
         "vocation": "Jr. Web Dev",
-        "intel": "Status: Applicant has been building their web development skills. Currently seeking first role."
+        "intel": "Status: building web development skills and seeking a first role."
       }
     ],
     "skills": [
       {
         "id": 12,
         "color": "yellow",
-        "x": 12,
-        "y": 250,
         "achievement": "Governor General's Award",
-        "intel": "Awarded for highest academic standing in graduating class."
+        "intel": "Honor banner: awarded for highest academic standing in the graduating class."
       },
       {
         "id": 13,
         "color": "yellow",
-        "x": 12,
-        "y": 37,
         "achievement": "Outrigger World Championships",
-        "intel": "Competed as member of Canadian National Team."
+        "intel": "Championship banner: competed as a member of the Canadian National Team."
       },
       {
         "id": 14,
         "color": "yellow",
-        "x": 168,
-        "y": 117,
         "achievement": "BC Wildfire Hiring",
-        "intel": "Selected for BC Wildfire Hiring task force."
+        "intel": "Chosen for the BC Wildfire Hiring task force."
       },
       {
         "id": 15,
         "color": "yellow",
-        "x": 320,
-        "y": 117,
         "achievement": "BC Wildfire Operations Conference",
-        "intel": "Invited presenter, annual BC Wildfire Operations Conference (role typically reserved for senior personnel)."
+        "intel": "Summoned as presenter at the annual BC Wildfire Operations Conference (typically reserved for senior personnel)."
       },
       {
         "id": 16,
         "color": "yellow",
-        "x": 447,
-        "y": 180,
         "achievement": "Above & Beyond",
-        "intel": "Recognized with Above & Beyond award for exceptional performance during 2024 wildfire season."
+        "intel": "Crowned with the Above & Beyond award for exceptional performance during the 2024 wildfire season."
       },
       {
         "id": 17,
         "color": "yellow",
-        "x": 447,
-        "y": 100,
         "achievement": "Row to Podium",
-        "intel": "Joins high level rowing club; trains extensively and learns about discipline and teamwork."
+        "intel": "Joins a high level rowing guild; trains extensively and learns discipline and teamwork."
       }
     ]
   }
