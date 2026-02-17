@@ -93,10 +93,11 @@ function Projects({ buildStates, startBuild }) {
   const updateScrollState = () => {
     const node = scrollRef.current;
     if (!node) return;
-    const maxScroll = node.scrollWidth - node.clientWidth;
+    const maxScroll = Math.max(0, node.scrollWidth - node.clientWidth);
+    const epsilon = 2;
     setScrollState({
-      atStart: node.scrollLeft <= 0,
-      atEnd: node.scrollLeft >= maxScroll - 1,
+      atStart: maxScroll === 0 || node.scrollLeft <= epsilon,
+      atEnd: maxScroll === 0 || node.scrollLeft >= maxScroll - epsilon,
     });
   };
 
@@ -126,6 +127,7 @@ function Projects({ buildStates, startBuild }) {
   const handleScrollBy = (amount) => {
     if (!scrollRef.current) return;
     scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
+    window.requestAnimationFrame(updateScrollState);
   };
 
 
@@ -181,6 +183,17 @@ function Projects({ buildStates, startBuild }) {
 
               {state === "built" && (
                 <>
+                  {project.status && (
+                    <span
+                      className={
+                        project.status === "In Progress"
+                          ? "project-status project-status--warning"
+                          : "project-status"
+                      }
+                    >
+                      {project.status}
+                    </span>
+                  )}
                   <h2 className="project-title">{project.title}</h2>
                   <h3 className="project-subtitle">{project.subtitle}</h3>
                   <div className="project-stack">

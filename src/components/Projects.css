@@ -48,7 +48,7 @@
 }
 
 .scroll-control--disabled {
-  opacity: 0.15;
+  opacity: 0.1;
   pointer-events: none;
 }
 
@@ -199,6 +199,31 @@
   width: 30rem;
   flex: 0 0 30rem;
   scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-status {
+  position: absolute;
+  top: 5.5rem;
+  left: -3.5rem;
+  transform: rotate(-35deg);
+  transform-origin: left center;
+  background: var(--surface);
+  color: var(--success);
+  border: 0.125rem solid var(--success);
+  border-radius: 0.25rem;
+  padding: 0.15rem 5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+.project-status--warning {
+  color: var(--warning);
+  border-color: var(--warning);
 }
 
 .project-title {

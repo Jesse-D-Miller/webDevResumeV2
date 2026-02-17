@@ -184,7 +184,7 @@
         {"name": "Playwright", "category": "Testing"},
         {"name": "UI/UX", "category": "Tools"}
       ],
-      "heroMessage": "You opened the Web Dev Resume project! I built this interactive resume to showcase my work in a fun, polished way while keeping it easy to navigate and update."
+      "status": "Complete"
     },
     {
       "id": "project-6",
@@ -211,7 +211,7 @@
         {"name": "WebSockets", "category": "APIs"},
         {"name": "CSS", "category": "Languages"}
       ],
-      "heroMessage": "You opened the KillTeamSpeedrun project! I built this to help streamline Kill Team gameplay for my friends and I, with real-time syncing so no one has to keep track of anything manually."
+      "status": "In Progress"
     },
     {
       "id": "project-5",
@@ -245,7 +245,7 @@
         {"name": "CSS", "category": "Languages"},
         {"name": "Form Validation", "category": "Tools"}
       ],
-      "heroMessage": "You opened the Across The Creek Organics project! I built this to showcase a clean, real-world ordering flow for a small organic farm, from product discovery to request submission."
+      "status": "In Progress"
     },
     {
       "id": "project-1",
@@ -271,7 +271,7 @@
         {"name": "PostgreSQL", "category": "Databases"},
         {"name": "SCSS", "category": "Languages"}
       ],
-      "heroMessage": "You opened the Plot Twist project! A classmate and I built this as a midterm project for my bootcamp. It was my first major full-stack app."
+      "status": "Complete"
     },
     {
       "id": "project-2",
@@ -297,7 +297,7 @@
         {"name": "PostgreSQL", "category": "Databases"},
         {"name": "REST APIs", "category": "APIs"}
       ],
-      "heroMessage": "Diving into the What's Cookin' project! This was my bootcamp final project, where I teamed up with classmates to build an AI-assisted recipe app."
+      "status": "Complete"
     },
     {
       "id": "project-3",
@@ -322,7 +322,7 @@
         {"name": "Bootstrap", "category": "Frameworks"},
         {"name": "Ruby", "category": "Languages"}
       ],
-      "heroMessage": "Exploring the Jungle Rails project! I made this Amazon clone as a Lighthouse Labs Bootcamp project."
+      "status": "Complete"
     }
   ],
   "experience": [
