@@ -12,7 +12,6 @@
   align-items: center;
   justify-content: center;
   background: var(--bg);
-  padding: 2rem 1rem;
   overflow: auto;
   position: relative;
 }
@@ -38,7 +37,7 @@
   background: var(--color-paper);
   color: var(--color-ink);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
-  padding: 5mm 4mm 0mm 4mm;
+  padding: 6mm 6mm 0mm 6mm;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -82,14 +81,15 @@
 }
 
 .resume-front h3 {
-  text-align: center;
-  margin: 1.5rem 0 1.5rem 0;
+  text-align: start;
+  margin: 0.75rem 0 0.25rem 0;
   font-size: 0.95rem;
   font-weight: 850;
   color: var(--color-ink-blue);
   text-transform: uppercase;
   letter-spacing: 0.1px;
   border-bottom: 1px solid var(--color-ink-blue);
+  /* display: inline-block; */
   line-height: 0.9;
   width: auto;
 }
@@ -119,7 +119,7 @@
 
 .resume-front ul {
   margin: 0 0 0.25rem 0;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 }
 
 .resume-front li {
@@ -133,13 +133,14 @@
 .resume-front .project-item,
 .resume-front .experience-item,
 .resume-front .education-item {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .resume-front .experience-item {
-  background: var(--color-paper);
+  background: none;
   border: 0;
   padding: 0;
+  gap: 0;
 }
 
 .resume-front .technical-skills-section h4 {
@@ -151,7 +152,7 @@
 .resume-front .soft-skills-section,
 .resume-front .hobbies-section {
   margin-bottom: 0.75rem;
-  text-align: center;
+  text-align: start;
 }
 
 .resume-front .projects-section,
@@ -161,7 +162,7 @@
 
 .resume-front .mobile-sub-grid-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 43mm;
   gap: 0.75rem;
 }
 
@@ -176,30 +177,28 @@
 .resume-right {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 767px) {
   .resume-front .technical-skills-section,
   .resume-front .soft-skills-section,
   .resume-front .hobbies-section {
-    text-align: start;
+    text-align: center;
   }
 
   .resume-front h3 {
-    font-size: 0.85rem;
-    text-align: start;
-    display: inline-block;
-    margin: 0.75rem 0 0.25rem 0;
+    text-align: center;
+    margin: 1.5rem 0 1.5rem 0;
+    font-size: 0.95rem;
   }
 
   .resume-front ul {
-    padding-left: 1.5rem;
+    padding-left: 1rem;
   }
 
   .resume-front .mobile-sub-grid-inner {
-    display: grid;
-    grid-template-columns: 43mm;
+    grid-template-columns: 1fr 1fr;
   }
 }
 

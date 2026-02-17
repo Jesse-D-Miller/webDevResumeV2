@@ -38,9 +38,8 @@ function Resume() {
       <div className="resume-front">
         <header className="resume-header">
           <h1>{resumeData.meta.name}</h1>
-          <p className="resume-title">{resumeData.meta.title}</p>
           <p className="contact-info">
-            {resumeData.meta.location} | {resumeData.meta.availability} |{" "}
+            {resumeData.meta.location} | {resumeData.meta.title} |{" "}
             <a href={`mailto:${resumeData.meta.links.email}`}>
               Email
             </a>
@@ -66,8 +65,8 @@ function Resume() {
               <div key={project.id} className={`box-${index + 3}`}>
                 {index === 0 && <h3>Projects</h3>}
                 <div className="project-item">
-                  <h4>{project.title}</h4>
-                  <p className="tech-stack">{project.subtitle}</p>
+                  <h4>{project.title} - {project.subtitle}</h4>
+                  <p className="tech-stack">{project.stack.join(", ")}</p>
                   <ul>
                     {project.highlights.map((highlight) => (
                       <li key={highlight}>{highlight}</li>
@@ -81,9 +80,9 @@ function Resume() {
               <div key={job.id} className={`box-${index + 6}`}>
                 {index === 0 && <h3>Experience</h3>}
                 <div className="experience-item">
-                  <h4>{job.role}</h4>
+                  <h4>{job.company} | {job.role}</h4>
                   <p className="company-period">
-                    {job.company} | {job.period}
+                    {job.period}
                   </p>
                   <ul>
                     {job.bullets.map((bullet) => (
