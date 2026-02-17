@@ -1,9 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./Map.css";
+import resumeData from "../data/resume.json";
+
+const MAP_WIDTH = 677;
+const MAP_HEIGHT = 500;
 
 function Map() {
   const scrollRef = useRef(null);
   const [scrollState, setScrollState] = useState({ atStart: true, atEnd: false });
+  const [activeNodeId, setActiveNodeId] = useState(null);
+
+  const mapNodes = useMemo(
+    () => [
+      ...resumeData.mapNodes.education,
+      ...resumeData.mapNodes.career,
+      ...resumeData.mapNodes.skills,
+    ],
+    []
+  );
 
   const handleScrollBy = (amount) => {
     if (!scrollRef.current) return;
@@ -54,12 +68,44 @@ function Map() {
         aria-label="Resume map"
         tabIndex={0}
       >
-        <img
-          className="map-image"
-          src={new URL("../assets/resumeMap.png", import.meta.url).href}
-          alt="Resume map"
-          onLoad={handleImageLoad}
-        />
+        <div className="map-canvas">
+          <img
+            className="map-image"
+            src={new URL("../assets/resumeMap.png", import.meta.url).href}
+            alt="Resume map"
+            onLoad={handleImageLoad}
+          />
+          {mapNodes.map((node) => {
+            const label = node.institution || node.vocation || node.achievement;
+            const isActive = activeNodeId === node.id;
+
+            return (
+              <button
+                key={node.id}
+                className={`map-node map-node--${node.color} node-${node.id}`}
+                type="button"
+                aria-label={label}
+                onPointerDown={(event) => {
+                  if (event.pointerType === "touch") {
+                    event.preventDefault();
+                    setActiveNodeId(isActive ? null : node.id);
+                  }
+                }}
+                onMouseEnter={() => setActiveNodeId(node.id)}
+                onMouseLeave={() => setActiveNodeId(null)}
+                onFocus={() => setActiveNodeId(node.id)}
+                onBlur={() => setActiveNodeId(null)}
+              >
+                {isActive && (
+                  <span className="node-tooltip">
+                    <strong>{label}</strong>
+                    <span>{node.intel}</span>
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
       </div>
       <button
         className={

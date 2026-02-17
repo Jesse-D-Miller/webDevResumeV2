@@ -24,6 +24,13 @@
   border-radius: 0;
 }
 
+.map-canvas {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 677 / 500;
+  flex: 0 0 auto;
+}
+
 .map-image {
   height: 100%;
   width: auto;
@@ -33,6 +40,70 @@
   margin: 0;
   box-sizing: border-box;
   border: 0;
+}
+
+.map-node {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 999rem;
+  border: 2px solid #000000;
+  padding: 0;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.map-node:focus,
+.map-node:focus-visible {
+  outline: none;
+}
+
+.map-node--green {
+  background: #00ff33;
+}
+
+.map-node--red {
+  background: #ff0019;
+}
+
+.map-node--yellow {
+  background: #fff700;
+}
+
+.node-tooltip {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  gap: 0.25rem;
+  min-width: 160px;
+  max-width: 220px;
+  padding: 0.5rem 0.6rem;
+  background: linear-gradient(160deg, #2b1d12 0%, #1b120b 100%);
+  color: #f3e6cf;
+  border: 2px solid #c8a06a;
+  border-radius: 0.6rem;
+  font-size: 0.72rem;
+  text-align: left;
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 6px 12px rgba(15, 8, 4, 0.45), inset 0 0 10px rgba(200, 160, 106, 0.25);
+}
+
+.node-tooltip strong {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #f2d6a2;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.node-tooltip span {
+  line-height: 1.25;
+  color: #f7ecd9;
 }
 
 .scroll-control {
@@ -101,4 +172,90 @@
 
 .scroll-control--right {
   right: -1.5rem;
+}
+
+/* high school */
+.map-node.node-1 {
+  top: 77%;
+  left: 13.2%;
+}
+/* CAPU */
+.map-node.node-2 {
+  top: 51%;
+  left: 17.1%;
+}
+/* SFU */
+.map-node.node-3 {
+  top: 22%;
+  left: 28.9%;
+}
+/* LHL */
+.map-node.node-4 {
+  top: 38%;
+  left: 88.8%;
+}
+/* Tree Planting 1 */
+.map-node.node-5 {
+  top: 24.5%;
+  left: 13.2%;
+}
+/* Tree Planting 2 */
+.map-node.node-6 {
+  top: 95%;
+  left: 30%;
+}
+/* Bartender */
+.map-node.node-7 {
+  top: 15.5%;
+  left: 56.7%;
+}
+/* BCWS1 */
+.map-node.node-8 {
+  top: 23.7%;
+  left: 40.9%;
+}
+/* BCWS2 */
+.map-node.node-9 {
+  top: 75%;
+  left: 54.5%;
+}
+/* BCWS3 */
+.map-node.node-10 {
+  top: 83%;
+  left: 73.7%;
+}
+/* Jr Web Dev */
+.map-node.node-11 {
+  top: 11%;
+  left: 95%;
+}
+/* Gov General Award */
+.map-node.node-12 {
+  top: 9.5%;
+  left: 5.9%;
+}
+/* Outrigger */
+.map-node.node-13 {
+  top: 81.6%;
+  left: 6.9%;
+}
+/* Hiring Team */
+.map-node.node-14 {
+  top: 27%;
+  left: 70.7%;
+}
+/* Ops Meet */
+.map-node.node-15 {
+  top: 44.5%;
+  left: 62.3%;
+}
+/* Above and Beyond */
+.map-node.node-16 {
+  top: 67.8%;
+  left: 89.5%;
+}
+/* Row to Podium */
+.map-node.node-17 {
+  top: 27%;
+  left: 20.9%;
 }
