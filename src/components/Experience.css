@@ -114,6 +114,7 @@
 	width: 33rem;
 	position: relative;
 	overflow: hidden;
+  font-size: var(--text-md);
 }
 
 .experience-title {
@@ -130,21 +131,23 @@
 .experience-period {
 	border: 0.0625rem solid var(--border);
 	border-radius: 0.25rem;
-	padding: 0.125rem 2.5rem;
+	padding: 0.125rem 5.5rem;
 	background: var(--surface);
 	color: var(--text-dim);
 	font-size: var(--text-xs-2);
+  text-align: center;
 }
 
 .experience-period--top {
 	position: absolute;
-	top: 4rem;
-	left: -1rem;
+	top: 6rem;
+	left: -3rem;
 	transform: rotate(-35deg);
 	transform-origin: left center;
 	letter-spacing: 0.03em;
 	text-transform: uppercase;
 	pointer-events: none;
+  font-size: var(--text-2xs);
 }
 
 .experience-skills {

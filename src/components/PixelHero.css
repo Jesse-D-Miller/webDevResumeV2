@@ -176,11 +176,13 @@
 .hero-progress-label {
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  font-size: var(--text-2xs);
 }
 
 .hero-progress-value {
   color: var(--text);
   font-variant-numeric: tabular-nums;
+  font-size: var(--text-xs);
 }
 
 @keyframes hero-walk {

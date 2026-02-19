@@ -153,21 +153,25 @@
 .programming-levels-period {
 	border: 0.0625rem solid var(--border);
 	border-radius: 0.25rem;
-	padding: 0.125rem 2.5rem;
+	padding: 0.125rem 5.5rem;
 	background: var(--surface);
 	color: var(--text-dim);
-	font-size: var(--text-xs-2);
+	font-size: var(--text-xs);
 }
 
 .programming-levels-period--top {
 	position: absolute;
-	top: 4rem;
-	left: -1rem;
+	top: 6.2rem;
+	left: -4rem;
 	transform: rotate(-35deg);
 	transform-origin: left center;
 	letter-spacing: 0.03em;
 	text-transform: uppercase;
 	pointer-events: none;
+}
+
+.programming-levels h2 {
+  font-size: var(--text-6xl);
 }
 
 .programming-levels-skills {
@@ -194,10 +198,8 @@
 	display: grid;
 	gap: 0.5rem;
 	text-align: left;
-}
-
-.programming-levels-detail {
-	margin: 0;
+  font-size: var(--text-2xl);
+  margin: 0;
 }
 
 .programming-levels-stats {

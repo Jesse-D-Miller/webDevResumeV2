@@ -32,7 +32,7 @@
   --text-3xl: 1.4rem;
   --text-4xl: 1.5rem;
   --text-5xl: 1.75rem;
-  --text-6xl: 2.5rem;
+  --text-6xl: 2rem;
 }
 
 :root[data-theme='alt'] {
@@ -55,6 +55,21 @@
 
   --font-display: 'Press Start 2P', cursive;
   --font-body: 'Source Sans 3', sans-serif;
+
+    --text-2xs: 0.7rem;
+  --text-xs: 0.72rem;
+  --text-xs-2: 0.75rem;
+  --text-xs-3: 0.76rem;
+  --text-sm: 0.85rem;
+  --text-sm-2: 0.9rem;
+  --text-md: 0.95rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.2rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.4rem;
+  --text-4xl: 1.5rem;
+  --text-5xl: 1.75rem;
+  --text-6xl: 2rem;
 }
 
 :root[data-theme='retro'] {
@@ -78,7 +93,7 @@
   --font-display: 'Press Start 2P', cursive;
   --font-body: 'Press Start 2P', cursive;
 
-  --text-2xs: 0.53rem;
+  --text-2xs: 0.4rem;
   --text-xs: 0.56rem;
   --text-xs-2: 0.6rem;
   --text-xs-3: 0.63rem;

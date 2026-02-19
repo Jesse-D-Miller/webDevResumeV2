@@ -238,7 +238,7 @@ function Stats({
               {(stats.activeRepos || []).length ? (
                 stats.activeRepos.map((repo) => (
                   <li key={repo.name} className="stats-list-item">
-                    <span>{repo.name}</span>
+                    <span className="stats-list-title">{repo.name}</span>
                     <span className="stats-list-date">
                       {formatDate(repo.pushedAt)}
                     </span>
