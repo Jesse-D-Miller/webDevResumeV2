@@ -44,7 +44,7 @@
 .experience-unbuilt p {
 	margin: 0;
 	font-weight: 600;
-	font-size: 1.75rem;
+	font-size: var(--text-5xl);
 	border: 0.125rem solid var(--error);
 	border-radius: 0.25rem;
 	padding: 0.25rem 0.75rem;
@@ -57,7 +57,7 @@
 .experience-building p {
 	margin: 0;
 	font-weight: 600;
-	font-size: 1.75rem;
+	font-size: var(--text-5xl);
 	border: 0.125rem solid var(--success);
 	border-radius: 0.25rem;
 	padding: 0.25rem 0.75rem;
@@ -124,7 +124,7 @@
 	margin: 0;
 	color: var(--text-dim);
 	font-style: italic;
-	font-size: 0.75rem;
+	font-size: var(--text-xs-2);
 }
 
 .experience-period {
@@ -133,7 +133,7 @@
 	padding: 0.125rem 2.5rem;
 	background: var(--surface);
 	color: var(--text-dim);
-	font-size: 0.75rem;
+	font-size: var(--text-xs-2);
 }
 
 .experience-period--top {
@@ -161,7 +161,7 @@
 	padding: 0.0625rem 0.4rem;
 	background: var(--surface);
 	font-weight: 600;
-	font-size: 0.75rem;
+	font-size: var(--text-xs-2);
 	color: #60a5fa;
 }
 

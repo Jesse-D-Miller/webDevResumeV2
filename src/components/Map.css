@@ -95,7 +95,7 @@
   color: #f3e6cf;
   border: 2px solid #c8a06a;
   border-radius: 0.6rem;
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   text-align: left;
   z-index: 3;
   pointer-events: none;
@@ -113,7 +113,7 @@
 }
 
 .node-tooltip strong {
-  font-size: 0.76rem;
+  font-size: var(--text-xs-3);
   font-weight: 700;
   color: #f2d6a2;
   text-transform: uppercase;

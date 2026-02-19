@@ -26,6 +26,7 @@ function Resume() {
     return acc;
   }, {});
 
+
   return (
     <div className="resume-page">
       <button

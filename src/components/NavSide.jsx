@@ -1,7 +1,7 @@
 import "./NavSide.css";
 import { useNavigate } from "react-router-dom";
 
-function NavSide({ activePage, setActivePage }) {
+function NavSide({ activePage, setActivePage, theme, onToggleTheme }) {
 const navigate = useNavigate();
 
   return (
@@ -29,6 +29,15 @@ const navigate = useNavigate();
           <button className="nav-side-title" onClick={() => setActivePage("About")}>About</button>
         </li>
         <li className="nav-side-item nav-side-item--resume">
+          <button
+            className="nav-side-title nav-side-title--mode"
+            onClick={onToggleTheme}
+            type="button"
+          >
+            Mode: {theme === "retro" ? "Retro" : theme === "alt" ? "Alt" : "Default"}
+          </button>
+        </li>
+        <li className="nav-side-item">
           <button
             className="nav-side-title"
             onClick={() => navigate("/resume")}

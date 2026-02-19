@@ -130,7 +130,7 @@
 .project-unbuilt p {
   margin: 0;
   font-weight: 600;
-  font-size: 1.75rem;
+  font-size: var(--text-5xl);
   border: 0.125rem solid var(--error);
   border-radius: 0.25rem;
   padding: 0.25rem 0.75rem;
@@ -142,7 +142,7 @@
 .project-building p {
   margin: 0;
   font-weight: 600;
-  font-size: 1.75rem;
+  font-size: var(--text-5xl);
   border: 0.125rem solid var(--success);
   border-radius: 0.25rem;
   padding: 0.25rem 0.75rem;
@@ -214,7 +214,7 @@
   border: 0.125rem solid var(--success);
   border-radius: 0.25rem;
   padding: 0.15rem 5rem;
-  font-size: 0.7rem;
+  font-size: var(--text-2xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -234,7 +234,7 @@
   margin: 0;
   color: var(--text-dim);
   font-style: italic;
-  font-size: 0.75rem;
+  font-size: var(--text-xs-2);
 }
 
 .project-stack {
@@ -251,7 +251,7 @@
   padding: 0.0625rem 0.4rem;
   background: var(--surface);
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: var(--text-xs-2);
   color: var(--error);
 }
 

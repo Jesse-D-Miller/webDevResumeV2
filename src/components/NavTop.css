@@ -18,7 +18,7 @@
 
 .nav-top-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: var(--text-4xl);
   margin: 0;
 }
 
@@ -40,7 +40,7 @@
 
 .nav-top-availability-status {
   color: var(--success);
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   border: 0.125rem solid var(--success);
   padding: 0.25rem 0.75rem;
   border-radius: 999rem;

@@ -11,10 +11,13 @@ import experienceData from "../data/expandedExperience.json";
 import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "project-build-states";
+const THEME_KEY = "theme";
+const THEMES = ["default", "alt", "retro"];
 const BUILD_MS = 2400;
 
 function Explorer() {
   const [activePage, setActivePage] = useState("Summary");
+  const [theme, setTheme] = useState("default");
   const [githubLanguages, setGithubLanguages] = useState([]);
   const [languageStatsReady, setLanguageStatsReady] = useState(false);
   const [languageStatsState, setLanguageStatsState] = useState({
@@ -73,6 +76,14 @@ function Explorer() {
     }));
   }, []);
 
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem(THEME_KEY) || "default";
+    const nextTheme = THEMES.includes(storedTheme) ? storedTheme : "default";
+    document.documentElement.dataset.theme =
+      nextTheme === "default" ? "" : nextTheme;
+    setTheme(nextTheme);
+  }, []);
+
   // Save build states to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(buildStates));
@@ -92,10 +103,26 @@ function Explorer() {
     }, BUILD_MS);
   };
 
+  const handleToggleTheme = () => {
+    setTheme((prev) => {
+      const currentIndex = THEMES.indexOf(prev);
+      const nextTheme = THEMES[(currentIndex + 1) % THEMES.length];
+      window.localStorage.setItem(THEME_KEY, nextTheme);
+      document.documentElement.dataset.theme =
+        nextTheme === "default" ? "" : nextTheme;
+      return nextTheme;
+    });
+  };
+
   return (
     <div className="explorer">
       <div className="explorer-navside">
-        <NavSide activePage={activePage} setActivePage={setActivePage} />
+        <NavSide
+          activePage={activePage}
+          setActivePage={setActivePage}
+          theme={theme}
+          onToggleTheme={handleToggleTheme}
+        />
       </div>
       <div className="explorer-main">
         <NavTop />

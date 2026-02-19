@@ -10,7 +10,7 @@
 }
 
 .summary-text {
-  font-size: 1.125rem;
+  font-size: var(--text-lg);
   line-height: 1.75rem;
   width: 90%;
   margin: 1rem auto 0 auto;

@@ -18,6 +18,21 @@
 
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
+
+  --text-2xs: 0.7rem;
+  --text-xs: 0.72rem;
+  --text-xs-2: 0.75rem;
+  --text-xs-3: 0.76rem;
+  --text-sm: 0.85rem;
+  --text-sm-2: 0.9rem;
+  --text-md: 0.95rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.2rem;
+  --text-2xl: 1.25rem;
+  --text-3xl: 1.4rem;
+  --text-4xl: 1.5rem;
+  --text-5xl: 1.75rem;
+  --text-6xl: 2.5rem;
 }
 
 :root[data-theme='alt'] {
@@ -40,6 +55,43 @@
 
   --font-display: 'Press Start 2P', cursive;
   --font-body: 'Source Sans 3', sans-serif;
+}
+
+:root[data-theme='retro'] {
+  --bg: #0b0b16;
+  --surface: #111827;
+  --surface-2: #1f2937;
+  --border: #2f3d52;
+
+  --text: #f8f1e1;
+  --text-dim: #d4c3a3;
+  --text-muted: #a08f73;
+
+  --accent: #ffcc66;
+  --accent-strong: #ffb347;
+  --accent-soft: rgba(255, 204, 102, 0.2);
+
+  --success: #64ffda;
+  --warning: #f6c453;
+  --error: #ff6b6b;
+
+  --font-display: 'Press Start 2P', cursive;
+  --font-body: 'Press Start 2P', cursive;
+
+  --text-2xs: 0.53rem;
+  --text-xs: 0.56rem;
+  --text-xs-2: 0.6rem;
+  --text-xs-3: 0.63rem;
+  --text-sm: 0.65rem;
+  --text-sm-2: 0.68rem;
+  --text-md: 0.69rem;
+  --text-lg: 0.77rem;
+  --text-xl: 0.81rem;
+  --text-2xl: 0.86rem;
+  --text-3xl: 1.01rem;
+  --text-4xl: 1.08rem;
+  --text-5xl: 1.13rem;
+  --text-6xl: 1.26rem;
 }
 
 
