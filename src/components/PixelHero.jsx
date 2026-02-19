@@ -181,28 +181,29 @@ function PixelHero() {
     100,
     Math.round((xpIntoLevel / xpForLevel) * 100)
   );
+  const isMaxLevel = displayLevel >= 99;
 
   return (
     <div className="pixel-hero-card">
       <div className="pixel-hero-header">
         <div
-          className="xp-bar"
+          className={isMaxLevel ? "xp-bar xp-bar--max" : "xp-bar"}
           role="progressbar"
           aria-label="XP progress"
           aria-valuemin={0}
           aria-valuemax={xpForLevel}
-          aria-valuenow={xpIntoLevel}
+          aria-valuenow={isMaxLevel ? xpForLevel : xpIntoLevel}
           style={{ "--xp-units": xpForLevel }}
         >
           <span
-            className="xp-bar-fill"
+            className={isMaxLevel ? "xp-bar-fill xp-bar-fill--max" : "xp-bar-fill"}
             style={{
-              width: `${xpProgress}%`,
+              width: isMaxLevel ? "100%" : `${xpProgress}%`,
               transition: isBarResetting ? "none" : undefined,
             }}
           />
           <span className="xp-bar-text">
-            {xpIntoLevel}/{xpForLevel} XP
+            {isMaxLevel ? "MAX" : `${xpIntoLevel}/${xpForLevel} XP`}
           </span>
         </div>
         <span className={`hero-level${isLevelFlash ? " hero-level--flash" : ""}`}>
