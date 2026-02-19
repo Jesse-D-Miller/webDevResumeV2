@@ -15,9 +15,9 @@ function Experience({ buildStates, startBuild }) {
   );
 
   const buildXpByExperienceId = useRef({
-    "experience-1": 4,
-    "experience-2": 3,
-    "experience-3": 2,
+    "experience-1": 27,
+    "experience-2": 27,
+    "experience-3": 27,
   });
 
   useEffect(() => {

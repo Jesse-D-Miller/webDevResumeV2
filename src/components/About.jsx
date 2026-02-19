@@ -17,7 +17,7 @@ function About() {
 
   useEffect(() => {
     if (!defaultHobby?.name) return;
-    grantXp(`hobby-open-${defaultHobby.name}`, 3);
+    grantXp(`hobby-open-${defaultHobby.name}`, 27);
   }, [defaultHobby?.name, grantXp]);
 
   return (
@@ -37,7 +37,7 @@ function About() {
                 }
                 onClick={() => {
                   setSelectedHobby(hobby);
-                  grantXp(`hobby-open-${hobby.name}`, 3);
+                  grantXp(`hobby-open-${hobby.name}`, 27);
                 }}
               >
                 {hobby.name}

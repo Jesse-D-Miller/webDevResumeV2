@@ -1,12 +1,11 @@
 import { createContext, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import resumeData from "../data/resume.json";
+import experienceData from "../data/expandedExperience.json";
 
 export const XPContext = createContext();
 
-const getProjectNumber = (id) => {
-  const match = String(id ?? "").match(/\d+/);
-  return match ? Number.parseInt(match[0], 10) : 0;
-};
+const BASE_INTERACTION_XP = 27;
+const STATS_INTERACTION_XP = 28;
 
 export function XPProvider({ children }) {
   const [xp, setXp] = useState(0);
@@ -14,47 +13,66 @@ export function XPProvider({ children }) {
   const clickedIdsRef = useRef(new Set());
   const [heroMessage, setHeroMessage] = useState("");
   const maxXp = 1000;
-  const topProjects = useMemo(() => {
-    return [...resumeData.projects]
-      .sort((a, b) => getProjectNumber(b.id) - getProjectNumber(a.id))
-      .slice(0, 3);
+  const mapNodes = useMemo(() => {
+    return [
+      ...(resumeData.mapNodes?.education || []),
+      ...(resumeData.mapNodes?.career || []),
+      ...(resumeData.mapNodes?.skills || []),
+    ];
   }, []);
 
-  const projectLinkEntries = useMemo(() => {
-    return topProjects.flatMap((project) => {
-      const links = project?.links ?? {};
-      const entries = [];
-      if (links.live) entries.push([`project-link-${project.id}-live`, 1]);
-      if (links.code) entries.push([`project-link-${project.id}-code`, 1]);
-      if (links.video) entries.push([`project-link-${project.id}-video`, 1]);
-      return entries;
-    });
-  }, [topProjects]);
+  const projectBuildEntries = useMemo(() => {
+    return resumeData.projects.map((project) => [
+      `project-build-${project.id}`,
+      BASE_INTERACTION_XP,
+    ]);
+  }, []);
+
+  const experienceBuildEntries = useMemo(() => {
+    return experienceData.experience.map((experience) => [
+      `experience-build-${experience.id}`,
+      BASE_INTERACTION_XP,
+    ]);
+  }, []);
 
   const educationBuildEntries = useMemo(() => {
     return (resumeData.education || []).map((edu) => [
       `education-build-${edu.id}`,
-      7,
+      BASE_INTERACTION_XP,
+    ]);
+  }, []);
+
+  const mapNodeEntries = useMemo(() => {
+    return mapNodes.map((node) => [
+      `map-node-${node.id}`,
+      BASE_INTERACTION_XP,
+    ]);
+  }, [mapNodes]);
+
+  const hobbyEntries = useMemo(() => {
+    return (resumeData.hobbies || []).map((hobby) => [
+      `hobby-open-${hobby.name}`,
+      BASE_INTERACTION_XP,
     ]);
   }, []);
 
   const xpClickValues = useMemo(() => {
     return new Map([
-      ["experience-tabs", 1],
-      ["stats-enhance-api", 5],
-      ...topProjects
-        .slice(1)
-        .map((project) => [`project-tab-${project.id}`, 1]),
-      ["project-build-project-4", 5],
-      ["project-build-project-6", 5],
-      ["project-build-project-5", 4],
-      ["project-build-project-1", 3],
-      ["project-build-project-2", 2],
-      ["project-build-project-3", 1],
+      ["github-api-install", BASE_INTERACTION_XP],
+      ["stats-enhance-api", STATS_INTERACTION_XP],
+      ...projectBuildEntries,
+      ...experienceBuildEntries,
       ...educationBuildEntries,
-      ...projectLinkEntries,
+      ...mapNodeEntries,
+      ...hobbyEntries,
     ]);
-  }, [educationBuildEntries, projectLinkEntries, topProjects]);
+  }, [
+    educationBuildEntries,
+    experienceBuildEntries,
+    hobbyEntries,
+    mapNodeEntries,
+    projectBuildEntries,
+  ]);
 
   const maxXpPoints = useMemo(() => {
     return Array.from(xpClickValues.values()).reduce(

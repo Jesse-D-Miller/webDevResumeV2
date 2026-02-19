@@ -3,9 +3,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useXP } from "../hooks/useXP";
 import levelThresholds from "../data/levelThresholds";
 import heroSprite1 from "../assets/pixelHeroLevel1.png";
+import resumeData from "../data/resume.json";
+import experienceData from "../data/expandedExperience.json";
 
 function PixelHero() {
-  const { xp } = useXP();
+  const { xp, clickedIds } = useXP();
   const [displayLevel, setDisplayLevel] = useState(1);
   const [displayXpIntoLevel, setDisplayXpIntoLevel] = useState(0);
   const [isLevelFlash, setIsLevelFlash] = useState(false);
@@ -23,6 +25,46 @@ function PixelHero() {
       return acc;
     }, []);
   }, []);
+
+  const progressSections = useMemo(() => {
+    const mapNodes = [
+      ...(resumeData.mapNodes?.education || []),
+      ...(resumeData.mapNodes?.career || []),
+      ...(resumeData.mapNodes?.skills || []),
+    ];
+
+    const countCompleted = (ids) =>
+      ids.reduce((count, id) => count + (clickedIds.has(id) ? 1 : 0), 0);
+
+    const projectIds = resumeData.projects.map(
+      (project) => `project-build-${project.id}`
+    );
+    const experienceIds = experienceData.experience.map(
+      (experience) => `experience-build-${experience.id}`
+    );
+    const levelIds = [
+      ...resumeData.education.map((edu) => `education-build-${edu.id}`),
+      "github-api-install",
+    ];
+    const mapIds = mapNodes.map((node) => `map-node-${node.id}`);
+    const statsIds = ["stats-enhance-api"];
+    const aboutIds = (resumeData.hobbies || []).map(
+      (hobby) => `hobby-open-${hobby.name}`
+    );
+
+    return [
+      { label: "Projects", ids: projectIds },
+      { label: "Experience", ids: experienceIds },
+      { label: "Levels", ids: levelIds },
+      { label: "Map", ids: mapIds },
+      { label: "Stats", ids: statsIds },
+      { label: "About", ids: aboutIds },
+    ].map((section) => ({
+      ...section,
+      completed: countCompleted(section.ids),
+      total: section.ids.length,
+    }));
+  }, [clickedIds]);
 
   const getLevelFromXp = (value) => {
     const index = cumulativeThresholds.findIndex(
@@ -169,6 +211,16 @@ function PixelHero() {
       </div>
       <div className="pixel-hero-body">
         <div className="hero-sprite" aria-hidden="true" />
+      </div>
+      <div className="hero-progress" aria-label="Section progress">
+        {progressSections.map((section) => (
+          <div key={section.label} className="hero-progress-row">
+            <span className="hero-progress-label">{section.label}</span>
+            <span className="hero-progress-value">
+              {section.completed}/{section.total}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );

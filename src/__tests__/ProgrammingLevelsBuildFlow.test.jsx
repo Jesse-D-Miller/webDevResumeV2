@@ -96,7 +96,7 @@ describe('ProgrammingLevels build flow', () => {
     expect(stored['education-1']).toBe('built')
   })
 
-  it('awards 7 XP for education build', async () => {
+  it('awards 27 XP for education build', async () => {
     vi.useFakeTimers()
     renderExplorerWithXpDisplay()
     fireEvent.click(screen.getByRole('button', { name: 'Levels' }))
@@ -113,6 +113,6 @@ describe('ProgrammingLevels build flow', () => {
       vi.advanceTimersByTime(BUILD_MS + 50)
     })
 
-    expect(screen.getByTestId('xp-total')).toHaveTextContent('7')
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('27')
   })
 })

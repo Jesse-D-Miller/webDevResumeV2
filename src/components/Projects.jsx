@@ -15,12 +15,12 @@ function Projects({ buildStates, startBuild }) {
   const scrollRef = useRef(null);
 
   const buildXpByProjectId = useRef({
-    "project-1": 3,
-    "project-2": 2,
-    "project-3": 1,
-    "project-4": 5,
-    "project-5": 4,
-    "project-6": 5,
+    "project-1": 27,
+    "project-2": 27,
+    "project-3": 27,
+    "project-4": 27,
+    "project-5": 27,
+    "project-6": 27,
   });
 
   useEffect(() => {

@@ -213,7 +213,7 @@ function Stats({
           onClick={() => {
             const xpId = "stats-enhance-api";
             if (!hasClicked(xpId)) {
-              grantXp(xpId, 5, "Enhanced GitHub stats");
+              grantXp(xpId, 28, "Enhanced GitHub stats");
             }
             setGithubStatsState((prev) => ({ ...prev, isEnhanced: true }));
           }}

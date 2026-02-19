@@ -52,7 +52,7 @@ function Map() {
     setActiveNodeId(node.id);
     const xpId = `map-node-${node.id}`;
     if (!hasClicked(xpId)) {
-      grantXp(xpId, 3);
+      grantXp(xpId, 27);
     }
     setLitNodeIds((prev) => {
       if (prev.has(node.id)) return prev;

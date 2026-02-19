@@ -28,7 +28,7 @@ function ProgrammingLevels({
   const { grantXp, hasClicked } = useXP();
   const educationIds = useRef(new Set(data.education.map((edu) => edu.id)));
   const buildXpByEducationId = useRef(
-    Object.fromEntries(data.education.map((edu) => [edu.id, 7]))
+    Object.fromEntries(data.education.map((edu) => [edu.id, 27]))
   );
   const githubUsername = useMemo(() => {
     const url = data.meta?.links?.github || "";
@@ -40,7 +40,7 @@ function ProgrammingLevels({
   const handleInstallApi = () => {
     const xpId = "github-api-install";
     if (!hasClicked(xpId)) {
-      grantXp(xpId, 4, "Installed GitHub API");
+        grantXp(xpId, 27, "Installed GitHub API");
     }
     setLanguageStatsState((prev) => ({
       ...prev,
@@ -75,7 +75,7 @@ function ProgrammingLevels({
 
       awardedRef.current.add(xpId);
 
-      const amount = buildXpByEducationId.current[educationId] ?? 7;
+      const amount = buildXpByEducationId.current[educationId] ?? 27;
       const education = data.education.find((item) => item.id === educationId);
       const title = education?.school ?? "Education";
       grantXp(xpId, amount, `Built ${title}`);

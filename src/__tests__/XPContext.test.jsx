@@ -12,9 +12,9 @@ function XPConsumer() {
       <div data-testid="completed">{completedXpPoints}</div>
       <div data-testid="message">{heroMessage}</div>
       <div data-testid="clicked">
-        {hasClicked('experience-tabs') ? 'yes' : 'no'}
+        {hasClicked('stats-enhance-api') ? 'yes' : 'no'}
       </div>
-      <button onClick={() => grantXp('experience-tabs', 2, 'Nice')}>Grant</button>
+      <button onClick={() => grantXp('stats-enhance-api', 28, 'Nice')}>Grant</button>
     </div>
   )
 }
@@ -36,12 +36,12 @@ describe('XPContext', () => {
     const grantButton = screen.getByRole('button', { name: 'Grant' })
 
     fireEvent.click(grantButton)
-    expect(screen.getByTestId('xp')).toHaveTextContent('2')
+    expect(screen.getByTestId('xp')).toHaveTextContent('28')
     expect(screen.getByTestId('clicked')).toHaveTextContent('yes')
     expect(screen.getByTestId('message')).toHaveTextContent('Nice')
     expect(screen.getByTestId('completed')).not.toHaveTextContent('0')
 
     fireEvent.click(grantButton)
-    expect(screen.getByTestId('xp')).toHaveTextContent('2')
+    expect(screen.getByTestId('xp')).toHaveTextContent('28')
   })
 })
