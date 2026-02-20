@@ -13,9 +13,27 @@ const XP_BAR_STORAGE_KEY = "xp-bar-state";
 
 function App() {
   const [activePage, setActivePage] = useState("Summary");
-  const [xpBarState, setXpBarState] = useState({
-    displayLevel: 1,
-    displayXpIntoLevel: 0,
+  const [xpBarState, setXpBarState] = useState(() => {
+    try {
+      const stored = localStorage.getItem(XP_BAR_STORAGE_KEY);
+      const parsed = stored ? JSON.parse(stored) : null;
+      if (
+        typeof parsed?.displayLevel === "number" &&
+        typeof parsed?.displayXpIntoLevel === "number"
+      ) {
+        return {
+          displayLevel: parsed.displayLevel,
+          displayXpIntoLevel: parsed.displayXpIntoLevel,
+        };
+      }
+    } catch {
+      // Ignore storage errors and fall back to defaults.
+    }
+
+    return {
+      displayLevel: 1,
+      displayXpIntoLevel: 0,
+    };
   });
   const [githubLanguages, setGithubLanguages] = useState([]);
   const [languageStatsReady, setLanguageStatsReady] = useState(false);
@@ -58,21 +76,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(buildStates));
   }, [buildStates]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(XP_BAR_STORAGE_KEY);
-    if (!stored) return;
-    const parsed = JSON.parse(stored);
-    if (
-      typeof parsed?.displayLevel === "number" &&
-      typeof parsed?.displayXpIntoLevel === "number"
-    ) {
-      setXpBarState({
-        displayLevel: parsed.displayLevel,
-        displayXpIntoLevel: parsed.displayXpIntoLevel,
-      });
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem(XP_BAR_STORAGE_KEY, JSON.stringify(xpBarState));
