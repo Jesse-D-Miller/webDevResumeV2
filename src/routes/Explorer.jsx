@@ -7,9 +7,11 @@ import NavTop from "../components/NavTop";
 import PixelHero from "../components/PixelHero";
 import data from "../data/resume.json";
 import experienceData from "../data/expandedExperience.json";
+import mapImage from "../assets/resumeMap.png";
 
 import { useState, useEffect } from "react";
 
+const STORAGE_KEY = "project-build-states";
 const THEME_KEY = "theme";
 const THEMES = ["default", "light", "alt", "zelda", "cyber"];
 const BUILD_MS = 2400;
@@ -18,22 +20,69 @@ const explorerEducation = data.education.filter(
 );
 
 function Explorer({
-  activePage,
-  setActivePage,
-  xpBarState,
-  setXpBarState,
-  githubLanguages,
-  setGithubLanguages,
-  languageStatsReady,
-  setLanguageStatsReady,
-  languageStatsState,
-  setLanguageStatsState,
-  githubStatsState,
-  setGithubStatsState,
-  buildStates,
-  setBuildStates,
+  activePage: activePageProp,
+  setActivePage: setActivePageProp,
+  xpBarState: xpBarStateProp,
+  setXpBarState: setXpBarStateProp,
+  githubLanguages: githubLanguagesProp,
+  setGithubLanguages: setGithubLanguagesProp,
+  languageStatsReady: languageStatsReadyProp,
+  setLanguageStatsReady: setLanguageStatsReadyProp,
+  languageStatsState: languageStatsStateProp,
+  setLanguageStatsState: setLanguageStatsStateProp,
+  githubStatsState: githubStatsStateProp,
+  setGithubStatsState: setGithubStatsStateProp,
+  buildStates: buildStatesProp,
+  setBuildStates: setBuildStatesProp,
 }) {
+  const [activePageState, setActivePageState] = useState("Summary");
+  const [xpBarStateState, setXpBarStateState] = useState({
+    displayLevel: 1,
+    displayXpIntoLevel: 0,
+  });
+  const [githubLanguagesState, setGithubLanguagesState] = useState([]);
+  const [languageStatsReadyState, setLanguageStatsReadyState] = useState(false);
+  const [languageStatsStateState, setLanguageStatsStateState] = useState({
+    isApiInstalled: false,
+    statsStatus: "idle",
+    statsError: "",
+    languageStats: null,
+  });
+  const [githubStatsStateState, setGithubStatsStateState] = useState({
+    status: "idle",
+    stats: null,
+    error: "",
+    isEnhanced: false,
+  });
+  const [buildStatesState, setBuildStatesState] = useState(() => {
+    return Object.fromEntries([
+      ...data.projects.map((project) => [project.id, "unbuilt"]),
+      ...experienceData.experience.map((item) => [item.id, "unbuilt"]),
+      ...explorerEducation.map((edu) => [edu.id, "unbuilt"]),
+    ]);
+  });
   const [theme, setTheme] = useState("default");
+  const isBuildStateControlled = buildStatesProp !== undefined;
+  const activePage = activePageProp ?? activePageState;
+  const setActivePage = setActivePageProp ?? setActivePageState;
+  const xpBarState = xpBarStateProp ?? xpBarStateState;
+  const setXpBarState = setXpBarStateProp ?? setXpBarStateState;
+  const githubLanguages = githubLanguagesProp ?? githubLanguagesState;
+  const setGithubLanguages =
+    setGithubLanguagesProp ?? setGithubLanguagesState;
+  const languageStatsReady =
+    languageStatsReadyProp ?? languageStatsReadyState;
+  const setLanguageStatsReady =
+    setLanguageStatsReadyProp ?? setLanguageStatsReadyState;
+  const languageStatsState =
+    languageStatsStateProp ?? languageStatsStateState;
+  const setLanguageStatsState =
+    setLanguageStatsStateProp ?? setLanguageStatsStateState;
+  const githubStatsState = githubStatsStateProp ?? githubStatsStateState;
+  const setGithubStatsState =
+    setGithubStatsStateProp ?? setGithubStatsStateState;
+  const buildStates = buildStatesProp ?? buildStatesState;
+  const setBuildStates = setBuildStatesProp ?? setBuildStatesState;
 
   //build a Set of skill names from projects + experience + education that are "built"
   const activeSkills = new Set(
@@ -65,6 +114,32 @@ function Explorer({
     document.documentElement.dataset.theme =
       nextTheme === "default" ? "" : nextTheme;
     setTheme(nextTheme);
+  }, []);
+
+  useEffect(() => {
+    if (isBuildStateControlled) {
+      return;
+    }
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return;
+    const parsed = JSON.parse(stored);
+
+    setBuildStates((prev) => ({
+      ...prev,
+      ...parsed,
+    }));
+  }, [isBuildStateControlled, setBuildStates]);
+
+  useEffect(() => {
+    if (isBuildStateControlled) {
+      return;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(buildStates));
+  }, [buildStates, isBuildStateControlled]);
+
+  useEffect(() => {
+    const image = new Image();
+    image.src = mapImage;
   }, []);
 
   const startBuild = (projectId) => {

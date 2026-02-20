@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { useContext } from 'react'
 import userEvent from '@testing-library/user-event'
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import Explorer from '../routes/Explorer'
 import { XPContext, XPProvider } from '../contexts/XPContext'
@@ -33,8 +33,14 @@ const renderExplorerWithXpDisplay = () => {
 }
 
 describe('Explorer navigation', () => {
+  const originalImage = global.Image
+
   beforeEach(() => {
     localStorage.clear()
+  })
+
+  afterEach(() => {
+    global.Image = originalImage
   })
 
   it('shows Summary content by default', () => {
@@ -110,5 +116,19 @@ describe('Explorer navigation', () => {
       })
     ).toBeInTheDocument()
     expect(screen.getByTestId('xp-total')).toHaveTextContent('27')
+  })
+
+  it('preloads the map image on mount', () => {
+    const sources = []
+    class MockImage {
+      set src(value) {
+        sources.push(value)
+      }
+    }
+
+    global.Image = MockImage
+    renderExplorer()
+
+    expect(sources.some((src) => String(src).includes('resumeMap'))).toBe(true)
   })
 })
