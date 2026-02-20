@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "project-build-states";
 const THEME_KEY = "theme";
-const THEMES = ["default", "alt", "retro"];
+const THEMES = ["default", "alt", "retro", "zelda", "mario", "cyber"];
 const BUILD_MS = 2400;
 
 function Explorer() {
@@ -121,6 +121,8 @@ function Explorer() {
           activePage={activePage}
           setActivePage={setActivePage}
           theme={theme}
+          themeIndex={Math.max(0, THEMES.indexOf(theme)) + 1}
+          themeTotal={THEMES.length}
           onToggleTheme={handleToggleTheme}
         />
       </div>

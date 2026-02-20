@@ -1,7 +1,7 @@
 import "./NavSide.css";
 import { useNavigate } from "react-router-dom";
 
-function NavSide({ activePage, setActivePage, theme, onToggleTheme }) {
+function NavSide({ activePage, setActivePage, themeIndex, themeTotal, onToggleTheme }) {
 const navigate = useNavigate();
 
   return (
@@ -34,7 +34,7 @@ const navigate = useNavigate();
             onClick={onToggleTheme}
             type="button"
           >
-            Mode: {theme === "retro" ? "Retro" : theme === "alt" ? "Alt" : "Default"}
+            Mode: {themeIndex}/{themeTotal}
           </button>
         </li>
         <li className="nav-side-item">
