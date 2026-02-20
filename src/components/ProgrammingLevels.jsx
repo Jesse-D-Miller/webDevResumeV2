@@ -14,6 +14,10 @@ function ProgrammingLevels({
   languageStatsState,
   setLanguageStatsState,
 }) {
+  const explorerEducation = useMemo(
+    () => data.education.filter((edu) => edu.showInExplorer !== false),
+    []
+  );
   const [progressById, setProgressById] = useState({});
   const {
     languageStats,
@@ -26,9 +30,11 @@ function ProgrammingLevels({
   const startTimesRef = useRef({});
   const awardedRef = useRef(new Set());
   const { grantXp, hasClicked } = useXP();
-  const educationIds = useRef(new Set(data.education.map((edu) => edu.id)));
+  const educationIds = useRef(
+    new Set(explorerEducation.map((edu) => edu.id))
+  );
   const buildXpByEducationId = useRef(
-    Object.fromEntries(data.education.map((edu) => [edu.id, 27]))
+    Object.fromEntries(explorerEducation.map((edu) => [edu.id, 27]))
   );
   const githubUsername = useMemo(() => {
     const url = data.meta?.links?.github || "";
@@ -49,7 +55,7 @@ function ProgrammingLevels({
   };
 
 
-  const primaryEducationId = data.education[0]?.id;
+  const primaryEducationId = explorerEducation[0]?.id;
   const isEducationBuilt = Boolean(
     primaryEducationId && buildStates?.[primaryEducationId] === "built"
   );
@@ -76,11 +82,13 @@ function ProgrammingLevels({
       awardedRef.current.add(xpId);
 
       const amount = buildXpByEducationId.current[educationId] ?? 27;
-      const education = data.education.find((item) => item.id === educationId);
+      const education = explorerEducation.find(
+        (item) => item.id === educationId
+      );
       const title = education?.school ?? "Education";
       grantXp(xpId, amount, `Built ${title}`);
     });
-  }, [buildStates, grantXp, hasClicked]);
+  }, [buildStates, explorerEducation, grantXp, hasClicked]);
 
   useEffect(() => {
     if (!buildStates) {
@@ -281,7 +289,7 @@ function ProgrammingLevels({
 
   return (
     <div className="programming-levels">
-      {data.education.map((edu) => {
+      {explorerEducation.map((edu) => {
         const state = buildStates?.[edu.id] ?? "unbuilt";
 
         return (

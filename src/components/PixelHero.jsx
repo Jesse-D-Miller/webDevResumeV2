@@ -27,8 +27,14 @@ function PixelHero() {
   }, []);
 
   const progressSections = useMemo(() => {
+    const explorerEducation = resumeData.education.filter(
+      (edu) => edu.showInExplorer !== false
+    );
+    const explorerEducationNodes = (resumeData.mapNodes?.education || []).filter(
+      (node) => node.showInExplorer !== false
+    );
     const mapNodes = [
-      ...(resumeData.mapNodes?.education || []),
+      ...explorerEducationNodes,
       ...(resumeData.mapNodes?.career || []),
       ...(resumeData.mapNodes?.skills || []),
     ];
@@ -43,7 +49,7 @@ function PixelHero() {
       (experience) => `experience-build-${experience.id}`
     );
     const levelIds = [
-      ...resumeData.education.map((edu) => `education-build-${edu.id}`),
+      ...explorerEducation.map((edu) => `education-build-${edu.id}`),
       "github-api-install",
     ];
     const mapIds = mapNodes.map((node) => `map-node-${node.id}`);

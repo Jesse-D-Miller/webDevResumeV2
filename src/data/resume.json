@@ -371,6 +371,17 @@
         "Built multiple production-ready web applications using React, Node.js, Express, and PostgreSQL"
       ],
       "skills": ["Mocha", "Chai", "Command Line", "Git", "GitHub", "HTML", "CSS", "JavaScript", "Ruby", "React", "Node.js", "Express", "PostgreSQL", "Responsive Design", "EJS", "Cypress", "Vitest", "Bootstrap", "SQL"]
+    },
+    {
+      "id": "education-2",
+      "school": "Simon Fraser University",
+      "program": "BASc, Engineering Science (Incomplete)",
+      "period": "2015 - 2017",
+      "details": [
+        "Completed coursework in physics, calculus, systems design, and programming"
+      ],
+      "skills": [],
+      "showInExplorer": false
     }
   ],
   "hobbies": [
@@ -457,7 +468,8 @@
         "id": 3,
         "color": "green",
         "institution": "Simon Fraser University",
-        "intel": "Chapter: continues engineering studies (Years 2-3): calculus, physics, chemistry, programming."
+        "intel": "Chapter: continues engineering studies (Years 2-3): calculus, physics, chemistry, programming.",
+        "showInExplorer": false
       },
       {
         "id": 4,

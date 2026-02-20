@@ -60,6 +60,21 @@ describe('ProgrammingLevels build flow', () => {
     ).toBeInTheDocument()
   })
 
+  it('hides resume-only education entries', async () => {
+    renderExplorer()
+    const user = userEvent.setup()
+    await openLevels(user)
+
+    expect(
+      screen.queryByRole('button', {
+        name: /click to enroll simon fraser university/i,
+      })
+    ).not.toBeInTheDocument()
+    expect(
+      screen.queryByRole('heading', { name: /simon fraser university/i })
+    ).not.toBeInTheDocument()
+  })
+
   it('builds education and persists state', async () => {
     vi.useFakeTimers()
     renderExplorer()

@@ -14,6 +14,9 @@ const STORAGE_KEY = "project-build-states";
 const THEME_KEY = "theme";
 const THEMES = ["default", "alt", "retro", "zelda", "mario", "cyber"];
 const BUILD_MS = 2400;
+const explorerEducation = data.education.filter(
+  (edu) => edu.showInExplorer !== false
+);
 
 function Explorer() {
   const [activePage, setActivePage] = useState("Summary");
@@ -36,7 +39,7 @@ function Explorer() {
     return Object.fromEntries([
       ...data.projects.map((project) => [project.id, "unbuilt"]),
       ...experienceData.experience.map((item) => [item.id, "unbuilt"]),
-      ...data.education.map((edu) => [edu.id, "unbuilt"]),
+      ...explorerEducation.map((edu) => [edu.id, "unbuilt"]),
     ]);
   });
 
@@ -57,7 +60,7 @@ function Explorer() {
           return experience?.skills || [];
         }
 
-        const education = data.education.find((edu) => edu.id === entryId);
+        const education = explorerEducation.find((edu) => edu.id === entryId);
         return education?.skills || [];
       }),
   );

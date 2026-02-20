@@ -13,9 +13,16 @@ export function XPProvider({ children }) {
   const clickedIdsRef = useRef(new Set());
   const [heroMessage, setHeroMessage] = useState("");
   const maxXp = 1000;
+  const explorerEducation = useMemo(() => {
+    return (resumeData.education || []).filter(
+      (edu) => edu.showInExplorer !== false
+    );
+  }, []);
   const mapNodes = useMemo(() => {
     return [
-      ...(resumeData.mapNodes?.education || []),
+      ...(resumeData.mapNodes?.education || []).filter(
+        (node) => node.showInExplorer !== false
+      ),
       ...(resumeData.mapNodes?.career || []),
       ...(resumeData.mapNodes?.skills || []),
     ];
@@ -36,11 +43,11 @@ export function XPProvider({ children }) {
   }, []);
 
   const educationBuildEntries = useMemo(() => {
-    return (resumeData.education || []).map((edu) => [
+    return explorerEducation.map((edu) => [
       `education-build-${edu.id}`,
       BASE_INTERACTION_XP,
     ]);
-  }, []);
+  }, [explorerEducation]);
 
   const mapNodeEntries = useMemo(() => {
     return mapNodes.map((node) => [

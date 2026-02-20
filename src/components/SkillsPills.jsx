@@ -3,6 +3,9 @@ import data from "../data/resume.json";
 import experienceData from "../data/expandedExperience.json";
 
 function SkillsPills({ activeSkills = new Set(), highlightedSkills = new Set() }) {
+  const explorerEducation = data.education.filter(
+    (edu) => edu.showInExplorer !== false
+  );
   const skillsByName = new Map(
     data.skills.map((skill) => [skill.name, skill])
   );
@@ -28,7 +31,7 @@ function SkillsPills({ activeSkills = new Set(), highlightedSkills = new Set() }
     });
   });
 
-  data.education.forEach((edu) => {
+  explorerEducation.forEach((edu) => {
     (edu.skills || []).forEach((skillName) => {
       if (skillsByName.has(skillName)) {
         return;

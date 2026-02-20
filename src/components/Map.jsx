@@ -18,7 +18,9 @@ function Map() {
 
   const mapNodes = useMemo(
     () => [
-      ...resumeData.mapNodes.education,
+      ...resumeData.mapNodes.education.filter(
+        (node) => node.showInExplorer !== false
+      ),
       ...resumeData.mapNodes.career,
       ...resumeData.mapNodes.skills,
     ],
