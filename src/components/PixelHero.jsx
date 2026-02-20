@@ -18,6 +18,7 @@ function PixelHero({ xpBarState, setXpBarState }) {
   const [isBarResetting, setIsBarResetting] = useState(false);
   const timeoutsRef = useRef([]);
   const displayRef = useRef({ level: 1, xpIntoLevel: 0 });
+  const hasHydratedRef = useRef(false);
   const fillDurationMs = 400;
   const flashDurationMs = 300;
   const resetDelayMs = 120;
@@ -101,6 +102,32 @@ function PixelHero({ xpBarState, setXpBarState }) {
   }, [displayLevel, displayXpIntoLevel]);
 
   useEffect(() => {
+    const nextLevel = xpBarState?.displayLevel;
+    const nextIntoLevel = xpBarState?.displayXpIntoLevel;
+
+    if (typeof nextLevel !== "number" || typeof nextIntoLevel !== "number") {
+      return;
+    }
+
+    if (
+      hasHydratedRef.current &&
+      nextLevel === displayLevel &&
+      nextIntoLevel === displayXpIntoLevel
+    ) {
+      return;
+    }
+
+    timeoutsRef.current.forEach((timeoutId) => window.clearTimeout(timeoutId));
+    timeoutsRef.current = [];
+    setIsLevelFlash(false);
+    setIsBarResetting(false);
+    displayRef.current = { level: nextLevel, xpIntoLevel: nextIntoLevel };
+    setDisplayLevel(nextLevel);
+    setDisplayXpIntoLevel(nextIntoLevel);
+    hasHydratedRef.current = true;
+  }, [xpBarState, displayLevel, displayXpIntoLevel]);
+
+  useEffect(() => {
     if (typeof setXpBarState !== "function") {
       return;
     }
@@ -112,6 +139,14 @@ function PixelHero({ xpBarState, setXpBarState }) {
   }, [displayLevel, displayXpIntoLevel, setXpBarState]);
 
   useEffect(() => {
+    if (
+      xpBarState?.displayLevel !== undefined &&
+      xpBarState?.displayXpIntoLevel !== undefined &&
+      !hasHydratedRef.current
+    ) {
+      return;
+    }
+
     timeoutsRef.current.forEach((timeoutId) => window.clearTimeout(timeoutId));
     timeoutsRef.current = [];
 
