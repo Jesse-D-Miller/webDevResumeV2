@@ -5,7 +5,7 @@ import PixelHero from '../components/PixelHero'
 
 const renderWithXp = (xp) => {
   return render(
-    <XPContext.Provider value={{ xp }}>
+    <XPContext.Provider value={{ xp, clickedIds: new Set() }}>
       <PixelHero />
     </XPContext.Provider>
   )
@@ -27,7 +27,7 @@ describe('PixelHero XP bar', () => {
 
     act(() => {
       rerender(
-        <XPContext.Provider value={{ xp: 5 }}>
+        <XPContext.Provider value={{ xp: 5, clickedIds: new Set() }}>
           <PixelHero />
         </XPContext.Provider>
       )
@@ -74,6 +74,25 @@ describe('PixelHero XP bar', () => {
 
     expect(screen.getByText('lvl 3')).toBeInTheDocument()
     expect(screen.getByText('1/2 XP')).toBeInTheDocument()
+
+    vi.useRealTimers()
+  })
+
+  it('shows MAX at the final level', () => {
+    vi.useFakeTimers()
+
+    render(
+      <XPContext.Provider value={{ xp: 99999, clickedIds: new Set() }}>
+        <PixelHero />
+      </XPContext.Provider>
+    )
+
+    act(() => {
+      vi.runAllTimers()
+    })
+
+    expect(screen.getByText('MAX')).toBeInTheDocument()
+    expect(screen.getByText(/lvl 99/i)).toBeInTheDocument()
 
     vi.useRealTimers()
   })

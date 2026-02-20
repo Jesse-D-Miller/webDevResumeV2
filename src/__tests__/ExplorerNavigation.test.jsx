@@ -78,17 +78,17 @@ describe('Explorer navigation', () => {
     expect(
       screen.getByRole('heading', { name: 'Web Dev Resume' })
     ).toBeInTheDocument()
-    expect(screen.getByTestId('xp-total')).toHaveTextContent('5')
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('27')
 
     await user.click(screen.getByRole('button', { name: 'Experience' }))
     expect(screen.getByText('Crew Supervisor')).toBeInTheDocument()
-    expect(screen.getByTestId('xp-total')).toHaveTextContent('5')
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('27')
 
     await user.click(screen.getByRole('button', { name: 'Projects' }))
     expect(
       screen.getByRole('heading', { name: 'Web Dev Resume' })
     ).toBeInTheDocument()
-    expect(screen.getByTestId('xp-total')).toHaveTextContent('5')
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('27')
   })
 
   it('does not grant extra XP when navigating from Experience to Projects', async () => {
@@ -101,7 +101,7 @@ describe('Explorer navigation', () => {
 
     await user.click(screen.getByRole('button', { name: 'Experience' }))
     expect(screen.getByText('Crew Supervisor')).toBeInTheDocument()
-    expect(screen.getByTestId('xp-total')).toHaveTextContent('4')
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('27')
 
     await user.click(screen.getByRole('button', { name: 'Projects' }))
     expect(
@@ -109,6 +109,6 @@ describe('Explorer navigation', () => {
         name: /click to build project web dev resume/i,
       })
     ).toBeInTheDocument()
-    expect(screen.getByTestId('xp-total')).toHaveTextContent('4')
+    expect(screen.getByTestId('xp-total')).toHaveTextContent('27')
   })
 })
