@@ -11,6 +11,24 @@
   position: relative;
 }
 
+.welcome-reveal {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: welcome-fade-in 360ms ease-out forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes welcome-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .welcome-top {
   display: flex;
   flex-direction: column;
@@ -189,5 +207,13 @@
 
   .welcome-title {
     font-size: clamp(2.2rem, 9vw, 3rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

@@ -7,7 +7,7 @@ function Welcome() {
 
   return (
     <div className="welcome">
-      <div className="welcome-top">
+      <div className="welcome-top welcome-reveal" style={{ "--delay": "0ms" }}>
         <h1 className="welcome-title">{resumeData.meta.name}</h1>
         <div className="welcome-meta">
           <span className="welcome-role">{resumeData.meta.title}</span>
@@ -20,12 +20,12 @@ function Welcome() {
         </div>
       </div>
       <div className="welcome-body">
-        <p className="welcome-text">
+        <p className="welcome-text welcome-reveal" style={{ "--delay": "80ms" }}>
           Start here. If you want the facts fast, open the Resume for a clean,
           one-page snapshot. If you want the full story, enter the Explorer to
           browse interactive projects, XP progress, and stats at your own pace.
         </p>
-        <div className="welcome-links">
+        <div className="welcome-links welcome-reveal" style={{ "--delay": "160ms" }}>
           <a href={`mailto:${resumeData.meta.links.email}`}>Email</a>
           <a href={resumeData.meta.links.github} target="_blank" rel="noreferrer">
             GitHub
@@ -37,7 +37,7 @@ function Welcome() {
             Resume PDF
           </a>
         </div>
-        <div className="welcome-actions">
+        <div className="welcome-actions welcome-reveal" style={{ "--delay": "240ms" }}>
         <button
           className="welcome-card welcome-card--resume"
           onClick={() => navigate("/resume")}

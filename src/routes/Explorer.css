@@ -9,6 +9,45 @@
   background: var(--bg);
 }
 
+.explorer-main .nav-top,
+.explorer-main .render-window,
+.explorer-character > * {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: explorer-fade-in 360ms ease-out forwards;
+}
+
+.explorer-main .nav-top {
+  animation-delay: 0ms;
+}
+
+.explorer-character > :nth-child(1) {
+  animation-delay: 80ms;
+}
+
+.explorer-character > :nth-child(2) {
+  animation-delay: 140ms;
+}
+
+.explorer-character > :nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.explorer-main .render-window {
+  animation-delay: 260ms;
+}
+
+@keyframes explorer-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .explorer-main {
   display: flex;
@@ -37,6 +76,16 @@
 .render-window {
   flex: 1;
   min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explorer-main .nav-top,
+  .explorer-main .render-window,
+  .explorer-character > * {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 
