@@ -14,3 +14,35 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Playwright E2E
+
+Install browser binaries once:
+
+```
+npx playwright install
+```
+
+Set your GitHub token for stats-related flows (recommended):
+
+```
+export VITE_GITHUB_TOKEN=your_token_here
+```
+
+Run E2E tests:
+
+```
+npm run test:e2e
+```
+
+Headed mode for debugging:
+
+```
+npm run test:e2e:headed
+```
+
+Playwright UI runner:
+
+```
+npm run test:e2e:ui
+```
