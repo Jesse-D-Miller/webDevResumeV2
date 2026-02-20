@@ -100,6 +100,32 @@ describe("Stats", () => {
     });
   });
 
+  it("unlocks stats without a token when language stats are ready", async () => {
+    vi.stubEnv("VITE_GITHUB_TOKEN", "");
+
+    render(
+      <StatsHarness
+        languageStatsReady={true}
+        initialState={{
+          status: "ready",
+          stats: sampleStats,
+          error: "",
+          isEnhanced: false,
+        }}
+      />
+    );
+
+    await waitFor(() => {
+      expect(
+        screen.getByRole("button", { name: /enhance api/i })
+      ).toBeInTheDocument();
+    });
+
+    expect(
+      screen.queryByText(/install api first to unlock github stats/i)
+    ).not.toBeInTheDocument();
+  });
+
   it("shows error state when the API call fails", async () => {
     fetchRecruiterStats.mockRejectedValueOnce(new Error("Boom"));
 

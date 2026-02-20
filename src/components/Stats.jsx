@@ -75,7 +75,7 @@ function Stats({
   }, []);
   const githubToken = import.meta.env.VITE_GITHUB_TOKEN || null;
   const hasToken = Boolean(githubToken);
-  const canAccessStats = hasToken && languageStatsReady;
+  const canAccessStats = languageStatsReady;
 
   const loadStats = async ({ ttlMs } = {}) => {
     if (!githubUsername || !canAccessStats || typeof fetch !== "function") {
