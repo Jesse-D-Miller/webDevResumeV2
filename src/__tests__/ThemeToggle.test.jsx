@@ -26,7 +26,7 @@ describe("Theme toggle", () => {
     renderExplorer();
 
     const modeButton = screen.getByRole("button", { name: /mode:/i });
-    expect(modeButton).toHaveTextContent("Mode: 4/4");
+    expect(modeButton).toHaveTextContent("Mode: 5/5");
     expect(document.documentElement.dataset.theme).toBe("cyber");
   });
 
@@ -35,7 +35,7 @@ describe("Theme toggle", () => {
     renderExplorer();
 
     const modeButton = screen.getByRole("button", { name: /mode:/i });
-    expect(modeButton).toHaveTextContent("Mode: 1/4");
+    expect(modeButton).toHaveTextContent("Mode: 1/5");
     expect(document.documentElement.dataset.theme).toBe("");
   });
 
@@ -44,13 +44,13 @@ describe("Theme toggle", () => {
     renderExplorer();
 
     const modeButton = screen.getByRole("button", { name: /mode:/i });
-    expect(modeButton).toHaveTextContent("Mode: 1/4");
+    expect(modeButton).toHaveTextContent("Mode: 1/5");
 
-    for (let i = 0; i < 4; i += 1) {
+    for (let i = 0; i < 5; i += 1) {
       await user.click(modeButton);
     }
 
-    expect(modeButton).toHaveTextContent("Mode: 1/4");
+    expect(modeButton).toHaveTextContent("Mode: 1/5");
     expect(document.documentElement.dataset.theme).toBe("");
     expect(localStorage.getItem("theme")).toBe("default");
   });

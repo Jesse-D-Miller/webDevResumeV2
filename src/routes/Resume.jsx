@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Resume.css";
 import resumeData from "../data/resume.json";
 
 function Resume() {
   const navigate = useNavigate();
+  useEffect(() => {
+    document.documentElement.dataset.theme = "";
+  }, []);
   const getProjectNumber = (id) => {
     const match = String(id ?? "").match(/\d+/);
     return match ? Number.parseInt(match[0], 10) : 0;

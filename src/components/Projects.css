@@ -228,7 +228,7 @@
 
 .project-title {
   margin: 0;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
 }
 
 .project-subtitle {
@@ -262,7 +262,7 @@
   display: grid;
   gap: 0.5rem;
   text-align: left;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 .project-highlight {

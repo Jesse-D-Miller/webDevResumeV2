@@ -43,12 +43,13 @@ function StatCard({
   children,
   wide = false,
   tall = false,
+  spread = false,
 }) {
   return (
     <article
       className={`stats-card${wide ? " stats-card--wide" : ""}${
         tall ? " stats-card--tall" : ""
-      }`}
+      }${spread ? " stats-card--spread" : ""}`}
     >
       <h3 className="stats-card-title">{title}</h3>
       {value !== undefined && <div className="stats-card-value">{value}</div>}
@@ -254,9 +255,10 @@ function Stats({
             value={languageStats?.languages?.[0]?.name || "--"}
           />
           <StatCard
-            title="Recent primary language"
+            title="Primary language"
             value={stats.recentPrimaryLanguage || "--"}
             subtitle="From latest pushes"
+            spread
           />
           <StatCard
             title="Language diversity"

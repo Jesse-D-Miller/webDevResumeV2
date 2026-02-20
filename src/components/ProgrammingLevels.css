@@ -171,7 +171,7 @@
 }
 
 .programming-levels h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .programming-levels-skills {
@@ -198,7 +198,7 @@
 	display: grid;
 	gap: 0.5rem;
 	text-align: left;
-  font-size: 1.35rem;
+  font-size: 1rem;
   margin: 0;
 }
 

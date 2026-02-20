@@ -19,6 +19,27 @@
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
+:root[data-theme='light'] {
+  --bg: #f3efe6;
+  --surface: #fbf8f1;
+  --surface-2: #f1ece1;
+  --border: #d6cfc0;
+
+  --text: #1f1c16;
+  --text-dim: #5b5446;
+  --text-muted: #7a7161;
+
+  --accent: #2b241a;
+  --accent-strong: #15110c;
+  --accent-soft: rgba(43, 36, 26, 0.12);
+
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+
+  --font-display: 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
 :root[data-theme='cyber'] {
   --bg: #0a0a12;
   --surface: #111122;

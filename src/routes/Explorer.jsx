@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "project-build-states";
 const THEME_KEY = "theme";
-const THEMES = ["default", "alt", "zelda", "cyber"];
+const THEMES = ["default", "light", "alt", "zelda", "cyber"];
 const BUILD_MS = 2400;
 const explorerEducation = data.education.filter(
   (edu) => edu.showInExplorer !== false
