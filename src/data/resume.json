@@ -387,13 +387,13 @@
   "hobbies": [
     {
       "name": "Board Games",
-      "photo": "public/hobbyBoardGame.jpeg",
+      "photo": "/hobbyBoardGame.jpeg",
       "alt": "Board games hobby photo",
       "context": "Here is a funny one of a stack I built up playing Wingspan with my partner. I love board games and tabletop gaming in general - it's a great way to connect with friends and family while engaging in strategic thinking and fun competition."
     },
     {
       "name": "Basketball",
-      "photo": "public/hobbyBasketball.jpeg",
+      "photo": "/hobbyBasketball.jpeg",
       "alt": "Basketball hobby photo",
       "context": "I've been playing basketball since I was a kid and it's still one of my favourite ways to stay active and socialize. I enjoy the fast pace, teamwork, and skill development that basketball offers. This photo is from a league tournament we won a few years back."
     },
@@ -401,19 +401,19 @@
       "name": "Cooking",
       "photos": [
         {
-          "src": "public/hobbyCooking-1.jpeg",
+          "src": "/hobbyCooking-1.jpeg",
           "alt": "Cooking hobby photo 1"
         },
         {
-          "src": "public/hobbyCooking-2.jpeg",
+          "src": "/hobbyCooking-2.jpeg",
           "alt": "Cooking hobby photo 2"
         },
         {
-          "src": "public/hobbyCooking-3.jpeg",
+          "src": "/hobbyCooking-3.jpeg",
           "alt": "Cooking hobby photo 3"
         },
         {
-          "src": "public/hobbyCooking-4.jpeg",
+          "src": "/hobbyCooking-4.jpeg",
           "alt": "Cooking hobby photo 4"
         }
       ],
@@ -421,31 +421,31 @@
     },
     {
       "name": "Snowboarding",
-      "photo": "public/hobbySnowboarding.jpeg",
+      "photo": "/hobbySnowboarding.jpeg",
       "alt": "Snowboarding hobby photo",
       "context": "I grew up skiing but have really come to love snowboarding in the last few years. There's something about the flow and style of snowboarding that really resonates with me. I mostly stick to my local mountains, but I also enjoy traveling to new resorts. This photo is from a solo riding day on Whistler Mountain."
     },
     {
       "name": "Hiking",
-      "photo": "public/hobbyHiking.jpeg",
+      "photo": "/hobbyHiking.jpeg",
       "alt": "Hiking hobby photo",
       "context": "Working in wildfire suppression gave me a deep appreciation for the outdoors. I love the nostalgia of hiking the same trails and areas over and over again. This photo is from Skywalk near Whistler, which has some of the most stunning views and a breathtaking glacial lake."
     },
     {
       "name": "Biking",
-      "photo": "public/hobbyBiking.jpeg",
+      "photo": "/hobbyBiking.jpeg",
       "alt": "Biking hobby photo",
       "context": "I enjoy several types of biking, but  mountain biking is my favorite. There's something exhilarating about navigating trails and challenging terrains. This photo is from a recent ride on a local mountain trail with my dog, Finnegan. "
     },
     {
       "name": "3D Printing",
-      "photo": "public/hobby3DPrinting.jpeg",
+      "photo": "/hobby3dPrinting.jpeg",
       "alt": "3D printing hobby photo",
       "context": "I have surprisingly few photos to represent this hobby, considering it's one of my favourites! I got into 3D printing a few years ago and have been having a blast creating all sorts of things, from practical household items to fun figurines. It's a great way to combine creativity with technical skills, and I love seeing an idea come to life layer by layer. This photo is of a moonlamp I printed to avoid throwing away a broken lamp - I just printed a new shade for it and now it's one of my favourite pieces of decor!"
     },
     {
       "name": "Reading",
-      "photo": "public/hobbyReading.jpeg",
+      "photo": "/hobbyReading.jpeg",
       "alt": "Reading hobby photo",
       "context": "I love to read as a way to wind down and escape into different worlds. I enjoy a wide range of genres, but I'm especially drawn to science fiction and fantasy. This is a photo from a used book store where I scored big by finding the entire Redwall series by Brian Jacques - a childhood favourite of mine."
     }
