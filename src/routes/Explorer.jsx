@@ -8,10 +8,13 @@ import PixelHero from "../components/PixelHero";
 import data from "../data/resume.json";
 import experienceData from "../data/expandedExperience.json";
 import mapImage from "../assets/resumeMap.png";
+import { reloadPage } from "../utils/reloadPage";
 
 import { useState, useEffect } from "react";
 
 const STORAGE_KEY = "project-build-states";
+const XP_STATE_KEY = "xp-state";
+const XP_BAR_STORAGE_KEY = "xp-bar-state";
 const THEME_KEY = "theme";
 const THEMES = ["default", "light", "alt", "zelda", "cyber"];
 const BUILD_MS = 2400;
@@ -167,6 +170,23 @@ function Explorer({
     });
   };
 
+  const handleResetApp = () => {
+    const shouldReset = window.confirm(
+      "Reset local progress and theme? This cannot be undone."
+    );
+    if (!shouldReset) {
+      return;
+    }
+
+    [STORAGE_KEY, XP_STATE_KEY, XP_BAR_STORAGE_KEY, THEME_KEY].forEach(
+      (key) => {
+        window.localStorage.removeItem(key);
+      }
+    );
+    document.documentElement.dataset.theme = "";
+    reloadPage();
+  };
+
   return (
     <div className="explorer">
       <div className="explorer-navside">
@@ -177,6 +197,7 @@ function Explorer({
           themeIndex={Math.max(0, THEMES.indexOf(theme)) + 1}
           themeTotal={THEMES.length}
           onToggleTheme={handleToggleTheme}
+          onResetApp={handleResetApp}
         />
       </div>
       <div className="explorer-main">

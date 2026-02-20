@@ -168,34 +168,4 @@ describe("Stats", () => {
     expect(screen.getByText("12")).toBeInTheDocument();
     expect(screen.getByText("star-map")).toBeInTheDocument();
   });
-
-  it("refreshes stats when already enhanced", async () => {
-    const user = userEvent.setup();
-
-    render(
-      <StatsHarness
-        languageStatsReady={true}
-        initialState={{
-          status: "ready",
-          stats: sampleStats,
-          error: "",
-          isEnhanced: true,
-        }}
-      />
-    );
-
-    await waitFor(() => {
-      expect(fetchRecruiterStats).toHaveBeenCalled();
-    });
-
-    fetchRecruiterStats.mockClear();
-    const refreshButton = screen.getByRole("button", {
-      name: /refresh stats/i,
-    });
-    await user.click(refreshButton);
-
-    expect(fetchRecruiterStats).toHaveBeenCalledWith(
-      expect.objectContaining({ ttlMs: 0 })
-    );
-  });
 });

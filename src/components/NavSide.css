@@ -21,11 +21,16 @@
   margin: 0;
 }
 
-.nav-side-item--resume {
+.nav-side-item--utility {
   margin-top: auto;
 }
 
 .nav-side-title--mode {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.nav-side-title--reset {
   background: var(--surface);
   color: var(--text);
 }

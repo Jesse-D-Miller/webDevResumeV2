@@ -5,6 +5,11 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import Explorer from '../routes/Explorer'
 import { XPContext, XPProvider } from '../contexts/XPContext'
+import { reloadPage } from '../utils/reloadPage'
+
+vi.mock('../utils/reloadPage', () => ({
+  reloadPage: vi.fn(),
+}))
 
 const renderExplorer = () => {
   return render(
@@ -37,6 +42,7 @@ describe('Explorer navigation', () => {
 
   beforeEach(() => {
     localStorage.clear()
+    vi.clearAllMocks()
   })
 
   afterEach(() => {
@@ -130,5 +136,59 @@ describe('Explorer navigation', () => {
     renderExplorer()
 
     expect(sources.some((src) => String(src).includes('resumeMap'))).toBe(true)
+  })
+
+  it('resets local state and reloads when confirmed', async () => {
+    const user = userEvent.setup()
+    const confirmSpy = vi
+      .spyOn(window, 'confirm')
+      .mockImplementation(() => true)
+
+    localStorage.setItem('project-build-states', JSON.stringify({ test: 'ok' }))
+    localStorage.setItem('xp-state', JSON.stringify({ xp: 99 }))
+    localStorage.setItem('xp-bar-state', JSON.stringify({ displayLevel: 2 }))
+    localStorage.setItem('theme', 'cyber')
+    document.documentElement.dataset.theme = 'cyber'
+
+    renderExplorer()
+
+    await user.click(screen.getByRole('button', { name: 'Reset' }))
+
+    expect(confirmSpy).toHaveBeenCalled()
+    expect(localStorage.getItem('project-build-states')).toBeNull()
+    expect(localStorage.getItem('xp-state')).toBeNull()
+    expect(localStorage.getItem('xp-bar-state')).toBeNull()
+    expect(localStorage.getItem('theme')).toBeNull()
+    expect(document.documentElement.dataset.theme).toBe('')
+    expect(reloadPage).toHaveBeenCalled()
+
+    confirmSpy.mockRestore()
+  })
+
+  it('keeps local state when reset is canceled', async () => {
+    const user = userEvent.setup()
+    const confirmSpy = vi
+      .spyOn(window, 'confirm')
+      .mockImplementation(() => false)
+
+    localStorage.setItem('project-build-states', JSON.stringify({ test: 'ok' }))
+    localStorage.setItem('xp-state', JSON.stringify({ xp: 99 }))
+    localStorage.setItem('xp-bar-state', JSON.stringify({ displayLevel: 2 }))
+    localStorage.setItem('theme', 'cyber')
+    document.documentElement.dataset.theme = 'cyber'
+
+    renderExplorer()
+
+    await user.click(screen.getByRole('button', { name: 'Reset' }))
+
+    expect(confirmSpy).toHaveBeenCalled()
+    expect(localStorage.getItem('project-build-states')).not.toBeNull()
+    expect(localStorage.getItem('xp-state')).not.toBeNull()
+    expect(localStorage.getItem('xp-bar-state')).not.toBeNull()
+    expect(localStorage.getItem('theme')).toBe('cyber')
+    expect(document.documentElement.dataset.theme).toBe('cyber')
+    expect(reloadPage).not.toHaveBeenCalled()
+
+    confirmSpy.mockRestore()
   })
 })
