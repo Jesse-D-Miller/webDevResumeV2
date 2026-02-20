@@ -6,10 +6,14 @@ import heroSprite1 from "../assets/pixelHeroLevel1.png";
 import resumeData from "../data/resume.json";
 import experienceData from "../data/expandedExperience.json";
 
-function PixelHero() {
+function PixelHero({ xpBarState, setXpBarState }) {
   const { xp, clickedIds } = useXP();
-  const [displayLevel, setDisplayLevel] = useState(1);
-  const [displayXpIntoLevel, setDisplayXpIntoLevel] = useState(0);
+  const [displayLevel, setDisplayLevel] = useState(
+    xpBarState?.displayLevel ?? 1
+  );
+  const [displayXpIntoLevel, setDisplayXpIntoLevel] = useState(
+    xpBarState?.displayXpIntoLevel ?? 0
+  );
   const [isLevelFlash, setIsLevelFlash] = useState(false);
   const [isBarResetting, setIsBarResetting] = useState(false);
   const timeoutsRef = useRef([]);
@@ -95,6 +99,17 @@ function PixelHero() {
       xpIntoLevel: displayXpIntoLevel,
     };
   }, [displayLevel, displayXpIntoLevel]);
+
+  useEffect(() => {
+    if (typeof setXpBarState !== "function") {
+      return;
+    }
+
+    setXpBarState({
+      displayLevel,
+      displayXpIntoLevel,
+    });
+  }, [displayLevel, displayXpIntoLevel, setXpBarState]);
 
   useEffect(() => {
     timeoutsRef.current.forEach((timeoutId) => window.clearTimeout(timeoutId));

@@ -10,7 +10,6 @@ import experienceData from "../data/expandedExperience.json";
 
 import { useState, useEffect } from "react";
 
-const STORAGE_KEY = "project-build-states";
 const THEME_KEY = "theme";
 const THEMES = ["default", "light", "alt", "zelda", "cyber"];
 const BUILD_MS = 2400;
@@ -18,30 +17,23 @@ const explorerEducation = data.education.filter(
   (edu) => edu.showInExplorer !== false
 );
 
-function Explorer() {
-  const [activePage, setActivePage] = useState("Summary");
+function Explorer({
+  activePage,
+  setActivePage,
+  xpBarState,
+  setXpBarState,
+  githubLanguages,
+  setGithubLanguages,
+  languageStatsReady,
+  setLanguageStatsReady,
+  languageStatsState,
+  setLanguageStatsState,
+  githubStatsState,
+  setGithubStatsState,
+  buildStates,
+  setBuildStates,
+}) {
   const [theme, setTheme] = useState("default");
-  const [githubLanguages, setGithubLanguages] = useState([]);
-  const [languageStatsReady, setLanguageStatsReady] = useState(false);
-  const [languageStatsState, setLanguageStatsState] = useState({
-    isApiInstalled: false,
-    statsStatus: "idle",
-    statsError: "",
-    languageStats: null,
-  });
-  const [githubStatsState, setGithubStatsState] = useState({
-    status: "idle",
-    stats: null,
-    error: "",
-    isEnhanced: false,
-  });
-  const [buildStates, setBuildStates] = useState(() => {
-    return Object.fromEntries([
-      ...data.projects.map((project) => [project.id, "unbuilt"]),
-      ...experienceData.experience.map((item) => [item.id, "unbuilt"]),
-      ...explorerEducation.map((edu) => [edu.id, "unbuilt"]),
-    ]);
-  });
 
   //build a Set of skill names from projects + experience + education that are "built"
   const activeSkills = new Set(
@@ -67,18 +59,6 @@ function Explorer() {
 
   const githubLanguageSet = new Set(githubLanguages);
 
-  // Load build states from localStorage on initial render
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) return;
-    const parsed = JSON.parse(stored);
-
-    setBuildStates((prev) => ({
-      ...prev,
-      ...parsed,
-    }));
-  }, []);
-
   useEffect(() => {
     const storedTheme = window.localStorage.getItem(THEME_KEY) || "default";
     const nextTheme = THEMES.includes(storedTheme) ? storedTheme : "default";
@@ -86,11 +66,6 @@ function Explorer() {
       nextTheme === "default" ? "" : nextTheme;
     setTheme(nextTheme);
   }, []);
-
-  // Save build states to localStorage whenever they change
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(buildStates));
-  }, [buildStates]);
 
   const startBuild = (projectId) => {
     setBuildStates((prev) => {
@@ -132,7 +107,7 @@ function Explorer() {
       <div className="explorer-main">
         <NavTop />
         <div className="explorer-character">
-          <PixelHero />
+          <PixelHero xpBarState={xpBarState} setXpBarState={setXpBarState} />
           <Gear />
           <SkillsPills
             activeSkills={activeSkills}
