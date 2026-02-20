@@ -180,15 +180,6 @@ function Stats({
           <div className="stats-meta-row">
             <span className="stats-meta-label">Last updated:</span>
             <span className="stats-meta-value">{elapsedLabel}</span>
-            {canAccessStats && isEnhanced && (
-              <button
-                className="stats-refresh"
-                type="button"
-                onClick={() => loadStats({ ttlMs: 0 })}
-              >
-                Refresh stats
-              </button>
-            )}
           </div>
         </div>
       </header>
