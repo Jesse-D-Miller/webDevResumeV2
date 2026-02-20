@@ -9,6 +9,7 @@ import data from "./data/resume.json";
 import experienceData from "./data/expandedExperience.json";
 
 const STORAGE_KEY = "project-build-states";
+const XP_BAR_STORAGE_KEY = "xp-bar-state";
 
 function App() {
   const [activePage, setActivePage] = useState("Summary");
@@ -57,6 +58,25 @@ function App() {
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(buildStates));
   }, [buildStates]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(XP_BAR_STORAGE_KEY);
+    if (!stored) return;
+    const parsed = JSON.parse(stored);
+    if (
+      typeof parsed?.displayLevel === "number" &&
+      typeof parsed?.displayXpIntoLevel === "number"
+    ) {
+      setXpBarState({
+        displayLevel: parsed.displayLevel,
+        displayXpIntoLevel: parsed.displayXpIntoLevel,
+      });
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(XP_BAR_STORAGE_KEY, JSON.stringify(xpBarState));
+  }, [xpBarState]);
 
   return (
     <XPProvider>

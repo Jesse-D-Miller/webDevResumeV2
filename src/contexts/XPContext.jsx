@@ -6,6 +6,7 @@ export const XPContext = createContext();
 
 const BASE_INTERACTION_XP = 27;
 const STATS_INTERACTION_XP = 28;
+const STORAGE_KEY = "xp-state";
 
 export function XPProvider({ children }) {
   const [xp, setXp] = useState(0);
@@ -98,6 +99,31 @@ export function XPProvider({ children }) {
   useEffect(() => {
     clickedIdsRef.current = clickedIds;
   }, [clickedIds]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) return;
+    const parsed = JSON.parse(stored);
+
+    if (typeof parsed?.xp === "number") {
+      setXp(parsed.xp);
+    }
+    if (Array.isArray(parsed?.clickedIds)) {
+      setClickedIds(new Set(parsed.clickedIds));
+    }
+    if (typeof parsed?.heroMessage === "string") {
+      setHeroMessage(parsed.heroMessage);
+    }
+  }, []);
+
+  useEffect(() => {
+    const payload = {
+      xp,
+      clickedIds: Array.from(clickedIds),
+      heroMessage,
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  }, [xp, clickedIds, heroMessage]);
 
   const grantXp = useCallback((id, amount = 1, message = "") => {
     setClickedIds((prev) => {
