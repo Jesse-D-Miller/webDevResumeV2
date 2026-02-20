@@ -59,6 +59,7 @@
   flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: flex-end;
+  font-size: var(--text-md);
 }
 
 .nav-top-contact-link {
