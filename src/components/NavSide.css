@@ -32,7 +32,7 @@
 
 .nav-side-title {
   width: 100%;
-  font-size: var(--text-2xl);
+  font-size: 1.35rem;
   font-weight: 600;
   border: 0.125rem solid var(--border);
   border-radius: 0.25rem;

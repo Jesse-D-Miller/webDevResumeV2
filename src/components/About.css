@@ -97,7 +97,7 @@
 .about-photo-empty {
   margin: 0;
   color: var(--text-muted);
-  font-size: var(--text-sm);
+  font-size: 0.85rem;
   text-align: center;
   padding: 0.75rem;
 }
@@ -105,7 +105,7 @@
 .about-context {
   margin: 0;
   color: var(--text);
-  font-size: var(--text-md);
+  font-size: 0.95rem;
   line-height: 1.4;
 }
 
@@ -127,7 +127,7 @@
   padding: 0.35rem 0.75rem;
   background: var(--surface);
   color: var(--text);
-  font-size: var(--text-sm-2);
+  font-size: 0.9rem;
   cursor: default;
   text-transform: none;
   letter-spacing: 0;

@@ -47,7 +47,7 @@
 
 .gear-name {
   font-weight: 700;
-  font-size: var(--text-md);
+  font-size: 0.95rem;
 }
 
 .gear-level {
@@ -62,5 +62,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: var(--text-md);
+  font-size: 0.95rem;
 }

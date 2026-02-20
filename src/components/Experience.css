@@ -44,7 +44,7 @@
 .experience-unbuilt p {
 	margin: 0;
 	font-weight: 600;
-	font-size: var(--text-5xl);
+	font-size: 1.75rem;
 	border: 0.125rem solid var(--error);
 	border-radius: 0.25rem;
 	padding: 0.25rem 0.75rem;
@@ -57,7 +57,7 @@
 .experience-building p {
 	margin: 0;
 	font-weight: 600;
-	font-size: var(--text-5xl);
+	font-size: 1.75rem;
 	border: 0.125rem solid var(--success);
 	border-radius: 0.25rem;
 	padding: 0.25rem 0.75rem;
@@ -114,7 +114,7 @@
 	width: 33rem;
 	position: relative;
 	overflow: hidden;
-  font-size: var(--text-md);
+  font-size: 0.95rem;
 }
 
 .experience-title {
@@ -125,7 +125,7 @@
 	margin: 0;
 	color: var(--text-dim);
 	font-style: italic;
-	font-size: var(--text-xs-2);
+	font-size: 0.75rem;
 }
 
 .experience-period {
@@ -134,7 +134,7 @@
 	padding: 0.125rem 5.5rem;
 	background: var(--surface);
 	color: var(--text-dim);
-	font-size: var(--text-xs-2);
+	font-size: 0.75rem;
   text-align: center;
 }
 
@@ -147,7 +147,7 @@
 	letter-spacing: 0.03em;
 	text-transform: uppercase;
 	pointer-events: none;
-  font-size: var(--text-2xs);
+  font-size: 0.7rem;
 }
 
 .experience-skills {
@@ -164,7 +164,7 @@
 	padding: 0.0625rem 0.4rem;
 	background: var(--surface);
 	font-weight: 600;
-	font-size: var(--text-xs-2);
+	font-size: 0.75rem;
 	color: #60a5fa;
 }
 

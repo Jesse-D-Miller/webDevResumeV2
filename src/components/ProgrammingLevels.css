@@ -37,7 +37,7 @@
 
 .programming-levels-title-note {
 	display: block;
-	font-size: var(--text-2xs);
+	font-size: 0.7rem;
 	color: var(--text-muted);
 	font-weight: 500;
 }
@@ -80,7 +80,7 @@
 .programming-levels-unbuilt p {
 	margin: 0;
 	font-weight: 600;
-	font-size: var(--text-5xl);
+	font-size: 1.75rem;
 	border: 0.125rem solid var(--error);
 	border-radius: 0.25rem;
 	padding: 0.25rem 0.75rem;
@@ -93,7 +93,7 @@
 .programming-levels-building p {
 	margin: 0;
 	font-weight: 600;
-	font-size: var(--text-5xl);
+	font-size: 1.75rem;
 	border: 0.125rem solid var(--success);
 	border-radius: 0.25rem;
 	padding: 0.25rem 0.75rem;
@@ -146,7 +146,7 @@
 	margin: 0;
 	color: var(--text-dim);
 	font-style: italic;
-	font-size: var(--text-xs-2);
+	font-size: 0.75rem;
 }
 
 
@@ -156,7 +156,7 @@
 	padding: 0.125rem 5.5rem;
 	background: var(--surface);
 	color: var(--text-dim);
-	font-size: var(--text-xs);
+	font-size: 0.72rem;
 }
 
 .programming-levels-period--top {
@@ -171,7 +171,7 @@
 }
 
 .programming-levels h2 {
-  font-size: var(--text-6xl);
+  font-size: 2rem;
 }
 
 .programming-levels-skills {
@@ -188,7 +188,7 @@
 	padding: 0.0625rem 0.4rem;
 	background: var(--surface);
 	font-weight: 600;
-	font-size: var(--text-xs-2);
+	font-size: 0.75rem;
 	color: var(--error);
 }
 
@@ -198,7 +198,7 @@
 	display: grid;
 	gap: 0.5rem;
 	text-align: left;
-  font-size: var(--text-2xl);
+  font-size: 1.35rem;
   margin: 0;
 }
 
@@ -232,7 +232,7 @@
 .programming-levels-locked-message::before {
 	content: "LOCKED";
 	display: block;
-	font-size: var(--text-xs-2);
+	font-size: 0.75rem;
 	letter-spacing: 0.2em;
 	color: var(--text-muted);
 	margin-bottom: 0.75rem;
@@ -251,7 +251,7 @@
 	background: var(--surface);
 	color: var(--success);
 	font-weight: 700;
-	font-size: var(--text-2xl);
+	font-size: 1.35rem;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
 }
@@ -315,7 +315,7 @@
 
 .programming-levels-language-bytes {
 	margin-left: 0.35rem;
-	font-size: var(--text-2xs);
+	font-size: 0.7rem;
 	color: var(--text-muted);
 	font-weight: 500;
 }

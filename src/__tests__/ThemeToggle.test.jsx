@@ -22,12 +22,12 @@ describe("Theme toggle", () => {
   });
 
   it("loads theme from localStorage and updates the label", () => {
-    localStorage.setItem("theme", "mario");
+    localStorage.setItem("theme", "cyber");
     renderExplorer();
 
     const modeButton = screen.getByRole("button", { name: /mode:/i });
-    expect(modeButton).toHaveTextContent("Mode: 5/6");
-    expect(document.documentElement.dataset.theme).toBe("mario");
+    expect(modeButton).toHaveTextContent("Mode: 4/4");
+    expect(document.documentElement.dataset.theme).toBe("cyber");
   });
 
   it("falls back to default for unknown themes", () => {
@@ -35,7 +35,7 @@ describe("Theme toggle", () => {
     renderExplorer();
 
     const modeButton = screen.getByRole("button", { name: /mode:/i });
-    expect(modeButton).toHaveTextContent("Mode: 1/6");
+    expect(modeButton).toHaveTextContent("Mode: 1/4");
     expect(document.documentElement.dataset.theme).toBe("");
   });
 
@@ -44,13 +44,13 @@ describe("Theme toggle", () => {
     renderExplorer();
 
     const modeButton = screen.getByRole("button", { name: /mode:/i });
-    expect(modeButton).toHaveTextContent("Mode: 1/6");
+    expect(modeButton).toHaveTextContent("Mode: 1/4");
 
-    for (let i = 0; i < 6; i += 1) {
+    for (let i = 0; i < 4; i += 1) {
       await user.click(modeButton);
     }
 
-    expect(modeButton).toHaveTextContent("Mode: 1/6");
+    expect(modeButton).toHaveTextContent("Mode: 1/4");
     expect(document.documentElement.dataset.theme).toBe("");
     expect(localStorage.getItem("theme")).toBe("default");
   });
