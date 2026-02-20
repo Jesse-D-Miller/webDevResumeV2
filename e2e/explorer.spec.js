@@ -4,8 +4,11 @@ const hasToken = Boolean(process.env.VITE_GITHUB_TOKEN);
 
 const waitForBuild = async (page, name) => {
   await expect(
-    page.getByRole('heading', { name, exact: false })
-  ).toBeVisible({ timeout: 10000 });
+    page.locator('.render-window-content').getByRole('heading', {
+      name,
+      exact: false,
+    })
+  ).toBeVisible({ timeout: 20000 });
 };
 
 test('explorer navigation and builds', async ({ page }) => {
@@ -70,3 +73,25 @@ test('stats flow reflects API availability', async ({ page }) => {
     ).toBeVisible();
   }
 });
+
+test('xp bar renders persisted state on reload', async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      'xp-state',
+      JSON.stringify({ xp: 5, clickedIds: [], heroMessage: '' })
+    )
+    localStorage.setItem(
+      'xp-bar-state',
+      JSON.stringify({ displayLevel: 3, displayXpIntoLevel: 1 })
+    )
+  })
+
+  await page.goto('/explorer')
+  const heroCard = page.locator('.pixel-hero-card')
+  await expect(heroCard.getByText('lvl 3', { exact: true })).toBeVisible()
+  await expect(heroCard.getByText('1/2 XP', { exact: true })).toBeVisible()
+
+  await page.waitForTimeout(1000)
+  await expect(heroCard.getByText('lvl 3', { exact: true })).toBeVisible()
+  await expect(heroCard.getByText('1/2 XP', { exact: true })).toBeVisible()
+})

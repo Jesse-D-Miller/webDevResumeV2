@@ -8,11 +8,40 @@ const BASE_INTERACTION_XP = 27;
 const STATS_INTERACTION_XP = 28;
 const STORAGE_KEY = "xp-state";
 
+const getInitialXpState = () => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (!stored) {
+      return {
+        xp: 0,
+        clickedIds: new Set(),
+        heroMessage: "",
+      };
+    }
+
+    const parsed = JSON.parse(stored);
+    return {
+      xp: typeof parsed?.xp === "number" ? parsed.xp : 0,
+      clickedIds: new Set(
+        Array.isArray(parsed?.clickedIds) ? parsed.clickedIds : []
+      ),
+      heroMessage: typeof parsed?.heroMessage === "string" ? parsed.heroMessage : "",
+    };
+  } catch {
+    return {
+      xp: 0,
+      clickedIds: new Set(),
+      heroMessage: "",
+    };
+  }
+};
+
 export function XPProvider({ children }) {
-  const [xp, setXp] = useState(0);
-  const [clickedIds, setClickedIds] = useState(new Set());
+  const initialXpState = useMemo(() => getInitialXpState(), []);
+  const [xp, setXp] = useState(initialXpState.xp);
+  const [clickedIds, setClickedIds] = useState(initialXpState.clickedIds);
   const clickedIdsRef = useRef(new Set());
-  const [heroMessage, setHeroMessage] = useState("");
+  const [heroMessage, setHeroMessage] = useState(initialXpState.heroMessage);
   const maxXp = 1000;
   const explorerEducation = useMemo(() => {
     return (resumeData.education || []).filter(
@@ -99,22 +128,6 @@ export function XPProvider({ children }) {
   useEffect(() => {
     clickedIdsRef.current = clickedIds;
   }, [clickedIds]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) return;
-    const parsed = JSON.parse(stored);
-
-    if (typeof parsed?.xp === "number") {
-      setXp(parsed.xp);
-    }
-    if (Array.isArray(parsed?.clickedIds)) {
-      setClickedIds(new Set(parsed.clickedIds));
-    }
-    if (typeof parsed?.heroMessage === "string") {
-      setHeroMessage(parsed.heroMessage);
-    }
-  }, []);
 
   useEffect(() => {
     const payload = {

@@ -2,6 +2,7 @@ import { act, render, screen } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
 import { XPContext } from '../contexts/XPContext'
 import PixelHero from '../components/PixelHero'
+import levelThresholds from '../data/levelThresholds'
 
 const renderWithXp = (xp) => {
   return render(
@@ -9,6 +10,27 @@ const renderWithXp = (xp) => {
       <PixelHero />
     </XPContext.Provider>
   )
+}
+
+const getDisplayState = (xp) => {
+  const cumulative = levelThresholds.reduce((acc, threshold) => {
+    const lastValue = acc.length > 0 ? acc[acc.length - 1] : 0
+    acc.push(lastValue + threshold)
+    return acc
+  }, [])
+
+  const index = cumulative.findIndex((threshold) => xp < threshold)
+  const level = index === -1 ? 99 : index + 1
+  const prevThreshold = level <= 1 ? 0 : cumulative[level - 2]
+  const nextThreshold = level >= 99 ? prevThreshold : cumulative[level - 1]
+  const xpIntoLevel = Math.max(0, xp - prevThreshold)
+  const xpForLevel = Math.max(1, nextThreshold - prevThreshold)
+
+  return {
+    level,
+    xpIntoLevel: Math.min(xpIntoLevel, xpForLevel),
+    xpForLevel,
+  }
 }
 
 describe('PixelHero XP bar', () => {
@@ -93,6 +115,39 @@ describe('PixelHero XP bar', () => {
 
     expect(screen.getByText('MAX')).toBeInTheDocument()
     expect(screen.getByText(/lvl 99/i)).toBeInTheDocument()
+
+    vi.useRealTimers()
+  })
+
+  it('renders persisted bar state without animating through levels', () => {
+    vi.useFakeTimers()
+    const xp = 5
+    const { level, xpIntoLevel, xpForLevel } = getDisplayState(xp)
+
+    render(
+      <XPContext.Provider value={{ xp, clickedIds: new Set() }}>
+        <PixelHero
+          xpBarState={{
+            displayLevel: level,
+            displayXpIntoLevel: xpIntoLevel,
+          }}
+        />
+      </XPContext.Provider>
+    )
+
+    expect(screen.getByText(`lvl ${level}`)).toBeInTheDocument()
+    expect(
+      screen.getByText(`${xpIntoLevel}/${xpForLevel} XP`)
+    ).toBeInTheDocument()
+
+    act(() => {
+      vi.runAllTimers()
+    })
+
+    expect(screen.getByText(`lvl ${level}`)).toBeInTheDocument()
+    expect(
+      screen.getByText(`${xpIntoLevel}/${xpForLevel} XP`)
+    ).toBeInTheDocument()
 
     vi.useRealTimers()
   })
