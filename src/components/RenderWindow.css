@@ -25,6 +25,22 @@
   height: 100%;
 }
 
+.render-window-panel {
+  height: 100%;
+  animation: render-window-fade-in 320ms ease-out;
+}
+
+@keyframes render-window-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .render-window-rail {
   width: 8rem;
   display: flex;
@@ -49,4 +65,10 @@
 .render-window-link:focus-visible {
   border-color: var(--accent-strong);
   outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .render-window-panel {
+    animation: none;
+  }
 }

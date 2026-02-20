@@ -24,28 +24,34 @@ function RenderWindow({
     <div className="render-window">
       <div className="render-window-body">
         <div className="render-window-content">
-          {activePage === "Summary" && <Summary />}
-          {activePage === "About" && <About />}
-          {activePage === "Experience" && <Experience buildStates={buildStates} startBuild={startBuild} />}
-          {activePage === "ProgrammingLevels" && (
-            <ProgrammingLevels
-              buildStates={buildStates}
-              startBuild={startBuild}
-              onLanguagesReady={onLanguagesReady}
-              onLanguageStatsReady={onLanguageStatsReady}
-              languageStatsState={languageStatsState}
-              setLanguageStatsState={setLanguageStatsState}
-            />
-          )}
-          {activePage === "Map" && <Map />}
-          {activePage === "Projects" && <Projects buildStates={buildStates} startBuild={startBuild} />}
-          {activePage === "Stats" && (
-            <Stats
-              languageStatsReady={languageStatsReady}
-              githubStatsState={githubStatsState}
-              setGithubStatsState={setGithubStatsState}
-            />
-          )}
+          <div key={activePage} className="render-window-panel">
+            {activePage === "Summary" && <Summary />}
+            {activePage === "About" && <About />}
+            {activePage === "Experience" && (
+              <Experience buildStates={buildStates} startBuild={startBuild} />
+            )}
+            {activePage === "ProgrammingLevels" && (
+              <ProgrammingLevels
+                buildStates={buildStates}
+                startBuild={startBuild}
+                onLanguagesReady={onLanguagesReady}
+                onLanguageStatsReady={onLanguageStatsReady}
+                languageStatsState={languageStatsState}
+                setLanguageStatsState={setLanguageStatsState}
+              />
+            )}
+            {activePage === "Map" && <Map />}
+            {activePage === "Projects" && (
+              <Projects buildStates={buildStates} startBuild={startBuild} />
+            )}
+            {activePage === "Stats" && (
+              <Stats
+                languageStatsReady={languageStatsReady}
+                githubStatsState={githubStatsState}
+                setGithubStatsState={setGithubStatsState}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
