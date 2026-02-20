@@ -1,48 +1,30 @@
-# React + Vite
+# Web Dev Resume
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About
 
-Currently, two official plugins are available:
+This is an interactive portfolio built to showcase my full-stack skills, design sensibilities, and attention to detail. The experience is framed as a “character sheet” explorer: projects and experience unlock stats, the skills list updates based on what you’ve built, and the UI supports multiple themes with smooth transitions. It is designed to be fast, playful, and employer-friendly while still demonstrating production-minded patterns.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Highlights
 
-## React Compiler
+- Interactive Explorer with progress tracking, XP, and build states.
+- GitHub stats panel with optional API enhancement flow.
+- Multiple visual themes, responsive layout, and polished micro-interactions.
+- Test coverage with unit/component tests and end-to-end flows.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Tech Stack
 
-## Expanding the ESLint configuration
+- React, Vite, React Router
+- CSS (custom design system + theming)
+- Vitest, React Testing Library, Playwright
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Why It Matters
 
-## Playwright E2E
+This project demonstrates how I approach UX, state management, and reliability. I focus on clean UI architecture, predictable interactions, and testable features, all while keeping the experience engaging and easy to navigate for recruiters.
 
-Install browser binaries once:
-
-```
-npx playwright install
-```
-
-Set your GitHub token for stats-related flows (recommended):
-
-```
-export VITE_GITHUB_TOKEN=your_token_here
-```
-
-Run E2E tests:
-
-```
-npm run test:e2e
-```
-
-Headed mode for debugging:
-
-```
-npm run test:e2e:headed
-```
-
-Playwright UI runner:
-
-```
-npm run test:e2e:ui
-```
+### Screenshots
+Explorer view
+![Screenshot 1: Explorer view](docs/screenshots/screenshot-1.png)
+Github Languages
+![Screenshot 2: Github Languages](docs/screenshots/screenshot-2.png)
+Character Card
+![Screenshot 3: Character Card](docs/screenshots/screenshot-3.png)
