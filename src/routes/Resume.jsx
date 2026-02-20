@@ -30,6 +30,19 @@ function Resume() {
   return (
     <div className="resume-page">
       <button
+        className="resume-pdf"
+        type="button"
+        onClick={() =>
+          window.open(
+            resumeData.meta.links.resumePdf,
+            "_blank",
+            "noopener,noreferrer"
+          )
+        }
+      >
+        Resume PDF
+      </button>
+      <button
         className="resume-exit"
         type="button"
         onClick={() => navigate("/explorer")}

@@ -20,12 +20,28 @@
   position: fixed;
   left: 1rem;
   bottom: 1rem;
+  width: 12.5rem;
   border: 0.125rem solid var(--border);
   border-radius: 0.25rem;
   padding: 0.4rem 0.75rem;
   background: var(--surface-2);
   color: var(--text);
   font-weight: 600;
+  cursor: pointer;
+}
+
+.resume-pdf {
+  position: fixed;
+  left: 1rem;
+  bottom: 4.5rem;
+  width: 12.5rem;
+  border: 0.125rem solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -232,6 +248,10 @@
   }
 
   .resume-exit {
+    display: none;
+  }
+
+  .resume-pdf {
     display: none;
   }
 

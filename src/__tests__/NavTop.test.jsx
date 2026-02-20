@@ -25,9 +25,11 @@ describe('NavTop', () => {
     const emailLink = screen.getByRole('link', { name: /email/i })
     const githubLink = screen.getByRole('link', { name: /github/i })
     const linkedinLink = screen.getByRole('link', { name: /linkedin/i })
+    const resumeLink = screen.getByRole('link', { name: /resume pdf/i })
 
     expect(emailLink).toHaveAttribute('href', `mailto:${data.meta.links.email}`)
     expect(githubLink).toHaveAttribute('href', data.meta.links.github)
     expect(linkedinLink).toHaveAttribute('href', data.meta.links.linkedin)
+    expect(resumeLink).toHaveAttribute('href', data.meta.links.resumePdf)
   })
 })

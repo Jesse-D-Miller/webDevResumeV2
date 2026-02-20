@@ -45,6 +45,16 @@ function NavTop() {
               LinkedIn
             </a>
           </li>
+          <li>
+            <a
+              href={links.resumePdf}
+              className="nav-top-contact-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume PDF
+            </a>
+          </li>
         </ul>
       </address>
     </header>
