@@ -161,6 +161,40 @@
   ],
   "projects": [
     {
+      "id": "project-7",
+      "title": "Web Dev Resume V2",
+      "subtitle": "Interactive Resume & Portfolio",
+      "period": "2026",
+      "stack": ["React", "Vite", "React Router", "CSS", "Vitest", "Playwright"],
+      "links": {
+        "live": "https://www.jesse-miller.com",
+        "code": "https://github.com/Jesse-D-Miller/webDevResumeV2",
+        "video": ""
+      },
+      "highlights": [
+        "Rebuilt a second-gen resume with stronger UX, clearer navigation, and cleaner structure",
+        "Increased reliability with unit and end-to-end tests on core flows",
+        "Improved persistence, theming, and content organization for a smoother, production-ready experience"
+      ],
+      "skills": [
+        "React",
+        "Vite",
+        "React Router",
+        "CSS",
+        "Vitest",
+        "Playwright"
+      ],
+      "skillsDetailed": [
+        { "name": "React", "category": "Frameworks" },
+        { "name": "Vite", "category": "Tools" },
+        { "name": "React Router", "category": "Libraries" },
+        { "name": "CSS", "category": "Languages" },
+        { "name": "Vitest", "category": "Testing" },
+        { "name": "Playwright", "category": "Testing" }
+      ],
+      "status": "In Progress"
+    },
+    {
       "id": "project-4",
       "title": "Web Dev Resume",
       "subtitle": "Interactive Resume & Portfolio",
@@ -178,13 +212,13 @@
       ],
       "skills": ["React", "Vite", "CSS", "Testing", "UI/UX"],
       "skillsDetailed": [
-        {"name": "React", "category": "Frameworks"},
-        {"name": "Vite", "category": "Tools"},
-        {"name": "CSS", "category": "Languages"},
-        {"name": "Playwright", "category": "Testing"},
-        {"name": "UI/UX", "category": "Tools"}
+        { "name": "React", "category": "Frameworks" },
+        { "name": "Vite", "category": "Tools" },
+        { "name": "CSS", "category": "Languages" },
+        { "name": "Playwright", "category": "Testing" },
+        { "name": "UI/UX", "category": "Tools" }
       ],
-      "status": "Complete"
+      "status": "complete"
     },
     {
       "id": "project-6",
@@ -202,14 +236,21 @@
         "Added a real-time lobby with join codes and WebSocket sync",
         "Shipped an attack workflow with dice tracking and damage previews"
       ],
-      "skills": ["React", "Vite", "React Router", "Express", "WebSockets", "CSS"],
+      "skills": [
+        "React",
+        "Vite",
+        "React Router",
+        "Express",
+        "WebSockets",
+        "CSS"
+      ],
       "skillsDetailed": [
-        {"name": "React", "category": "Frameworks"},
-        {"name": "Vite", "category": "Tools"},
-        {"name": "React Router", "category": "Libraries"},
-        {"name": "Express", "category": "Frameworks"},
-        {"name": "WebSockets", "category": "APIs"},
-        {"name": "CSS", "category": "Languages"}
+        { "name": "React", "category": "Frameworks" },
+        { "name": "Vite", "category": "Tools" },
+        { "name": "React Router", "category": "Libraries" },
+        { "name": "Express", "category": "Frameworks" },
+        { "name": "WebSockets", "category": "APIs" },
+        { "name": "CSS", "category": "Languages" }
       ],
       "status": "In Progress"
     },
@@ -238,12 +279,12 @@
         "Form Validation"
       ],
       "skillsDetailed": [
-        {"name": "React", "category": "Frameworks"},
-        {"name": "Vite", "category": "Tools"},
-        {"name": "React Router", "category": "Libraries"},
-        {"name": "SendGrid", "category": "APIs"},
-        {"name": "CSS", "category": "Languages"},
-        {"name": "Form Validation", "category": "Tools"}
+        { "name": "React", "category": "Frameworks" },
+        { "name": "Vite", "category": "Tools" },
+        { "name": "React Router", "category": "Libraries" },
+        { "name": "SendGrid", "category": "APIs" },
+        { "name": "CSS", "category": "Languages" },
+        { "name": "Form Validation", "category": "Tools" }
       ],
       "status": "In Progress"
     },
@@ -265,11 +306,11 @@
       ],
       "skills": ["React", "Node.js", "Express", "PostgreSQL", "SCSS"],
       "skillsDetailed": [
-        {"name": "React", "category": "Frameworks"},
-        {"name": "Node.js", "category": "Platforms"},
-        {"name": "Express", "category": "Frameworks"},
-        {"name": "PostgreSQL", "category": "Databases"},
-        {"name": "SCSS", "category": "Languages"}
+        { "name": "React", "category": "Frameworks" },
+        { "name": "Node.js", "category": "Platforms" },
+        { "name": "Express", "category": "Frameworks" },
+        { "name": "PostgreSQL", "category": "Databases" },
+        { "name": "SCSS", "category": "Languages" }
       ],
       "status": "Complete"
     },
@@ -291,11 +332,11 @@
       ],
       "skills": ["React", "Node.js", "Express", "PostgreSQL", "REST APIs"],
       "skillsDetailed": [
-        {"name": "React", "category": "Frameworks"},
-        {"name": "Node.js", "category": "Platforms"},
-        {"name": "Express", "category": "Frameworks"},
-        {"name": "PostgreSQL", "category": "Databases"},
-        {"name": "REST APIs", "category": "APIs"}
+        { "name": "React", "category": "Frameworks" },
+        { "name": "Node.js", "category": "Platforms" },
+        { "name": "Express", "category": "Frameworks" },
+        { "name": "PostgreSQL", "category": "Databases" },
+        { "name": "REST APIs", "category": "APIs" }
       ],
       "status": "Complete"
     },
@@ -317,10 +358,10 @@
       ],
       "skills": ["Rails", "PostgreSQL", "Bootstrap", "Ruby"],
       "skillsDetailed": [
-        {"name": "Rails", "category": "Frameworks"},
-        {"name": "PostgreSQL", "category": "Databases"},
-        {"name": "Bootstrap", "category": "Frameworks"},
-        {"name": "Ruby", "category": "Languages"}
+        { "name": "Rails", "category": "Frameworks" },
+        { "name": "PostgreSQL", "category": "Databases" },
+        { "name": "Bootstrap", "category": "Frameworks" },
+        { "name": "Ruby", "category": "Languages" }
       ],
       "status": "Complete"
     }
@@ -370,7 +411,27 @@
         "Completed intensive 12-week program covering full-stack JavaScript and Ruby on Rails",
         "Built multiple production-ready web applications using React, Node.js, Express, and PostgreSQL"
       ],
-      "skills": ["Mocha", "Chai", "Command Line", "Git", "GitHub", "HTML", "CSS", "JavaScript", "Ruby", "React", "Node.js", "Express", "PostgreSQL", "Responsive Design", "EJS", "Cypress", "Vitest", "Bootstrap", "SQL"]
+      "skills": [
+        "Mocha",
+        "Chai",
+        "Command Line",
+        "Git",
+        "GitHub",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Ruby",
+        "React",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Responsive Design",
+        "EJS",
+        "Cypress",
+        "Vitest",
+        "Bootstrap",
+        "SQL"
+      ]
     },
     {
       "id": "education-2",

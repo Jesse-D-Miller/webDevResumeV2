@@ -21,6 +21,8 @@ const BUILD_MS = 2400;
 const explorerEducation = data.education.filter(
   (edu) => edu.showInExplorer !== false
 );
+const getProjectNumericId = (project) =>
+  Number(String(project.id || "").replace(/\D/g, "")) || 0;
 
 function Explorer({
   activePage: activePageProp,
@@ -87,6 +89,16 @@ function Explorer({
   const buildStates = buildStatesProp ?? buildStatesState;
   const setBuildStates = setBuildStatesProp ?? setBuildStatesState;
 
+  const lighthouseLabsId = explorerEducation.find(
+    (edu) => edu.school === "Lighthouse Labs"
+  )?.id;
+  const visibleProjectIds = new Set(
+    [...data.projects]
+      .sort((a, b) => getProjectNumericId(b) - getProjectNumericId(a))
+      .slice(0, 6)
+      .map((project) => project.id)
+  );
+
   //build a Set of skill names from projects + experience + education that are "built"
   const activeSkills = new Set(
     Object.entries(buildStates)
@@ -108,6 +120,16 @@ function Explorer({
         return education?.skills || [];
       }),
   );
+
+  if (lighthouseLabsId && buildStates[lighthouseLabsId] === "built") {
+    data.projects
+      .filter((project) => !visibleProjectIds.has(project.id))
+      .forEach((project) => {
+        (project.skillsDetailed || []).forEach((skill) => {
+          activeSkills.add(skill.name);
+        });
+      });
+  }
 
   const githubLanguageSet = new Set(githubLanguages);
 

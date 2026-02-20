@@ -154,7 +154,14 @@ function Projects({ buildStates, startBuild }) {
         aria-label="Projects"
         tabIndex={0}
       >
-        {data.projects.map((project) => {
+        {[...data.projects]
+          .sort((a, b) => {
+            const aId = Number(String(a.id || "").replace(/\D/g, "")) || 0;
+            const bId = Number(String(b.id || "").replace(/\D/g, "")) || 0;
+            return bId - aId;
+          })
+          .slice(0, 6)
+          .map((project) => {
           const state = buildStates[project.id];
 
           return (
