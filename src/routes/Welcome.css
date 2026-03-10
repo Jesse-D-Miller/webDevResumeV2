@@ -199,6 +199,27 @@
   outline-offset: 0.2rem;
 }
 
+@media (max-width: 1024px) {
+  .welcome {
+    max-width: 100%;
+    padding: 4rem 2rem 4.5rem;
+  }
+
+  .welcome-actions {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .welcome {
+    gap: 2rem;
+  }
+
+  .welcome-text {
+    font-size: 1.05rem;
+  }
+}
+
 @media (max-width: 700px) {
   .welcome {
     align-items: stretch;
@@ -207,6 +228,21 @@
 
   .welcome-title {
     font-size: clamp(2.2rem, 9vw, 3rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-links {
+    width: 100%;
+  }
+
+  .welcome-links a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .welcome-card {
+    padding: 1.25rem 1.35rem;
   }
 }
 

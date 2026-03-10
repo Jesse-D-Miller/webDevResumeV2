@@ -251,3 +251,24 @@
     grid-column: span 1;
   }
 }
+
+@media (max-width: 600px) {
+  .stats {
+    padding: 0.75rem;
+  }
+
+  .stats-subtitle {
+    white-space: normal;
+  }
+
+  .stats-grid {
+    padding-right: 0;
+  }
+
+  .stats-card--wide,
+  .stats-card--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: auto;
+  }
+}

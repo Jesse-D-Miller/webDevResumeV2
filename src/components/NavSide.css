@@ -56,3 +56,34 @@
   color: var(--text);
   text-align: left;
 }
+
+@media (max-width: 1024px) {
+  .nav-side {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 1rem;
+  }
+
+  .nav-side-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 0;
+    gap: 0.75rem;
+  }
+
+  .nav-side-item--utility {
+    margin-top: 0;
+  }
+
+  .nav-side-title {
+    font-size: 1.1rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-side-list {
+    flex-direction: column;
+  }
+}

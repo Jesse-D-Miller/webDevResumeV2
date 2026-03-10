@@ -191,3 +191,31 @@
 .experience-bullet {
 	margin: 0;
 }
+
+@media (max-width: 1024px) {
+	.experience {
+		flex-direction: column;
+		overflow-x: visible;
+		height: auto;
+	}
+
+	.experience-item {
+		width: 100%;
+	}
+
+	.experience-period--top {
+		position: static;
+		transform: none;
+		margin: 0.5rem auto 0;
+	}
+}
+
+@media (max-width: 600px) {
+	.experience-item {
+		padding: 0.65rem;
+	}
+
+	.experience-bullets {
+		font-size: 0.95rem;
+	}
+}

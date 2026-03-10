@@ -163,3 +163,32 @@
   color: var(--success);
   border-color: var(--success);
 }
+
+@media (max-width: 1024px) {
+  .about-cards {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .about-card {
+    height: auto;
+  }
+
+  .about-photo-frame {
+    min-height: 12rem;
+  }
+
+  .about-hobby {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-card {
+    padding: 0.65rem;
+  }
+
+  .about-context {
+    font-size: 0.9rem;
+  }
+}

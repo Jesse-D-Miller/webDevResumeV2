@@ -92,3 +92,19 @@
     animation: none;
   }
 }
+
+@media (max-width: 900px) {
+  .skills-pills {
+    padding: 0 1rem 1rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-pills-title {
+    font-size: 1.3rem;
+  }
+
+  .skills-pills-pill {
+    font-size: 0.9rem;
+  }
+}

@@ -74,3 +74,19 @@
   align-items: center;
   font-size: 0.95rem;
 }
+
+@media (max-width: 600px) {
+  .gear {
+    padding: 0.75rem;
+  }
+
+  .gear-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gear-level {
+    width: auto;
+    padding: 0.125rem 1rem;
+  }
+}

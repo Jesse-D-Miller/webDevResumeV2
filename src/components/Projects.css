@@ -306,3 +306,38 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+@media (max-width: 1024px) {
+  .projects {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: visible;
+    flex-direction: column;
+  }
+
+  .project {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .scroll-control {
+    display: none;
+  }
+
+  .project-status {
+    position: static;
+    transform: none;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .project {
+    padding: 0.75rem;
+  }
+
+  .project-title {
+    font-size: 1.35rem;
+  }
+}

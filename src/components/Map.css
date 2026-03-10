@@ -203,6 +203,33 @@
   right: -1.5rem;
 }
 
+@media (max-width: 1024px) {
+  .map {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .scroll-control {
+    top: 0;
+    height: 100%;
+    width: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-control {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .map-node {
+    width: 18px;
+    height: 18px;
+  }
+}
+
 /* high school */
 .map-node.node-1 {
   top: 77%;

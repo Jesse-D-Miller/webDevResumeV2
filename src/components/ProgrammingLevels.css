@@ -336,6 +336,39 @@
 	z-index: 2;
 }
 
+@media (max-width: 1024px) {
+	.programming-levels {
+		flex-direction: column;
+		overflow-x: visible;
+		height: auto;
+	}
+
+	.programming-levels-item {
+		width: 100%;
+	}
+
+	.programming-levels-item--stats {
+		width: 100%;
+		flex: 1 1 auto;
+	}
+
+	.programming-levels-period--top {
+		position: static;
+		transform: none;
+		margin: 0.5rem auto 0;
+	}
+}
+
+@media (max-width: 600px) {
+	.programming-levels-item {
+		padding: 0.75rem;
+	}
+
+	.programming-levels-details {
+		font-size: 0.95rem;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	.programming-levels-language-item::before {
 		transition: none;
