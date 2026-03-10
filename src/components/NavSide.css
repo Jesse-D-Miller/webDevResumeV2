@@ -1,3 +1,13 @@
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .nav-side {
   width: 12.5rem;
   height: 100%;
