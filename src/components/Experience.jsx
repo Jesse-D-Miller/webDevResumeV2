@@ -7,12 +7,14 @@ const BUILD_MS = 2400;
 
 function Experience({ buildStates, startBuild }) {
   const [progressById, setProgressById] = useState({});
+  const [scrollState, setScrollState] = useState({ atStart: true, atEnd: false });
   const startTimesRef = useRef({});
   const awardedRef = useRef(new Set());
   const { grantXp, hasClicked } = useXP();
   const experienceIds = useRef(
     new Set(experienceData.experience.map((item) => item.id))
   );
+  const scrollRef = useRef(null);
 
   const buildXpByExperienceId = useRef({
     "experience-1": 27,
@@ -89,6 +91,23 @@ function Experience({ buildStates, startBuild }) {
     return () => window.clearInterval(intervalId);
   }, [buildStates]);
 
+  const updateScrollState = () => {
+    const node = scrollRef.current;
+    if (!node) return;
+    const maxScroll = Math.max(0, node.scrollWidth - node.clientWidth);
+    const epsilon = 2;
+    setScrollState({
+      atStart: maxScroll === 0 || node.scrollLeft <= epsilon,
+      atEnd: maxScroll === 0 || node.scrollLeft >= maxScroll - epsilon,
+    });
+  };
+
+  useEffect(() => {
+    updateScrollState();
+    window.addEventListener("resize", updateScrollState);
+    return () => window.removeEventListener("resize", updateScrollState);
+  }, []);
+
   useEffect(() => {
     setProgressById((prev) => {
       let changed = false;
@@ -106,61 +125,100 @@ function Experience({ buildStates, startBuild }) {
     });
   }, [buildStates]);
 
+  const handleScrollBy = (amount) => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
+    window.requestAnimationFrame(updateScrollState);
+  };
+
   return (
-    <div className="experience">
-      {experienceData.experience.map((experience) => {
-        const state = buildStates[experience.id];
+    <div className="experience-wrap">
+      <button
+        className={
+          scrollState.atStart
+            ? "scroll-control scroll-control--left scroll-control--disabled"
+            : "scroll-control scroll-control--left"
+        }
+        type="button"
+        onClick={() => handleScrollBy(-360)}
+        aria-label="Scroll experience left"
+      >
+        ◀
+      </button>
+      <div
+        className="experience"
+        ref={scrollRef}
+        onScroll={updateScrollState}
+        role="region"
+        aria-label="Experience"
+        tabIndex={0}
+      >
+        {experienceData.experience.map((experience) => {
+          const state = buildStates[experience.id];
 
-        return (
-          <article
-            key={experience.id}
-            className="experience-item"
-            aria-label={`Experience: ${experience.role}`}
-            aria-busy={state === "building"}
-          >
-            {state === "unbuilt" && (
-              <button
-                className="experience-unbuilt"
-                onClick={() => startBuild(experience.id)}
-              >
-                <h3>CLICK TO BUILD EXPERIENCE</h3>
-                <p>{experience.role}</p>
-              </button>
-            )}
+          return (
+            <article
+              key={experience.id}
+              className="experience-item"
+              aria-label={`Experience: ${experience.role}`}
+              aria-busy={state === "building"}
+            >
+              {state === "unbuilt" && (
+                <button
+                  className="experience-unbuilt"
+                  onClick={() => startBuild(experience.id)}
+                >
+                  <h3>CLICK TO BUILD EXPERIENCE</h3>
+                  <p>{experience.role}</p>
+                </button>
+              )}
 
-            {state === "building" && (
-              <button className="experience-building" disabled>
-                <h3>Building...</h3>
-                <p>{progressById[experience.id] ?? 0}%</p>
-              </button>
-            )}
+              {state === "building" && (
+                <button className="experience-building" disabled>
+                  <h3>Building...</h3>
+                  <p>{progressById[experience.id] ?? 0}%</p>
+                </button>
+              )}
 
-            {state === "built" && (
-              <>
-                <span className="experience-period experience-period--top">
-                  {experience.period}
-                </span>
-                <h2 className="experience-title">{experience.role}</h2>
-                <h3 className="experience-subtitle">{experience.company}</h3>
-                <div className="experience-skills">
-                  {experience.skills.map((item) => (
-                    <span key={item} className="experience-skill-pill">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <ul className="experience-bullets">
-                  {experience.bullets.map((bullet) => (
-                    <li key={bullet} className="experience-bullet">
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </>
-            )}
-          </article>
-        );
-      })}
+              {state === "built" && (
+                <>
+                  <span className="experience-period experience-period--top">
+                    {experience.period}
+                  </span>
+                  <h2 className="experience-title">{experience.role}</h2>
+                  <h3 className="experience-subtitle">{experience.company}</h3>
+                  <div className="experience-skills">
+                    {experience.skills.map((item) => (
+                      <span key={item} className="experience-skill-pill">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <ul className="experience-bullets">
+                    {experience.bullets.map((bullet) => (
+                      <li key={bullet} className="experience-bullet">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </article>
+          );
+        })}
+      </div>
+      <button
+        className={
+          scrollState.atEnd
+            ? "scroll-control scroll-control--right scroll-control--disabled"
+            : "scroll-control scroll-control--right"
+        }
+        type="button"
+        onClick={() => handleScrollBy(360)}
+        aria-label="Scroll experience right"
+      >
+        ▶
+      </button>
     </div>
   );
 }

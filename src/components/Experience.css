@@ -8,12 +8,98 @@
   height: 0;
 }
 
- .experience {
+.experience-wrap {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: stretch;
+}
+
+.experience {
 	display: flex;
 	flex-direction: row;
 	gap: 1rem;
 	height: 100%;
+	width: calc(100% + 3rem);
+	margin: 0 -1.5rem;
+	padding: 0 1.5rem;
+	box-sizing: border-box;
 	overflow-x: auto;
+	overflow-y: hidden;
+	scroll-snap-type: x proximity;
+	scroll-padding-inline: 1.5rem;
+	scrollbar-gutter: stable both-edges;
+	overscroll-behavior-x: contain;
+	-webkit-overflow-scrolling: touch;
+}
+
+.experience-wrap .scroll-control {
+	position: absolute;
+	top: -1.5rem;
+	transform: none;
+	z-index: 2;
+	border: 0;
+	background: transparent;
+	color: var(--text);
+	width: 2.75rem;
+	height: calc(100% + 3rem);
+	border-radius: 0;
+	font-weight: 700;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.experience-wrap .scroll-control:focus,
+.experience-wrap .scroll-control:focus-visible {
+	outline: none;
+}
+
+.experience-wrap .scroll-control--disabled {
+	opacity: 0.1;
+	pointer-events: none;
+}
+
+.experience-wrap .scroll-control:not(.scroll-control--disabled):hover {
+	animation: scroll-arrow-bounce 600ms ease-in-out infinite;
+}
+
+.experience-wrap .scroll-control--left:not(.scroll-control--disabled):hover {
+	animation-name: scroll-arrow-bounce-left;
+}
+
+.experience-wrap .scroll-control--right:not(.scroll-control--disabled):hover {
+	animation-name: scroll-arrow-bounce-right;
+}
+
+.experience-wrap .scroll-control--left {
+	left: -1.5rem;
+}
+
+.experience-wrap .scroll-control--right {
+	right: -1.5rem;
+}
+
+@keyframes scroll-arrow-bounce-left {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(-0.35rem);
+	}
+}
+
+@keyframes scroll-arrow-bounce-right {
+	0%,
+	100% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(0.35rem);
+	}
 }
 
 .experience-unbuilt {
@@ -126,6 +212,14 @@
 	overflow: hidden;
 }
 
+@media (min-width: 1025px) {
+	.experience-item {
+		width: clamp(440px, 33rem, 100%);
+		min-width: 440px;
+		flex: 0 0 clamp(440px, 33rem, 100%);
+	}
+}
+
 .experience-title {
 	margin: 0;
   font-size: 1.5rem;
@@ -199,6 +293,13 @@
 		gap: 0.85rem;
 		overflow-x: visible;
 		height: auto;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	.experience-wrap .scroll-control {
+		display: none;
 	}
 
 	.experience-item {

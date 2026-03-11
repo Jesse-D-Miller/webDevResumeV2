@@ -135,7 +135,7 @@
 @media (max-width: 1024px) {
   .skills-pills {
     min-height: 175px;
-    max-height: 225px;
+    max-height: 325px;
     flex-direction: row;
     align-items: center;
     padding: 0.6rem 0.9rem;
