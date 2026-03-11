@@ -34,7 +34,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.scroll-control {
+.projects-wrap .scroll-control {
   position: absolute;
   top: -1.5rem;
   transform: none;
@@ -52,25 +52,25 @@
   justify-content: center;
 }
 
-.scroll-control:focus,
-.scroll-control:focus-visible {
+.projects-wrap .scroll-control:focus,
+.projects-wrap .scroll-control:focus-visible {
   outline: none;
 }
 
-.scroll-control--disabled {
+.projects-wrap .scroll-control--disabled {
   opacity: 0.1;
   pointer-events: none;
 }
 
-.scroll-control:not(.scroll-control--disabled):hover {
+.projects-wrap .scroll-control:not(.scroll-control--disabled):hover {
   animation: scroll-arrow-bounce 600ms ease-in-out infinite;
 }
 
-.scroll-control--left:not(.scroll-control--disabled):hover {
+.projects-wrap .scroll-control--left:not(.scroll-control--disabled):hover {
   animation-name: scroll-arrow-bounce-left;
 }
 
-.scroll-control--right:not(.scroll-control--disabled):hover {
+.projects-wrap .scroll-control--right:not(.scroll-control--disabled):hover {
   animation-name: scroll-arrow-bounce-right;
 }
 
@@ -94,11 +94,11 @@
   }
 }
 
-.scroll-control--left {
+.projects-wrap .scroll-control--left {
   left: -1.5rem;
 }
 
-.scroll-control--right {
+.projects-wrap .scroll-control--right {
   right: -1.5rem;
 }
 
@@ -313,15 +313,17 @@
     margin: 0;
     padding: 0;
     overflow-x: visible;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
   }
 
   .project {
     width: 100%;
-    flex: 1 1 auto;
+    flex: 0 0 auto;
   }
 
-  .scroll-control {
+  .projects-wrap .scroll-control {
     display: none;
   }
 

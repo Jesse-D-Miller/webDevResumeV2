@@ -141,16 +141,23 @@
   transform: none;
   z-index: 2;
   border: 0;
-  background: rgba(15, 23, 42, 0.7);
+  background: transparent;
   color: var(--text);
   width: 2.75rem;
   height: calc(100% + 3rem);
   border-radius: 0;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.4rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-text-stroke: 2px #000000;
+  text-shadow:
+    -2px 0 #000000,
+    2px 0 #000000,
+    0 -2px #000000,
+    0 2px #000000;
 }
 
 .scroll-control:focus,
@@ -163,15 +170,15 @@
   pointer-events: none;
 }
 
-.scroll-control:not(.scroll-control--disabled):hover {
+.scroll-control:not(.scroll-control--disabled) {
   animation: scroll-arrow-bounce 600ms ease-in-out infinite;
 }
 
-.scroll-control--left:not(.scroll-control--disabled):hover {
+.scroll-control--left:not(.scroll-control--disabled) {
   animation-name: scroll-arrow-bounce-left;
 }
 
-.scroll-control--right:not(.scroll-control--disabled):hover {
+.scroll-control--right:not(.scroll-control--disabled) {
   animation-name: scroll-arrow-bounce-right;
 }
 
@@ -204,22 +211,30 @@
 }
 
 @media (max-width: 1024px) {
+  .map-wrap,
   .map {
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    height: 400px;
+  }
+
+  .map-canvas {
+    height: 100%;
+    max-height: none;
   }
 
   .scroll-control {
+    display: flex;
     top: 0;
     height: 100%;
     width: 2rem;
+    z-index: 10;
   }
-}
 
-@media (max-width: 768px) {
-  .scroll-control {
-    display: none;
+  .scroll-control--left {
+    left: -1rem;
+  }
+
+  .scroll-control--right {
+    right: -1rem;
   }
 }
 

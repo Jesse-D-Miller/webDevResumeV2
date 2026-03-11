@@ -194,13 +194,19 @@
 
 @media (max-width: 1024px) {
 	.experience {
-		flex-direction: column;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
 		overflow-x: visible;
 		height: auto;
 	}
 
 	.experience-item {
 		width: 100%;
+	}
+
+	.experience-item:first-child {
+		grid-column: 1 / -1;
 	}
 
 	.experience-period--top {

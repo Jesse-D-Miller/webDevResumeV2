@@ -16,9 +16,14 @@
   border: 0.125rem solid var(--border);
   background: var(--surface);
   width: 100%;
-  height: 100%;
   overflow-y: auto;
   
+}
+
+@media (max-width: 1024px) {
+  .gear {
+    height: 350px;
+  }
 }
 
 .gear-list {
