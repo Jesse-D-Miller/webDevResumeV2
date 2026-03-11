@@ -12,7 +12,8 @@
   align-items: center;
   justify-content: center;
   background: var(--bg);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -85,7 +86,7 @@
   background: var(--color-paper);
   color: var(--color-ink);
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
-  padding: 6mm 6mm 0mm 6mm;
+  padding: 5mm 5mm 0mm 5mm;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -106,11 +107,6 @@
   color: var(--color-ink);
 }
 
-.resume-title {
-  margin: 0.25rem 0 0.5rem 0;
-  font-size: 0.85rem;
-  color: var(--color-ink-light);
-}
 
 .resume-header .contact-info {
   margin: 0 0 1.5rem 0;
@@ -130,14 +126,13 @@
 
 .resume-front h3 {
   text-align: start;
-  margin: 0.75rem 0 0.25rem 0;
+  margin: 0.6rem 0 0.2rem 0;
   font-size: 0.95rem;
   font-weight: 850;
   color: var(--color-ink-blue);
   text-transform: uppercase;
   letter-spacing: 0.1px;
   border-bottom: 1px solid var(--color-ink-blue);
-  /* display: inline-block; */
   line-height: 0.9;
   width: auto;
 }
@@ -172,7 +167,7 @@
 }
 
 .resume-front p {
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.2rem 0;
   line-height: 1.3;
   color: var(--color-ink);
   font-size: 0.72rem;
@@ -181,7 +176,7 @@
 
 .resume-front ul {
   margin: 0 0 0.25rem 0;
-  padding-left: 1.5rem;
+  padding-left: 1.25rem;
 }
 
 .resume-front li {
@@ -191,6 +186,7 @@
   font-size: 0.72rem;
   font-weight: 500;
 }
+
 
 .resume-front .project-item,
 .resume-front .experience-item,
@@ -203,6 +199,21 @@
   border: 0;
   padding: 0;
   gap: 0;
+  margin-bottom: 0.35rem;
+  max-width: 100%;
+}
+
+.resume-front .experience-item ul {
+  margin: 0 0 0.15rem 0;
+  padding-left: 0;
+  list-style-position: inside;
+  max-width: 100%;
+}
+
+.resume-front .experience-item li {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .resume-front .technical-skills-section h4 {
@@ -217,21 +228,16 @@
   text-align: start;
 }
 
-.resume-front .projects-section,
-.resume-front .experience-section {
-  margin-bottom: 0.5rem;
-}
 
 .resume-front .mobile-sub-grid-inner {
   display: grid;
-  grid-template-columns: 43mm;
   gap: 0.75rem;
 }
 
 .resume-columns {
   display: grid;
-  grid-template-columns: 2.1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  gap: 0.75rem;
   height: 100%;
 }
 
@@ -240,7 +246,9 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  min-width: 0;
 }
+
 
 @media (max-width: 1200px) {
   .resume-actions {
@@ -275,67 +283,6 @@
   }
 }
 
-@media (max-width: 1100px) {
-  .resume-page {
-    align-items: flex-start;
-    padding: 4.5rem 1.5rem 6rem;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .resume-front {
-    width: min(100%, 208mm);
-    height: auto;
-  }
-
-  .resume-columns {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-}
-
-@media (max-width: 900px) {
-  .resume-actions-drawer .resume-exit,
-  .resume-actions-drawer .resume-pdf {
-    width: min(100%, 16rem);
-  }
-}
-
-@media (max-width: 600px) {
-  .resume-page {
-    padding: 3.5rem 1rem 4rem;
-  }
-
-  .resume-front {
-    padding: 5mm 5mm 0mm 5mm;
-  }
-
-  .resume-header h1 {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .resume-front .technical-skills-section,
-  .resume-front .soft-skills-section,
-  .resume-front .hobbies-section {
-    text-align: center;
-  }
-
-  .resume-front h3 {
-    text-align: center;
-    margin: 1.5rem 0 1.5rem 0;
-    font-size: 0.95rem;
-  }
-
-  .resume-front ul {
-    padding-left: 1rem;
-  }
-
-  .resume-front .mobile-sub-grid-inner {
-    grid-template-columns: 1fr 1fr;
-  }
-}
 
 @media print {
   :root {
@@ -360,9 +307,6 @@
     display: none;
   }
 
-  .resume-back {
-    display: none;
-  }
 
   .resume-front {
     box-shadow: none;
