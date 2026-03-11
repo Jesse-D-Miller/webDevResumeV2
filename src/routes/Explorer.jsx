@@ -218,6 +218,8 @@ function Explorer({
     reloadPage();
   };
 
+  const { links } = data.meta;
+
   return (
     <div className="explorer">
       <div className="explorer-navside">
@@ -233,21 +235,65 @@ function Explorer({
         />
       </div>
       <div className="explorer-main">
-        <NavTop onToggleNav={handleToggleNav} isNavOpen={isNavOpen} />
-        <div
-          id="explorer-nav-drawer"
-          className={`explorer-navside-drawer ${isNavOpen ? "is-open" : ""}`}
-        >
-          <NavSide
-            activePage={activePage}
-            setActivePage={setActivePage}
-            theme={theme}
-            themeIndex={Math.max(0, THEMES.indexOf(theme)) + 1}
-            themeTotal={THEMES.length}
-            onToggleTheme={handleToggleTheme}
-            onResetApp={handleResetApp}
-            onItemSelect={handleCloseNav}
-          />
+        <div className="explorer-navtop">
+          <NavTop onToggleNav={handleToggleNav} isNavOpen={isNavOpen} />
+          <div
+            id="explorer-nav-drawer"
+            className={`explorer-navside-drawer ${isNavOpen ? "is-open" : ""}`}
+          >
+            <NavSide
+              activePage={activePage}
+              setActivePage={setActivePage}
+              theme={theme}
+              themeIndex={Math.max(0, THEMES.indexOf(theme)) + 1}
+              themeTotal={THEMES.length}
+              onToggleTheme={handleToggleTheme}
+              onResetApp={handleResetApp}
+              onItemSelect={handleCloseNav}
+            />
+            <div className="nav-drawer-contacts">
+              <ul className="nav-drawer-contact-list">
+                <li>
+                  <a
+                    href={`mailto:${links.email}`}
+                    className="nav-drawer-contact-link"
+                  >
+                    Email
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={links.github}
+                    className="nav-drawer-contact-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={links.linkedin}
+                    className="nav-drawer-contact-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={links.resumePdf}
+                    className="nav-drawer-contact-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Resume PDF
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div className="explorer-character">
           <PixelHero xpBarState={xpBarState} setXpBarState={setXpBarState} />

@@ -110,14 +110,10 @@
   border-color: var(--accent-strong);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1260px) {
   .nav-top {
     padding: 0.65rem 0.85rem;
     gap: 1rem;
-  }
-
-  .nav-top-menu {
-    display: inline-flex;
   }
 
   .nav-top-contact {
@@ -153,13 +149,38 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .nav-top-menu {
+    display: inline-flex;
+  }
+}
+
 @media (max-width: 600px) {
   .nav-top {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav-top-name,
+  .nav-top-availability {
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav-top-menu {
+    order: 3;
+    width: 100%;
+    justify-content: center;
   }
 
   .nav-top-availability {
-    align-items: flex-start;
+    align-items: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-top-contact {
+    display: none;
   }
 }
