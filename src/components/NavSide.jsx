@@ -68,6 +68,11 @@ function NavSide({
             Reset
           </button>
         </li>
+        <li className="nav-side-item nav-side-item--resume">
+          <button className="nav-side-title" onClick={handleResume}>
+            Resume
+          </button>
+        </li>
       </ul>
     </nav>
   );
