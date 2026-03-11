@@ -86,6 +86,36 @@
   min-width: 0;
 }
 
+.hero-level-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 0.125rem solid var(--border);
+  background: var(--surface);
+  width: 100%;
+  max-height: 110px;
+}
+
+.hero-level-pill-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--success);
+  border: 0.125rem solid var(--success);
+  border-radius: 999rem;
+  padding: 0.2rem 0.85rem;
+  background: var(--surface-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-progress--pill {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0;
+}
+
 .render-window {
   flex: 1;
   min-height: 0;
@@ -163,6 +193,7 @@
   .nav-drawer-contacts {
     display: block;
     padding: 0 1rem 1rem;
+    margin-top: 0.75rem;
   }
 
   .nav-drawer-contact-list {
@@ -202,6 +233,7 @@
   .explorer-character {
     grid-template-columns: 1fr;
     gap: 1rem;
+    flex: 0 0 auto;
   }
 
   .explorer-character > :nth-child(3) {

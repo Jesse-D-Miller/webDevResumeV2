@@ -10,7 +10,9 @@ import experienceData from "../data/expandedExperience.json";
 import mapImage from "../assets/resumeMap.png";
 import { reloadPage } from "../utils/reloadPage";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useXP } from "../hooks/useXP";
+import levelThresholds from "../data/levelThresholds";
 
 const STORAGE_KEY = "project-build-states";
 const XP_STATE_KEY = "xp-state";
@@ -68,6 +70,8 @@ function Explorer({
   });
   const [theme, setTheme] = useState("default");
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isProjectsCompact, setIsProjectsCompact] = useState(false);
+  const { clickedIds, xp } = useXP();
   const isBuildStateControlled = buildStatesProp !== undefined;
   const activePage = activePageProp ?? activePageState;
   const setActivePage = setActivePageProp ?? setActivePageState;
@@ -133,6 +137,69 @@ function Explorer({
   }
 
   const githubLanguageSet = new Set(githubLanguages);
+  const displayLevel = useMemo(() => {
+    const cumulative = levelThresholds.reduce((acc, threshold) => {
+      const lastValue = acc.length > 0 ? acc[acc.length - 1] : 0;
+      acc.push(lastValue + threshold);
+      return acc;
+    }, []);
+    const maxTotal = cumulative[cumulative.length - 1] || 0;
+    const safeXp = Math.min(xp, maxTotal);
+    const index = cumulative.findIndex((threshold) => safeXp < threshold);
+    return index === -1 ? 99 : index + 1;
+  }, [xp]);
+  const hideHero =
+    isProjectsCompact &&
+    [
+      "Projects",
+      "Experience",
+      "ProgrammingLevels",
+      "Map",
+      "Stats",
+      "About",
+    ].includes(activePage);
+  const progressSections = useMemo(() => {
+    const explorerEducationNodes = (data.mapNodes?.education || []).filter(
+      (node) => node.showInExplorer !== false
+    );
+    const mapNodes = [
+      ...explorerEducationNodes,
+      ...(data.mapNodes?.career || []),
+      ...(data.mapNodes?.skills || []),
+    ];
+
+    const countCompleted = (ids) =>
+      ids.reduce((count, id) => count + (clickedIds.has(id) ? 1 : 0), 0);
+
+    const projectIds = [...visibleProjectIds].map(
+      (projectId) => `project-build-${projectId}`
+    );
+    const experienceIds = experienceData.experience.map(
+      (experience) => `experience-build-${experience.id}`
+    );
+    const levelIds = [
+      ...explorerEducation.map((edu) => `education-build-${edu.id}`),
+      "github-api-install",
+    ];
+    const mapIds = mapNodes.map((node) => `map-node-${node.id}`);
+    const statsIds = ["stats-enhance-api"];
+    const aboutIds = (data.hobbies || []).map(
+      (hobby) => `hobby-open-${hobby.name}`
+    );
+
+    return [
+      { label: "Projects", ids: projectIds },
+      { label: "Experience", ids: experienceIds },
+      { label: "Levels", ids: levelIds },
+      { label: "Map", ids: mapIds },
+      { label: "Stats", ids: statsIds },
+      { label: "About", ids: aboutIds },
+    ].map((section) => ({
+      ...section,
+      completed: countCompleted(section.ids),
+      total: section.ids.length,
+    }));
+  }, [clickedIds]);
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem(THEME_KEY) || "default";
@@ -166,6 +233,20 @@ function Explorer({
   useEffect(() => {
     const image = new Image();
     image.src = mapImage;
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 600px)");
+    const handleChange = (event) => {
+      setIsProjectsCompact(event.matches);
+    };
+
+    setIsProjectsCompact(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
   }, []);
 
   const startBuild = (projectId) => {
@@ -296,12 +377,52 @@ function Explorer({
           </div>
         </div>
         <div className="explorer-character">
-          <PixelHero xpBarState={xpBarState} setXpBarState={setXpBarState} />
-          <Gear />
-          <SkillsPills
-            activeSkills={activeSkills}
-            highlightedSkills={githubLanguageSet}
-          />
+          {!hideHero && (
+            <PixelHero xpBarState={xpBarState} setXpBarState={setXpBarState} />
+          )}
+          {hideHero && (
+            <div className="hero-level-pill" role="status">
+              <span className="hero-level-pill-text">
+                lvl {displayLevel}
+              </span>
+              <div className="hero-progress hero-progress--pill">
+                {progressSections.map((section) => (
+                  <div key={section.label} className="hero-progress-row">
+                    <span
+                      className="hero-progress-label"
+                      data-short={
+                        section.label === "Projects"
+                          ? "Proj."
+                          : section.label === "Experience"
+                            ? "Exp."
+                            : section.label === "Levels"
+                              ? "Lvls"
+                              : section.label
+                      }
+                      data-full={section.label}
+                    >
+                      {section.label}
+                    </span>
+                    <span className="hero-progress-value">
+                      {section.completed}/{section.total}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {!hideHero && <Gear />}
+          {!(
+            isProjectsCompact &&
+            (activePage === "Map" ||
+              activePage === "Stats" ||
+              activePage === "About")
+          ) && (
+            <SkillsPills
+              activeSkills={activeSkills}
+              highlightedSkills={githubLanguageSet}
+            />
+          )}
         </div>
         <RenderWindow
           activePage={activePage}

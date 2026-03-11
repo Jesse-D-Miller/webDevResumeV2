@@ -66,8 +66,9 @@
   }
 
   .nav-side-list {
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-flow: row;
     min-height: 0;
     gap: 0.75rem;
   }
@@ -80,10 +81,15 @@
     font-size: 1.1rem;
     padding: 0.4rem 0.6rem;
   }
+
+  .nav-side-spacer {
+    grid-column: 1 / -1;
+    height: 0.5rem;
+  }
 }
 
 @media (max-width: 600px) {
   .nav-side-list {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }

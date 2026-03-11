@@ -49,6 +49,7 @@ function NavSide({
         <li className="nav-side-item">
           <button className="nav-side-title" onClick={() => handleSelectPage("About")}>About</button>
         </li>
+        <li className="nav-side-spacer" aria-hidden="true" />
         <li className="nav-side-item nav-side-item--utility">
           <button
             className="nav-side-title nav-side-title--mode"
@@ -65,14 +66,6 @@ function NavSide({
             type="button"
           >
             Reset
-          </button>
-        </li>
-        <li className="nav-side-item nav-side-item--resume">
-          <button
-            className="nav-side-title"
-            onClick={handleResume}
-          >
-            Resume
           </button>
         </li>
       </ul>
