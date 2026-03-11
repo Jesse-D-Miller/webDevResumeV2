@@ -48,6 +48,14 @@
 	}
 }
 
+@media (max-width: 1024px) {
+	.programming-levels-item--stats {
+		min-height: 390px;
+		min-width: 300px;
+		width: clamp(300px, 100%, 100%);
+	}
+}
+
 .programming-levels-item--stats .programming-levels-education {
 	align-self: flex-start;
 	text-align: left;
