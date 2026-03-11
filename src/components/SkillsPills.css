@@ -19,8 +19,17 @@
   overflow: visible;
 }
 
+@media (min-width: 1024px) {
+  .skills-pills {
+    padding-left: 0;
+    padding-right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
 .skills-pills-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.05rem, 1.2vw + 0.7rem, 1.4rem);
   font-weight: 700;
   color: var(--text);
   margin: 0;
@@ -30,19 +39,19 @@
 .skills-pills-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: clamp(0.25rem, 0.7vw, 0.45rem);
   justify-content: center;
   border-top: 0.125rem solid var(--border);
-  padding-top: 1rem;
+  padding-top: clamp(0.5rem, 1vw, 0.85rem);
 }
 
 .skills-pills-pill {
   background: var(--surface-2);
   border: 0.125rem solid var(--border);
   border-radius: 999rem;
-  padding: 0.025rem 0.35rem;
+  padding: clamp(0.04rem, 0.18vw, 0.18rem) clamp(0.26rem, 0.55vw, 0.4rem);
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: clamp(0.76rem, 0.6vw + 0.5rem, 0.9rem);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +103,32 @@
 
 @media (max-width: 900px) {
   .skills-pills {
+    padding: 0 0.9rem 0.9rem 0.9rem;
+  }
+
+  .skills-pills-list {
+    gap: 0.35rem;
+    padding-top: 0.65rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1400px) {
+  .skills-pills {
     padding: 0 1rem 1rem 1rem;
+  }
+
+  .skills-pills-title {
+    font-size: 1.1rem;
+  }
+
+  .skills-pills-list {
+    gap: 0.3rem;
+    padding-top: 0.6rem;
+  }
+
+  .skills-pills-pill {
+    font-size: 0.82rem;
+    padding: 0.08rem 0.32rem;
   }
 }
 
@@ -104,8 +138,10 @@
     max-height: 225px;
     flex-direction: row;
     align-items: center;
-    padding: 0.75rem 1rem;
-    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    gap: 0.6rem;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .skills-pills-title {
@@ -113,7 +149,7 @@
     transform: rotate(180deg);
     margin: 0;
     padding: 0;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.2vw + 0.4rem, 1.1rem);
     letter-spacing: 0.12em;
   }
 
@@ -127,10 +163,21 @@
 
 @media (max-width: 600px) {
   .skills-pills-title {
-    font-size: 1.3rem;
+    font-size: 0.95rem;
   }
 
   .skills-pills-pill {
-    font-size: 0.9rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-pills {
+    padding: 0.5rem 0.7rem;
+    gap: 0.5rem;
+  }
+
+  .skills-pills-list {
+    gap: 0.3rem;
   }
 }

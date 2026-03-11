@@ -30,52 +30,48 @@
   width: 100%;
 }
 
-.xp-bar {
+.level-bar {
   position: relative;
-  flex: 1;
+  width: 100%;
   height: 2rem;
-  border: 0.125rem solid var(--border);
+  border: 0.125rem solid var(--success);
   border-radius: 999rem;
   background: var(--surface-2);
   overflow: hidden;
 }
 
-.xp-bar::after {
+.level-bar::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   top: 15%;
   bottom: 15%;
-  background-image: repeating-linear-gradient(
-    to right,
-    var(--border) 0,
-    var(--border) 1px,
-    transparent 1px,
-    transparent calc(100% / var(--xp-units))
-  );
+  background-image: none;
   clip-path: inset(0 calc(100% / var(--xp-units)));
   pointer-events: none;
   z-index: 2;
 }
 
-.xp-bar-fill {
+.level-bar-fill {
   position: absolute;
-  inset: 0;
+  inset: -0.0625rem;
   width: 0;
-  background: var(--success);
+  background: #16a34a;
+  border: 0.125rem solid var(--success);
+  border-radius: 999rem;
   transition: width 0.4s ease-in-out;
   z-index: 0;
 }
 
-.xp-bar--max {
+.level-bar--max {
   background: rgba(74, 222, 128, 0.15);
   border-color: #14532d;
   box-shadow: 0 0 0.4rem rgba(20, 83, 45, 0.45), inset 0 0 0.4rem rgba(20, 83, 45, 0.35);
   animation: xp-max-border-pulse 2000ms ease-in-out infinite;
 }
 
-.xp-bar-fill--max {
+.level-bar-fill--max {
   background: linear-gradient(
     90deg,
     rgba(74, 222, 128, 0.35) 0%,
@@ -86,7 +82,7 @@
   animation: xp-max-pulse 1800ms ease-in-out infinite;
 }
 
-.xp-bar-text {
+.level-bar-text {
   position: relative;
   z-index: 3;
   display: flex;
@@ -94,9 +90,9 @@
   justify-content: center;
   height: 100%;
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text);
+  color: var(--success);
   line-height: 1;
   text-shadow:
     -1px 0 #000000,
@@ -105,20 +101,11 @@
     0 1px #000000;
 }
 
-:root[data-theme='light'] .xp-bar-text {
-  color: #ffffff;
-}
-
-.hero-level {
-  font-weight: 700;
-  border: 0.125rem solid var(--success);
-  border-radius: 999rem;
-  padding: 0.125rem 2.75rem;
-  background: var(--surface-2);
+:root[data-theme='light'] .level-bar-text {
   color: var(--success);
 }
 
-.hero-level--flash {
+.level-bar--flash {
   animation: hero-level-flash 300ms ease-out;
 }
 
@@ -141,25 +128,27 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-level--flash {
+  .level-bar--flash {
     animation: none;
   }
 
-  .xp-bar-fill--max {
+  .level-bar-fill--max {
     animation: none;
   }
 
-  .xp-bar--max {
+  .level-bar--max {
     animation: none;
   }
 }
 
 .hero-sprite {
-  width: 256px;
-  height: 256px;
+  --hero-frame-size: 256px;
+  --hero-sheet-width: calc(var(--hero-frame-size) * 3);
+  width: var(--hero-frame-size);
+  height: var(--hero-frame-size);
   background-image: url("../assets/pixelHeroLevel1.png");
   background-repeat: no-repeat;
-  background-size: 768px 256px;
+  background-size: var(--hero-sheet-width) var(--hero-frame-size);
   image-rendering: pixelated;
 
   /* animation config */
@@ -223,7 +212,7 @@
 
 @keyframes hero-walk {
   from { background-position: 0 0; }
-  to { background-position: -768px 0; }
+  to { background-position: calc(var(--hero-sheet-width) * -1) 0; }
 }
 
 @keyframes xp-max-pulse {
@@ -250,16 +239,16 @@
 
 @media (max-width: 900px) {
   .hero-sprite {
-    width: 192px;
-    height: 192px;
-    background-size: 576px 192px;
-  }
-
-  .hero-level {
-    padding: 0.125rem 2rem;
+    --hero-frame-size: 192px;
   }
 
   .hero-progress-label {
+    font-size: 0;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-progress-label::after {
+    content: attr(data-short);
     font-size: 0.65rem;
     letter-spacing: 0.04em;
   }
@@ -271,14 +260,25 @@
   }
 }
 
+@media (min-width: 1025px) and (max-width: 1245px) {
+  .hero-progress {
+    gap: 0.25rem 0.5rem;
+    padding-bottom: 0.4rem;
+  }
+}
+
 @media (max-width: 600px) {
   .hero-sprite {
-    width: 144px;
-    height: 144px;
-    background-size: 432px 144px;
+    --hero-frame-size: 144px;
   }
 
   .hero-progress-label {
+    font-size: 0;
+    letter-spacing: 0.03em;
+  }
+
+  .hero-progress-label::after {
+    content: attr(data-short);
     font-size: 0.6rem;
     letter-spacing: 0.03em;
   }

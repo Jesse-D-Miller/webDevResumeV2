@@ -2,7 +2,6 @@ import "./PixelHero.css";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useXP } from "../hooks/useXP";
 import levelThresholds from "../data/levelThresholds";
-import heroSprite1 from "../assets/pixelHeroLevel1.png";
 import resumeData from "../data/resume.json";
 import experienceData from "../data/expandedExperience.json";
 
@@ -99,7 +98,6 @@ function PixelHero({ xpBarState, setXpBarState }) {
       xpIntoLevel: displayXpIntoLevel,
     };
   }, [displayLevel, displayXpIntoLevel]);
-
 
   useEffect(() => {
     if (typeof setXpBarState !== "function") {
@@ -209,28 +207,33 @@ function PixelHero({ xpBarState, setXpBarState }) {
     <div className="pixel-hero-card">
       <div className="pixel-hero-header">
         <div
-          className={isMaxLevel ? "xp-bar xp-bar--max" : "xp-bar"}
+          className={
+            isMaxLevel
+              ? `level-bar level-bar--max${isLevelFlash ? " level-bar--flash" : ""}`
+              : `level-bar${isLevelFlash ? " level-bar--flash" : ""}`
+          }
           role="progressbar"
-          aria-label="XP progress"
+          aria-label="Level progress"
           aria-valuemin={0}
           aria-valuemax={xpForLevel}
           aria-valuenow={isMaxLevel ? xpForLevel : xpIntoLevel}
           style={{ "--xp-units": xpForLevel }}
         >
           <span
-            className={isMaxLevel ? "xp-bar-fill xp-bar-fill--max" : "xp-bar-fill"}
+            className={
+              isMaxLevel
+                ? "level-bar-fill level-bar-fill--max"
+                : "level-bar-fill"
+            }
             style={{
               width: isMaxLevel ? "100%" : `${xpProgress}%`,
               transition: isBarResetting ? "none" : undefined,
             }}
           />
-          <span className="xp-bar-text">
-            {isMaxLevel ? "MAX" : `${xpIntoLevel}/${xpForLevel} XP`}
+          <span className="level-bar-text">
+            {isMaxLevel ? "MAX" : `lvl ${displayLevel}`}
           </span>
         </div>
-        <span className={`hero-level${isLevelFlash ? " hero-level--flash" : ""}`}>
-          lvl {displayLevel}
-        </span>
       </div>
       <div className="pixel-hero-body">
         <div className="hero-sprite" aria-hidden="true" />
