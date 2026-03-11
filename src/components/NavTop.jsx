@@ -1,12 +1,22 @@
 import "./NavTop.css";
 import data from "../data/resume.json";
 
-function NavTop() {
+function NavTop({ onToggleNav, isNavOpen }) {
   const { meta } = data;
   const { links } = meta;
 
   return (
     <header className="nav-top">
+      <button
+        className="nav-top-menu"
+        type="button"
+        onClick={onToggleNav}
+        aria-expanded={isNavOpen}
+        aria-controls="explorer-nav-drawer"
+      >
+        <span className="nav-top-menu-icon" aria-hidden="true" />
+        <span className="nav-top-menu-label">Menu</span>
+      </button>
       <div className="nav-top-name">
         <h1 className="nav-top-title">{meta.name}</h1>
         <p className="nav-top-location">{meta.location}</p>

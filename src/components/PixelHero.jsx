@@ -238,7 +238,21 @@ function PixelHero({ xpBarState, setXpBarState }) {
       <div className="hero-progress" aria-label="Section progress">
         {progressSections.map((section) => (
           <div key={section.label} className="hero-progress-row">
-            <span className="hero-progress-label">{section.label}</span>
+            <span
+              className="hero-progress-label"
+              data-short={
+                section.label === "Projects"
+                  ? "Proj."
+                  : section.label === "Experience"
+                    ? "Exp."
+                    : section.label === "Levels"
+                      ? "Lvls"
+                      : section.label
+              }
+              data-full={section.label}
+            >
+              {section.label}
+            </span>
             <span className="hero-progress-value">
               {section.completed}/{section.total}
             </span>

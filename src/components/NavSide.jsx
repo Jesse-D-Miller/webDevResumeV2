@@ -8,32 +8,46 @@ function NavSide({
   themeTotal,
   onToggleTheme,
   onResetApp,
+  onItemSelect,
 }) {
   const navigate = useNavigate();
+  const handleSelectPage = (page) => {
+    setActivePage(page);
+    if (typeof onItemSelect === "function") {
+      onItemSelect();
+    }
+  };
+
+  const handleResume = () => {
+    navigate("/resume");
+    if (typeof onItemSelect === "function") {
+      onItemSelect();
+    }
+  };
 
   return (
     <nav className="nav-side">
       <ul className="nav-side-list">
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("Summary")}>Summary</button>
+          <button className="nav-side-title" onClick={() => handleSelectPage("Summary")}>Summary</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("Projects")}>Projects</button>
+          <button className="nav-side-title" onClick={() => handleSelectPage("Projects")}>Projects</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("Experience")}>Experience</button>
+          <button className="nav-side-title" onClick={() => handleSelectPage("Experience")}>Experience</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("ProgrammingLevels")}>Levels</button>
+          <button className="nav-side-title" onClick={() => handleSelectPage("ProgrammingLevels")}>Levels</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("Map")}>Map</button>
+          <button className="nav-side-title" onClick={() => handleSelectPage("Map")}>Map</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("Stats")}>Statistics</button>
+          <button className="nav-side-title" onClick={() => handleSelectPage("Stats")}>Statistics</button>
         </li>
         <li className="nav-side-item">
-          <button className="nav-side-title" onClick={() => setActivePage("About")}>About</button>
+          <button className="nav-side-title" onClick={() => handleSelectPage("About")}>About</button>
         </li>
         <li className="nav-side-item nav-side-item--utility">
           <button
@@ -56,7 +70,7 @@ function NavSide({
         <li className="nav-side-item nav-side-item--resume">
           <button
             className="nav-side-title"
-            onClick={() => navigate("/resume")}
+            onClick={handleResume}
           >
             Resume
           </button>

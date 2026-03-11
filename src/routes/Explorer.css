@@ -59,6 +59,10 @@
   min-height: 0;
 }
 
+.explorer-navside-drawer {
+  display: none;
+}
+
 .explorer-character {
   display: flex;
   flex-direction: row;
@@ -97,6 +101,36 @@
     flex-direction: column;
     height: auto;
     min-height: 100vh;
+  }
+
+  .explorer-navside {
+    display: none;
+  }
+
+  .explorer-navside-drawer {
+    display: none;
+    border: 0.125rem solid var(--border);
+    background: var(--surface);
+  }
+
+  .explorer-navside-drawer.is-open {
+    display: block;
+  }
+
+  .explorer-navside-drawer .nav-side {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    border: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .explorer-navside-drawer .nav-side-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+    min-height: 0;
   }
 
   .explorer-character {

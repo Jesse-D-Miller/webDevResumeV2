@@ -67,6 +67,7 @@ function Explorer({
     ]);
   });
   const [theme, setTheme] = useState("default");
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const isBuildStateControlled = buildStatesProp !== undefined;
   const activePage = activePageProp ?? activePageState;
   const setActivePage = setActivePageProp ?? setActivePageState;
@@ -192,6 +193,14 @@ function Explorer({
     });
   };
 
+  const handleToggleNav = () => {
+    setIsNavOpen((prev) => !prev);
+  };
+
+  const handleCloseNav = () => {
+    setIsNavOpen(false);
+  };
+
   const handleResetApp = () => {
     const shouldReset = window.confirm(
       "Reset local progress and theme? This cannot be undone."
@@ -220,10 +229,26 @@ function Explorer({
           themeTotal={THEMES.length}
           onToggleTheme={handleToggleTheme}
           onResetApp={handleResetApp}
+          onItemSelect={handleCloseNav}
         />
       </div>
       <div className="explorer-main">
-        <NavTop />
+        <NavTop onToggleNav={handleToggleNav} isNavOpen={isNavOpen} />
+        <div
+          id="explorer-nav-drawer"
+          className={`explorer-navside-drawer ${isNavOpen ? "is-open" : ""}`}
+        >
+          <NavSide
+            activePage={activePage}
+            setActivePage={setActivePage}
+            theme={theme}
+            themeIndex={Math.max(0, THEMES.indexOf(theme)) + 1}
+            themeTotal={THEMES.length}
+            onToggleTheme={handleToggleTheme}
+            onResetApp={handleResetApp}
+            onItemSelect={handleCloseNav}
+          />
+        </div>
         <div className="explorer-character">
           <PixelHero xpBarState={xpBarState} setXpBarState={setXpBarState} />
           <Gear />
