@@ -200,7 +200,12 @@
   }
 
   .explorer-character {
+    grid-template-columns: 1fr;
     gap: 1rem;
+  }
+
+  .explorer-character > :nth-child(3) {
+    grid-column: auto;
   }
 }
 

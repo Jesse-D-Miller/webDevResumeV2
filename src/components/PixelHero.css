@@ -269,7 +269,7 @@
 
 @media (max-width: 600px) {
   .hero-sprite {
-    --hero-frame-size: 144px;
+    --hero-frame-size: 176px;
   }
 
   .hero-progress-label {
