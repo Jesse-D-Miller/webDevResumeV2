@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Resume.css";
 import resumeData from "../data/resume.json";
 
 function Resume() {
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(() => {
     document.documentElement.dataset.theme = "";
   }, []);
@@ -30,29 +31,57 @@ function Resume() {
     return acc;
   }, {});
 
+  const handleOpenPdf = () => {
+    window.open(
+      resumeData.meta.links.resumePdf,
+      "_blank",
+      "noopener,noreferrer"
+    );
+    setIsMenuOpen(false);
+  };
+
+  const handleExit = () => {
+    setIsMenuOpen(false);
+    navigate("/explorer");
+  };
+
 
   return (
     <div className="resume-page">
-      <button
-        className="resume-pdf"
-        type="button"
-        onClick={() =>
-          window.open(
-            resumeData.meta.links.resumePdf,
-            "_blank",
-            "noopener,noreferrer"
-          )
-        }
-      >
-        Resume PDF
-      </button>
-      <button
-        className="resume-exit"
-        type="button"
-        onClick={() => navigate("/explorer")}
-      >
-        Return to Explorer
-      </button>
+      <div className={`resume-actions ${isMenuOpen ? "is-open" : ""}`}>
+        <button
+          className="resume-actions-toggle"
+          type="button"
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-expanded={isMenuOpen}
+          aria-controls="resume-actions-drawer"
+        >
+          <span className="resume-actions-icon" aria-hidden="true" />
+          <span className="resume-actions-label">Menu</span>
+        </button>
+        <div
+          id="resume-actions-drawer"
+          className="resume-actions-drawer"
+          role="menu"
+        >
+          <button
+            className="resume-pdf"
+            type="button"
+            onClick={handleOpenPdf}
+            role="menuitem"
+          >
+            Resume PDF
+          </button>
+          <button
+            className="resume-exit"
+            type="button"
+            onClick={handleExit}
+            role="menuitem"
+          >
+            Return to Explorer
+          </button>
+        </div>
+      </div>
       <div className="resume-front">
         <header className="resume-header">
           <h1>{resumeData.meta.name}</h1>

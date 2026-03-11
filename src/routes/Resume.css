@@ -16,10 +16,45 @@
   position: relative;
 }
 
-.resume-exit {
+.resume-actions {
   position: fixed;
   left: 1rem;
   bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.resume-actions-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  border: 0.125rem solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.85rem;
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resume-actions-icon {
+  display: inline-block;
+  width: 1.3rem;
+  height: 0.15rem;
+  background: var(--text);
+  border-radius: 999rem;
+  box-shadow: 0 0.35rem 0 var(--text), 0 -0.35rem 0 var(--text);
+}
+
+.resume-actions-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resume-exit {
   width: 12.5rem;
   border: 0.125rem solid var(--border);
   border-radius: 0.25rem;
@@ -31,9 +66,6 @@
 }
 
 .resume-pdf {
-  position: fixed;
-  left: 1rem;
-  bottom: 4.5rem;
   width: 12.5rem;
   border: 0.125rem solid var(--border);
   border-radius: 0.25rem;
@@ -210,6 +242,39 @@
   gap: 0;
 }
 
+@media (max-width: 1200px) {
+  .resume-actions {
+    left: 1rem;
+    top: 1rem;
+    bottom: auto;
+  }
+
+  .resume-actions-toggle {
+    display: inline-flex;
+  }
+
+  .resume-actions-drawer {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    padding: 0.75rem;
+    background: var(--surface);
+    border: 0.125rem solid var(--border);
+    border-radius: 0.5rem;
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
+    opacity: 0;
+    transform: translateY(-0.35rem);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+
+  .resume-actions.is-open .resume-actions-drawer {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
 @media (max-width: 1100px) {
   .resume-page {
     align-items: flex-start;
@@ -230,13 +295,9 @@
 }
 
 @media (max-width: 900px) {
-  .resume-exit,
-  .resume-pdf {
-    position: static;
-    width: 100%;
-    max-width: 18rem;
-    margin: 0 auto;
-    text-align: center;
+  .resume-actions-drawer .resume-exit,
+  .resume-actions-drawer .resume-pdf {
+    width: min(100%, 16rem);
   }
 }
 
