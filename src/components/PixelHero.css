@@ -260,6 +260,42 @@
   }
 }
 
+@media (min-width: 1025px) {
+  .pixel-hero-card {
+    padding: 0.6rem;
+  }
+
+  .level-bar {
+    height: 1.75rem;
+  }
+
+  .level-bar-text {
+    font-size: 0.95rem;
+  }
+
+  .hero-sprite {
+    --hero-frame-size: 220px;
+  }
+
+  .hero-progress {
+    gap: 0.5rem 0.4rem;
+  }
+
+  .hero-progress-label {
+    font-size: 0;
+  }
+
+  .hero-progress-label::after {
+    content: attr(data-short);
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-progress-value {
+    font-size: 0.68rem;
+  }
+}
+
 @media (min-width: 1025px) and (max-width: 1245px) {
   .hero-progress {
     gap: 0.25rem 0.5rem;

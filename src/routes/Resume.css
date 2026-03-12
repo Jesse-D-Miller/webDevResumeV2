@@ -96,6 +96,13 @@
   flex-shrink: 0;
 }
 
+@media (max-width: 600px) {
+  .resume-page {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+}
+
 .resume-header {
   text-align: center;
   border-bottom: 2px solid var(--color-ink);
