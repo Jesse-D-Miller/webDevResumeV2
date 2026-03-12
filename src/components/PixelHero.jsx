@@ -181,6 +181,51 @@ function PixelHero({ xpBarState, setXpBarState }) {
       scheduleFullLevel(level, startXp);
     };
 
+    const targetLevel = getLevelFromXp(safeTargetXp);
+    if (targetLevel - displayRef.current.level > 1) {
+      const currentLevel = displayRef.current.level;
+      const currentXp = displayRef.current.xpIntoLevel;
+      const currentThresholds = getThresholdsForLevel(currentLevel);
+      const currentXpForLevel = Math.max(
+        1,
+        currentThresholds.nextThreshold - currentThresholds.prevThreshold
+      );
+      const { prevThreshold, nextThreshold } = getThresholdsForLevel(
+        targetLevel
+      );
+      const xpIntoTargetLevel = Math.max(0, safeTargetXp - prevThreshold);
+      const targetXpForLevel = Math.max(1, nextThreshold - prevThreshold);
+      const clampedXp = Math.min(xpIntoTargetLevel, targetXpForLevel);
+
+      setDisplayLevel(currentLevel);
+      setDisplayXpIntoLevel(Math.min(currentXp, currentXpForLevel));
+
+      const fillCurrentTimeoutId = window.setTimeout(() => {
+        setDisplayXpIntoLevel(currentXpForLevel);
+      }, 0);
+      timeoutsRef.current.push(fillCurrentTimeoutId);
+
+      const flashStartTimeoutId = window.setTimeout(() => {
+        setIsLevelFlash(true);
+      }, fillDurationMs);
+      timeoutsRef.current.push(flashStartTimeoutId);
+
+      const flashEndTimeoutId = window.setTimeout(() => {
+        setIsLevelFlash(false);
+        setIsBarResetting(true);
+        setDisplayLevel(targetLevel);
+        setDisplayXpIntoLevel(0);
+
+        const resetTimeoutId = window.setTimeout(() => {
+          setIsBarResetting(false);
+          setDisplayXpIntoLevel(clampedXp);
+        }, resetDelayMs);
+        timeoutsRef.current.push(resetTimeoutId);
+      }, fillDurationMs + flashDurationMs);
+      timeoutsRef.current.push(flashEndTimeoutId);
+      return;
+    }
+
     advance(displayRef.current.level, displayRef.current.xpIntoLevel);
 
     return () => {
