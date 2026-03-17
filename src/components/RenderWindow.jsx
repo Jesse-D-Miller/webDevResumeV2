@@ -24,6 +24,7 @@ function RenderWindow({
     <div className="render-window">
       <div className="render-window-body">
         <div className="render-window-content">
+          {/* Keyed remount clears transient UI state when switching pages. */}
           <div key={activePage} className="render-window-panel">
             {activePage === "Summary" && <Summary />}
             {activePage === "About" && <About />}

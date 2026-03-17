@@ -11,6 +11,7 @@ function NavSide({
   onItemSelect,
 }) {
   const navigate = useNavigate();
+  // One handler centralizes menu-close side effects after any selection.
   const handleSelectPage = (page) => {
     setActivePage(page);
     if (typeof onItemSelect === "function") {

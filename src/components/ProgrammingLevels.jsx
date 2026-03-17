@@ -14,6 +14,7 @@ function ProgrammingLevels({
   languageStatsState,
   setLanguageStatsState,
 }) {
+  // Explorer only includes education entries marked for the interactive route.
   const explorerEducation = useMemo(
     () => data.education.filter((edu) => edu.showInExplorer !== false),
     []
@@ -44,6 +45,7 @@ function ProgrammingLevels({
   const githubToken = import.meta.env.VITE_GITHUB_TOKEN || null;
 
   const handleInstallApi = () => {
+    // Installing API is a gameplay gate plus state flag for stats UI unlock.
     const xpId = "github-api-install";
     if (!hasClicked(xpId)) {
         grantXp(xpId, 27, "Installed GitHub API");
@@ -139,6 +141,7 @@ function ProgrammingLevels({
 
 
   useEffect(() => {
+    // Fetching runs once per user/token context and writes status transitions.
     if (!githubUsername || typeof fetch !== "function") {
       return;
     }
@@ -214,6 +217,7 @@ function ProgrammingLevels({
   }, [isApiInstalled, statsStatus, languageStats, onLanguageStatsReady]);
 
   useEffect(() => {
+    // Animate percentages only when both education and API gate are complete.
     const canAnimate = isEducationBuilt && isApiInstalled && statsStatus === "ready";
     setAnimateBars(canAnimate);
   }, [isEducationBuilt, isApiInstalled, statsStatus]);

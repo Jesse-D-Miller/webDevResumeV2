@@ -7,6 +7,7 @@ function Resume() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(() => {
+    // Resume route always uses base theme for print/readability consistency.
     document.documentElement.dataset.theme = "";
   }, []);
   const getProjectNumber = (id) => {
@@ -14,6 +15,7 @@ function Resume() {
     return match ? Number.parseInt(match[0], 10) : 0;
   };
 
+  // Resume view is intentionally concise, so only the top 3 projects are shown.
   const topProjects = [...resumeData.projects]
     .sort((a, b) => getProjectNumber(b.id) - getProjectNumber(a.id))
     .slice(0, 3);
@@ -25,6 +27,7 @@ function Resume() {
     (skill) => skill.category === "Soft Skills"
   );
 
+  // Group by category once so render stays simple and semantic.
   const groupedTechnical = technicalSkills.reduce((acc, skill) => {
     if (!acc[skill.category]) acc[skill.category] = [];
     acc[skill.category].push(skill.name);

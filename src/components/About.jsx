@@ -4,6 +4,7 @@ import data from "../data/resume.json";
 import { useXP } from "../hooks/useXP";
 
 function About() {
+  // Keep input data defensive so malformed JSON does not crash this panel.
   const hobbies = Array.isArray(data.hobbies) ? data.hobbies : [];
   const defaultHobby =
     hobbies.find((hobby) => hobby.name === "Board Games") || hobbies[0];
@@ -16,6 +17,7 @@ function About() {
   const isCooking = selectedHobby?.name === "Cooking";
 
   useEffect(() => {
+    // First visible hobby grants XP once to reward discovering this page.
     if (!defaultHobby?.name) return;
     grantXp(`hobby-open-${defaultHobby.name}`, 27);
   }, [defaultHobby?.name, grantXp]);

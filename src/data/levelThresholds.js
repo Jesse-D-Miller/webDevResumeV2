@@ -1,3 +1,4 @@
+// XP required per level step; components convert this into cumulative thresholds.
 const levelThresholds = [
   2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
   2, 2, 2, 3, 3, 3, 3, 3, 3, 3,

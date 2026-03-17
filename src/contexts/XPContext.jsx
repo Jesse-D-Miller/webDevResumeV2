@@ -9,6 +9,7 @@ const STATS_INTERACTION_XP = 28;
 const STORAGE_KEY = "xp-state";
 
 const getInitialXpState = () => {
+  // Single guarded parse point keeps storage failures from breaking first render.
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) {
@@ -40,6 +41,7 @@ export function XPProvider({ children }) {
   const initialXpState = useMemo(() => getInitialXpState(), []);
   const [xp, setXp] = useState(initialXpState.xp);
   const [clickedIds, setClickedIds] = useState(initialXpState.clickedIds);
+  // Ref mirrors clickedIds to avoid stale closure reads inside setState callbacks.
   const clickedIdsRef = useRef(new Set());
   const [heroMessage, setHeroMessage] = useState(initialXpState.heroMessage);
   const maxXp = 1000;
@@ -94,6 +96,7 @@ export function XPProvider({ children }) {
   }, []);
 
   const xpClickValues = useMemo(() => {
+    // Canonical lookup table for every interaction that can grant XP.
     return new Map([
       ["github-api-install", BASE_INTERACTION_XP],
       ["stats-enhance-api", STATS_INTERACTION_XP],
@@ -130,6 +133,7 @@ export function XPProvider({ children }) {
   }, [clickedIds]);
 
   useEffect(() => {
+    // Persist as JSON-safe primitives (Set -> array).
     const payload = {
       xp,
       clickedIds: Array.from(clickedIds),
@@ -140,6 +144,7 @@ export function XPProvider({ children }) {
 
   const grantXp = useCallback((id, amount = 1, message = "") => {
     setClickedIds((prev) => {
+      // Double guard prevents race conditions when rapid interactions fire.
       if (prev.has(id) || clickedIdsRef.current.has(id)) {
         return prev;
       }

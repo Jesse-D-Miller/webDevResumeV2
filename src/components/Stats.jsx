@@ -64,6 +64,7 @@ function Stats({
   githubStatsState,
   setGithubStatsState,
 }) {
+  // Parent owns this state so navigation does not reset fetched recruiter metrics.
   const { status, stats, error, isEnhanced } = githubStatsState;
   const [now, setNow] = useState(() => Date.now());
   const { grantXp, hasClicked } = useXP();
@@ -78,6 +79,7 @@ function Stats({
   const canAccessStats = languageStatsReady;
 
   const loadStats = async ({ ttlMs } = {}) => {
+    // Guarded load prevents unnecessary calls before programming levels unlock stats.
     if (!githubUsername || !canAccessStats || typeof fetch !== "function") {
       return;
     }
@@ -127,6 +129,7 @@ function Stats({
   }, [canAccessStats]);
 
   useEffect(() => {
+    // Refresh relative timestamps once per minute without refetching data.
     const intervalId = window.setInterval(() => {
       setNow(Date.now());
     }, 60000);

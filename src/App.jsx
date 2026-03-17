@@ -14,6 +14,7 @@ const XP_BAR_STORAGE_KEY = "xp-bar-state";
 function App() {
   const [activePage, setActivePage] = useState("Summary");
   const [xpBarState, setXpBarState] = useState(() => {
+    // Hydrate persisted XP bar UI state first so refreshes do not reset visible progress.
     try {
       const stored = localStorage.getItem(XP_BAR_STORAGE_KEY);
       const parsed = stored ? JSON.parse(stored) : null;
@@ -55,6 +56,7 @@ function App() {
     );
   }, []);
   const [buildStates, setBuildStates] = useState(() => {
+    // Build-state is normalized as an object map for O(1) reads by id.
     return Object.fromEntries([
       ...data.projects.map((project) => [project.id, "unbuilt"]),
       ...experienceData.experience.map((item) => [item.id, "unbuilt"]),
@@ -63,6 +65,7 @@ function App() {
   });
 
   useEffect(() => {
+    // Merge in persisted values so new content added to JSON still gets defaults.
     const stored = localStorage.getItem(STORAGE_KEY);
     if (!stored) return;
     const parsed = JSON.parse(stored);
@@ -74,6 +77,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+    // Persist all build transitions so progress survives reloads.
     localStorage.setItem(STORAGE_KEY, JSON.stringify(buildStates));
   }, [buildStates]);
 
@@ -82,6 +86,7 @@ function App() {
   }, [xpBarState]);
 
   return (
+    // XPProvider wraps the router so every route can award/read XP state.
     <XPProvider>
       <BrowserRouter>
         <Routes>

@@ -28,6 +28,7 @@ function Map() {
   );
 
   useEffect(() => {
+    // Seed lit nodes from persisted XP history.
     setLitNodeIds(
       new Set(
         mapNodes.filter((node) => hasClicked(`map-node-${node.id}`)).map((node) => node.id)
@@ -41,6 +42,7 @@ function Map() {
   };
 
   const activateNode = (node) => {
+    // Tooltip flips above/below cursor area to avoid clipping near map edges.
     const nodeElement = nodeRefs.current.get(node.id);
     const canvasElement = mapCanvasRef.current;
     if (nodeElement && canvasElement) {

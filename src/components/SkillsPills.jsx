@@ -10,6 +10,7 @@ function SkillsPills({ activeSkills = new Set(), highlightedSkills = new Set() }
     data.skills.map((skill) => [skill.name, skill])
   );
 
+  // Merge skills discovered from project payloads that may not exist in base skills list.
   data.projects.forEach((project) => {
     (project.skillsDetailed || []).forEach((skill) => {
       if (!skillsByName.has(skill.name)) {
@@ -45,6 +46,7 @@ function SkillsPills({ activeSkills = new Set(), highlightedSkills = new Set() }
   });
 
   const skills = Array.from(skillsByName.values()).sort((a, b) => {
+    // Soft skills are intentionally rendered after technical skill groups.
     const aSoft = a.category === "Soft Skills";
     const bSoft = b.category === "Soft Skills";
     if (aSoft === bSoft) {

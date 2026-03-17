@@ -9,6 +9,7 @@ function Gear() {
   const listRef = useRef(null);
   const itemRefs = useRef(new window.Map());
   const prevLevelRef = useRef(0);
+  // Vite static glob resolves icon URLs at build-time.
   const iconMap = import.meta.glob("../assets/gearIcons/*.png", {
     eager: true,
     import: "default",
@@ -23,6 +24,7 @@ function Gear() {
     return iconMap[key] || "";
   };
   const cumulativeThresholds = useMemo(() => {
+    // Convert per-level XP costs into cumulative breakpoints for quick lookups.
     return levelThresholds.reduce((acc, threshold) => {
       const lastValue = acc.length > 0 ? acc[acc.length - 1] : 0;
       acc.push(lastValue + threshold);
@@ -38,6 +40,7 @@ function Gear() {
   }, [cumulativeThresholds, xp]);
 
   useEffect(() => {
+    // On level-up, gently scroll toward the next locked item as progression hint.
     const prevLevel = prevLevelRef.current;
     if (currentLevel <= prevLevel) {
       prevLevelRef.current = currentLevel;

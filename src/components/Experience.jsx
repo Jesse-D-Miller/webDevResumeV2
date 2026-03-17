@@ -23,6 +23,7 @@ function Experience({ buildStates, startBuild }) {
   });
 
   useEffect(() => {
+    // XP is awarded only once when an item first reaches "built".
     Object.entries(buildStates).forEach(([experienceId, state]) => {
       if (!experienceIds.current.has(experienceId)) {
         return;
@@ -49,6 +50,7 @@ function Experience({ buildStates, startBuild }) {
   }, [buildStates, grantXp, hasClicked]);
 
   useEffect(() => {
+    // Progress percentages are UI-only and derived from elapsed wall-clock time.
     const buildingIds = Object.entries(buildStates)
       .filter(([, state]) => state === "building")
       .map(([id]) => id);
@@ -92,6 +94,7 @@ function Experience({ buildStates, startBuild }) {
   }, [buildStates]);
 
   const updateScrollState = () => {
+    // Scroll buttons are enabled/disabled from this derived boundary state.
     const node = scrollRef.current;
     if (!node) return;
     const maxScroll = Math.max(0, node.scrollWidth - node.clientWidth);

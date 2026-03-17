@@ -2,6 +2,7 @@ import "./NavTop.css";
 import data from "../data/resume.json";
 
 function NavTop({ onToggleNav, isNavOpen }) {
+  // Header content is data-driven from resume.json to avoid duplication.
   const { meta } = data;
   const { links } = meta;
 

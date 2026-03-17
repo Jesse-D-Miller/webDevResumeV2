@@ -3,6 +3,7 @@ import "./Welcome.css";
 import resumeData from "../data/resume.json";
 
 function Welcome() {
+  // Route-level navigation keeps this page lightweight and declarative.
   const navigate = useNavigate();
 
   return (

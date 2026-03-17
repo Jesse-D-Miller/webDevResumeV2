@@ -42,6 +42,7 @@ function Explorer({
   buildStates: buildStatesProp,
   setBuildStates: setBuildStatesProp,
 }) {
+  // Local fallback state lets this route run standalone in tests/story-like setups.
   const [activePageState, setActivePageState] = useState("Summary");
   const [xpBarStateState, setXpBarStateState] = useState({
     displayLevel: 1,
@@ -72,6 +73,7 @@ function Explorer({
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isProjectsCompact, setIsProjectsCompact] = useState(false);
   const { clickedIds, xp } = useXP();
+  // Controlled/uncontrolled bridge: parent can own state, or route can self-manage.
   const isBuildStateControlled = buildStatesProp !== undefined;
   const activePage = activePageProp ?? activePageState;
   const setActivePage = setActivePageProp ?? setActivePageState;
@@ -104,7 +106,7 @@ function Explorer({
       .map((project) => project.id)
   );
 
-  //build a Set of skill names from projects + experience + education that are "built"
+  // Build a live skills inventory from whatever the user has unlocked.
   const activeSkills = new Set(
     Object.entries(buildStates)
       .filter(([, state]) => state === "built")
@@ -159,6 +161,7 @@ function Explorer({
       "About",
     ].includes(activePage);
   const progressSections = useMemo(() => {
+    // Progress rows are derived from XP ids so UI stays aligned with award logic.
     const explorerEducationNodes = (data.mapNodes?.education || []).filter(
       (node) => node.showInExplorer !== false
     );
@@ -202,6 +205,7 @@ function Explorer({
   }, [clickedIds]);
 
   useEffect(() => {
+    // Theme is global, so this route syncs both state and document dataset.
     const storedTheme = window.localStorage.getItem(THEME_KEY) || "default";
     const nextTheme = THEMES.includes(storedTheme) ? storedTheme : "default";
     document.documentElement.dataset.theme =
@@ -250,6 +254,7 @@ function Explorer({
   }, []);
 
   const startBuild = (projectId) => {
+    // Build flow is intentionally two-phase: "building" for animation, then "built".
     setBuildStates((prev) => {
       if (prev[projectId] !== "unbuilt") return prev; // Prevent rebuilding if already building/built
       return { ...prev, [projectId]: "building" };

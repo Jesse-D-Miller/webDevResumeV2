@@ -22,6 +22,7 @@ function PixelHero({ xpBarState, setXpBarState }) {
   const resetDelayMs = 120;
 
   const cumulativeThresholds = useMemo(() => {
+    // Convert incremental level costs into cumulative XP checkpoints.
     return levelThresholds.reduce((acc, threshold) => {
       const lastValue = acc.length > 0 ? acc[acc.length - 1] : 0;
       acc.push(lastValue + threshold);
@@ -100,6 +101,7 @@ function PixelHero({ xpBarState, setXpBarState }) {
   }, [displayLevel, displayXpIntoLevel]);
 
   useEffect(() => {
+    // Persist display state separately so bar animation can resume after refresh.
     if (typeof setXpBarState !== "function") {
       return;
     }
@@ -111,6 +113,7 @@ function PixelHero({ xpBarState, setXpBarState }) {
   }, [displayLevel, displayXpIntoLevel, setXpBarState]);
 
   useEffect(() => {
+    // Clear queued animations before scheduling a new XP transition sequence.
     timeoutsRef.current.forEach((timeoutId) => window.clearTimeout(timeoutId));
     timeoutsRef.current = [];
 
@@ -133,6 +136,7 @@ function PixelHero({ xpBarState, setXpBarState }) {
     }
 
     const scheduleFullLevel = (level, startXp) => {
+      // Full-level sequence: fill bar -> flash level-up -> reset next level.
       const { prevThreshold, nextThreshold } = getThresholdsForLevel(level);
       const xpForLevel = Math.max(1, nextThreshold - prevThreshold);
       const clampedStart = Math.min(startXp, xpForLevel);

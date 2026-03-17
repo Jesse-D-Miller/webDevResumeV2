@@ -24,6 +24,7 @@ function Projects({ buildStates, startBuild }) {
   });
 
   useEffect(() => {
+    // XP grant happens on transition to built, never on repeated renders.
     Object.entries(buildStates).forEach(([projectId, state]) => {
       if (!projectIds.current.has(projectId)) {
         return;
@@ -48,6 +49,7 @@ function Projects({ buildStates, startBuild }) {
   }, [buildStates, grantXp, hasClicked]);
 
   useEffect(() => {
+    // Building progress is synthesized from elapsed time for consistent UX.
     const buildingIds = Object.entries(buildStates)
       .filter(([, state]) => state === "building")
       .map(([id]) => id);
@@ -155,6 +157,7 @@ function Projects({ buildStates, startBuild }) {
         tabIndex={0}
       >
         {[...data.projects]
+          // Newer numbered projects are prioritized in the explorer carousel.
           .sort((a, b) => {
             const aId = Number(String(a.id || "").replace(/\D/g, "")) || 0;
             const bId = Number(String(b.id || "").replace(/\D/g, "")) || 0;

@@ -6,6 +6,7 @@ const DEFAULT_CONCURRENCY = 6;
 const DEFAULT_EVENTS_PER_PAGE = 100;
 const DEFAULT_EVENTS_PAGES = 3;
 
+// Cache keys are split by feature so language and recruiter stats can expire independently.
 const getCacheKey = (username) => `${CACHE_PREFIX}:${username}`;
 const getStatsCacheKey = (username) => `${STATS_CACHE_PREFIX}:${username}`;
 
@@ -82,6 +83,7 @@ const fetchAllRepos = async ({ username, token, perPage, includePrivate }) => {
   const usePrivateEndpoint = Boolean(token && includePrivate);
 
   while (hasMore) {
+    // Authenticated users can hit /user/repos to include private repository metadata.
     const url = usePrivateEndpoint
       ? `https://api.github.com/user/repos?per_page=${perPage}&page=${page}&visibility=all&affiliation=owner,collaborator,organization_member`
       : `https://api.github.com/users/${username}/repos?per_page=${perPage}&page=${page}`;
@@ -135,6 +137,7 @@ const fetchRepoCommitCount = async ({ repo, token }) => {
 };
 
 const withConcurrency = async (items, limit, handler) => {
+  // Worker pool limits parallel requests to reduce API bursts/rate-limit risk.
   const results = [];
   let index = 0;
 
@@ -228,6 +231,7 @@ const buildWeekKey = (date) => {
 };
 
 const summarizeEvents = (events) => {
+  // Aggregate event telemetry into recruiter-friendly indicators.
   const stats = {
     commitsPushed: 0,
     pushEventsCount: 0,
@@ -430,6 +434,7 @@ export const fetchRecruiterStats = async ({
   }
 
   const [user, repos, events] = await Promise.all([
+    // Fetch profile, repository inventory, and recent activity in parallel.
     fetchUserProfile({ username, token }),
     fetchAllRepos({ username, token, perPage, includePrivate }),
     fetchUserEvents({
