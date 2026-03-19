@@ -188,5 +188,7 @@
 @media print {
   .nav-top-menu {
     display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
   }
 }
