@@ -93,3 +93,10 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media print {
+  .nav-side {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}

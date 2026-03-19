@@ -316,6 +316,11 @@
     display: none;
   }
 
+  .resume-actions-toggle,
+  .resume-actions-icon,
+  .resume-actions-label {
+    display: none !important;
+  }
 
   .resume-front {
     box-shadow: none;
