@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Resume.css";
 import resumeData from "../data/resume.json";
+import expandedExperience from "../data/expandedExperience.json";
 
 function Resume() {
   const navigate = useNavigate();
@@ -179,9 +180,9 @@ function Resume() {
 
             <section className="resume-right-section">
               <h3>Experience</h3>
-              {resumeData.experience.map((job) => (
+              {expandedExperience.experience.map((job) => (
                 <div key={job.id} className="experience-item">
-                  <h4>{job.company} | {job.role}</h4>
+                  <h4>{job.company} — {job.role}</h4>
                   <p className="company-period">{job.period}</p>
                   <ul>
                     {job.bullets.map((bullet) => (

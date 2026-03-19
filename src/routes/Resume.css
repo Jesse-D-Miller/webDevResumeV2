@@ -220,14 +220,14 @@
 
 .resume-right-header {
   border-bottom: 2px solid var(--color-ink);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   padding-bottom: 0.3rem;
   flex-shrink: 0;
 }
 
 .resume-right-header h1 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: var(--color-ink);
   line-height: 1;
@@ -235,19 +235,20 @@
 
 .resume-right-title {
   margin: 0.15rem 0 0 0;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   color: var(--color-ink-light);
   font-weight: 500;
 }
 
 .resume-right-section {
   flex-shrink: 0;
+  margin-bottom: 0.4rem;
 }
 
 .resume-right-col h3 {
   text-align: start;
   margin: 0.35rem 0 0.15rem 0;
-  font-size: 0.78rem;
+  font-size: 0.9rem;
   font-weight: 850;
   color: var(--color-ink-blue);
   text-transform: uppercase;
@@ -258,7 +259,7 @@
 
 .resume-right-col h4 {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--color-ink);
 }
@@ -279,7 +280,7 @@
 .resume-right-col .tech-stack,
 .resume-right-col .company-period,
 .resume-right-col .program-period {
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   color: var(--color-ink-light);
   font-style: italic;
   margin: 0;
@@ -289,7 +290,7 @@
   margin: 0 0 0.15rem 0;
   line-height: 1.3;
   color: var(--color-ink);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
 }
 
@@ -302,7 +303,7 @@
   margin-bottom: 0;
   line-height: 1.2;
   color: var(--color-ink);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 500;
 }
 
