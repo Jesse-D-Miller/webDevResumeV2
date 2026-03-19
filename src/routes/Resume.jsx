@@ -156,23 +156,33 @@ function Resume() {
               {topProjects.map((project) => {
                 const liveUrl = project.links?.live;
                 const codeUrl = project.links?.code;
-                const projectUrl = liveUrl || codeUrl;
-                const projectLabel = liveUrl ? "LIVE" : "CODE";
+                const videoUrl = project.links?.video;
+                const projectLinks = [
+                  liveUrl ? { label: "LIVE", href: liveUrl } : null,
+                  codeUrl ? { label: "GITHUB", href: codeUrl } : null,
+                  videoUrl ? { label: "VIDEO", href: videoUrl } : null,
+                ].filter(Boolean);
+
                 return (
                   <div key={project.id} className="project-item">
                     <h4>
                       {project.title} — {project.subtitle}
-                      {projectUrl && (
+                      {projectLinks.length > 0 && (
                         <>
                           {" ("}
-                          <a
-                            className="project-link"
-                            href={projectUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {projectLabel}
-                          </a>
+                          {projectLinks.map((link, index) => (
+                            <span key={link.label}>
+                              {index > 0 && " | "}
+                              <a
+                                className="project-link"
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {link.label}
+                              </a>
+                            </span>
+                          ))}
                           {")"}
                         </>
                       )}

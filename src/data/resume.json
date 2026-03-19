@@ -172,9 +172,9 @@
         "video": "https://www.youtube.com/watch?v=2ZCcEtCO20I"
       },
       "highlights": [
-        "Rebuilt a second-gen resume with stronger UX, clearer navigation, and cleaner structure",
-        "Increased reliability with unit and end-to-end tests on core flows",
-        "Improved persistence, theming, and content organization for a smoother, production-ready experience"
+        "Rebuilt the app as a second-generation resume with clearer information architecture and UX focused on recruiter scanability",
+        "Raised production confidence by adding unit and end-to-end coverage across critical user journeys",
+        "Improved maintainability by refining persistence, theming architecture, and modular content organization"
       ],
       "skills": [
         "React",
@@ -422,8 +422,12 @@
       "program": "Full-Stack Web Development Bootcamp",
       "period": "March 2024",
       "details": [
-        "Completed intensive 12-week program covering full-stack JavaScript and Ruby on Rails",
-        "Built multiple production-ready web applications using React, Node.js, Express, and PostgreSQL"
+        "Completed an intensive 12-week full-stack program focused on modern web development",
+        "Built multiple full-stack applications using React, Node.js, Express, and PostgreSQL",
+        "Developed RESTful APIs, dynamic front-end interfaces, and database-driven features",
+        "Applied testing practices including unit, integration, and end-to-end testing (Mocha, Chai, Cypress)",
+        "Worked with Git-based workflows for version control and collaborative development",
+        "Emphasized responsive design, clean code practices, and maintainable architecture"
       ],
       "skills": [
         "Mocha",
