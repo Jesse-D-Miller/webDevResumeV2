@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "JESSE MILLER",
-    "title": "Full-Stack Developer",
+    "title": "Junior Full-Stack Developer | JavaScript, React, Node.js",
     "location": "Greater Vancouver Area",
     "availability": "Open to full-time",
     "links": {
@@ -11,7 +11,7 @@
       "resumePdf": "/Jesse_Miller_WebDeveloper_Resume.pdf"
     }
   },
-  "summary": "Junior full-stack developer with hands-on experience building responsive, database-driven web applications using React, Node.js, Express, Ruby on Rails, and PostgreSQL. Lighthouse Labs full-stack graduate with strong problem-solving skills, clean coding habits, and a focus on building intuitive user experiences. Brings proven leadership, calm decision-making, and reliability from several years as a BC Wildfire Crew Supervisor.",
+  "summary": "Junior Full-Stack Developer building production-ready web applications with JavaScript, React, Node.js, and PostgreSQL. Experienced in designing responsive UIs, developing RESTful APIs, and implementing real-time features using WebSockets. Focused on clean architecture, intuitive user experience, and application reliability through unit and end-to-end testing (Vitest, Playwright). Background as a BC Wildfire Crew Supervisor brings strong leadership, communication, and decision-making in high-pressure environments.",
   "skills": [
     {
       "name": "JavaScript",

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { MdEmail, MdLocationOn } from "react-icons/md";
 import "./Resume.css";
 import resumeData from "../data/resume.json";
 import expandedExperience from "../data/expandedExperience.json";
@@ -82,25 +84,33 @@ function Resume() {
 
           {/* LEFT COLUMN */}
           <aside className="resume-left-col">
-            <div className="resume-photo">
-              <img src="/resumeHeadshot.png" alt="Jesse Miller" className="resume-photo-img" />
+            <div className="resume-photo-wrapper">
+              <div className="resume-photo">
+                <img src="/resumeHeadshot.png" alt="Jesse Miller" className="resume-photo-img" />
+              </div>
             </div>
 
             <div className="resume-left-section">
               <h3>Contact</h3>
               <ul className="resume-left-links">
-                <li>{resumeData.meta.location}</li>
                 <li>
+                  <MdLocationOn className="contact-icon" aria-hidden="true" />
+                  <span>{resumeData.meta.location}</span>
+                </li>
+                <li>
+                  <MdEmail className="contact-icon" aria-hidden="true" />
                   <a href={`mailto:${resumeData.meta.links.email}`}>
                     {resumeData.meta.links.email}
                   </a>
                 </li>
                 <li>
+                  <FaGithub className="contact-icon" aria-hidden="true" />
                   <a href={resumeData.meta.links.github} target="_blank" rel="noopener noreferrer">
                     GitHub
                   </a>
                 </li>
                 <li>
+                  <FaLinkedin className="contact-icon" aria-hidden="true" />
                   <a href={resumeData.meta.links.linkedin} target="_blank" rel="noopener noreferrer">
                     LinkedIn
                   </a>
