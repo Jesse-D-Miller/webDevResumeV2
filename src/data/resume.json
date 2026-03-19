@@ -225,32 +225,47 @@
       "title": "KTSpeedrun",
       "subtitle": "Kill Team Companion App",
       "period": "2026",
-      "stack": ["React", "Vite", "React Router", "Express", "WebSocket", "CSS"],
+      "stack": [
+        "React",
+        "Vite",
+        "React Router",
+        "Node.js",
+        "WebSocket",
+        "Redis",
+        "Vitest",
+        "Playwright"
+      ],
       "links": {
-        "live": "",
-        "code": "https://github.com/Jesse-D-Miller/KillTeamSpeedrun",
+        "live": "https://ktspeedrun.jesse-miller.com/",
+        "code": "https://github.com/Jesse-D-Miller/KillTeamSpeedrunCards",
         "video": ""
       },
       "highlights": [
-        "Built a multi-screen Kill Team flow (army, loadouts, strategy, turn transitions)",
-        "Added a real-time lobby with join codes and WebSocket sync",
-        "Shipped an attack workflow with dice tracking and damage previews"
+        "Built a guided, multi-step Kill Team flow across setup, roster, and in-game phases to reduce rules friction.",
+        "Implemented realtime multiplayer with room codes, ready states, host/MAP role handling, and WebSocket sync.",
+        "Persisted local/session state for selections and multiplayer identity across screens and reconnects.",
+        "Shipped unit/component tests and e2e Playwright specs for board interactions, multiplayer, and Tac Op flows."
       ],
       "skills": [
         "React",
         "Vite",
         "React Router",
-        "Express",
+        "Node.js",
         "WebSockets",
-        "CSS"
+        "Redis",
+        "Vitest",
+        "Playwright"
       ],
       "skillsDetailed": [
         { "name": "React", "category": "Frameworks" },
         { "name": "Vite", "category": "Tools" },
         { "name": "React Router", "category": "Libraries" },
-        { "name": "Express", "category": "Frameworks" },
-        { "name": "WebSockets", "category": "APIs" },
-        { "name": "CSS", "category": "Languages" }
+        { "name": "Node.js", "category": "Runtime" },
+        { "name": "WebSocket API", "category": "APIs" },
+        { "name": "ws", "category": "Libraries" },
+        { "name": "Redis", "category": "Databases" },
+        { "name": "Vitest", "category": "Testing" },
+        { "name": "Playwright", "category": "Testing" }
       ],
       "status": "In Progress"
     },
