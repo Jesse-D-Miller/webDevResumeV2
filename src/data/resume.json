@@ -241,9 +241,9 @@
         "video": ""
       },
       "highlights": [
-        "Built a guided, multi-step Kill Team flow across setup, roster, and in-game phases to reduce rules friction.",
-        "Implemented realtime multiplayer with room codes, ready states, host/MAP role handling, and WebSocket sync.",
-        "Shipped unit/component tests and e2e Playwright specs for board interactions, multiplayer, and Tac Op flows."
+        "Built a guided multi-step flow across setup, roster, and in-game phases",
+        "Implemented realtime multiplayer with room codes, host/MAP roles, and WebSocket sync",
+        "Shipped unit and e2e Playwright tests for board interactions and multiplayer flows"
       ],
       "skills": [
         "React",
