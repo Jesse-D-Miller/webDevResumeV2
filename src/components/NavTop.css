@@ -184,3 +184,9 @@
     display: none;
   }
 }
+
+@media print {
+  .nav-top-menu {
+    display: none !important;
+  }
+}
