@@ -67,62 +67,90 @@ function Resume() {
           className="resume-actions-drawer"
           role="menu"
         >
-          <button
-            className="resume-pdf"
-            type="button"
-            onClick={handleOpenPdf}
-            role="menuitem"
-          >
+          <button className="resume-pdf" type="button" onClick={handleOpenPdf} role="menuitem">
             Resume PDF
           </button>
-          <button
-            className="resume-exit"
-            type="button"
-            onClick={handleExit}
-            role="menuitem"
-          >
+          <button className="resume-exit" type="button" onClick={handleExit} role="menuitem">
             Return to Explorer
           </button>
         </div>
       </div>
-      <div className="resume-front">
-        <header className="resume-header">
-          <h1>{resumeData.meta.name}</h1>
-          <p className="contact-info">
-            {resumeData.meta.location} | {resumeData.meta.title} |{" "}
-            <a href={`mailto:${resumeData.meta.links.email}`}>
-              Email
-            </a>
-            {" | "}
-            <a href={resumeData.meta.links.github}>
-              GitHub
-            </a>
-            {" | "}
-            <a href={resumeData.meta.links.linkedin}>
-              LinkedIn
-            </a>
-          </p>
-        </header>
 
-        <div className="resume-columns">
-          <section className="resume-left">
-            <div className="box-2">
-              <h3>Summary</h3>
-              <p>{resumeData.summary}</p>
+      <div className="resume-front">
+        <div className="resume-layout">
+
+          {/* LEFT COLUMN */}
+          <aside className="resume-left-col">
+            <div className="resume-photo">
+              <img src="/resumeHeadshot.png" alt="Jesse Miller" className="resume-photo-img" />
             </div>
 
-            {topProjects.map((project, index) => {
-              const liveUrl = project.links?.live;
-              const codeUrl = project.links?.code;
-              const projectUrl = liveUrl || codeUrl;
-              const projectLabel = liveUrl ? "LIVE" : "CODE";
+            <div className="resume-left-section">
+              <h3>Contact</h3>
+              <ul className="resume-left-links">
+                <li>{resumeData.meta.location}</li>
+                <li>
+                  <a href={`mailto:${resumeData.meta.links.email}`}>
+                    {resumeData.meta.links.email}
+                  </a>
+                </li>
+                <li>
+                  <a href={resumeData.meta.links.github} target="_blank" rel="noopener noreferrer">
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a href={resumeData.meta.links.linkedin} target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-              return (
-                <div key={project.id} className={`box-${index + 3}`}>
-                  {index === 0 && <h3>Projects</h3>}
-                  <div className="project-item">
+            <div className="resume-left-section">
+              <h3>Tech Skills</h3>
+              {Object.entries(groupedTechnical).map(([category, skills]) => (
+                <div key={category} className="resume-left-skill-group">
+                  <span className="resume-left-skill-category">{category}</span>
+                  <p>{skills.join(", ")}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="resume-left-section">
+              <h3>Soft Skills</h3>
+              <p>{softSkills.map((s) => s.name).join(", ")}</p>
+            </div>
+
+            <div className="resume-left-section">
+              <h3>Hobbies</h3>
+              <p>{resumeData.hobbies.map((h) => h.name).join(", ")}</p>
+            </div>
+          </aside>
+
+          {/* RIGHT COLUMN */}
+          <main className="resume-right-col">
+            <header className="resume-right-header">
+              <h1>{resumeData.meta.name}</h1>
+              <p className="resume-right-title">{resumeData.meta.title}</p>
+            </header>
+
+            <section className="resume-right-section">
+              <h3>Summary</h3>
+              <p>{resumeData.summary}</p>
+            </section>
+
+            <section className="resume-right-section">
+              <h3>Projects</h3>
+              {topProjects.map((project) => {
+                const liveUrl = project.links?.live;
+                const codeUrl = project.links?.code;
+                const projectUrl = liveUrl || codeUrl;
+                const projectLabel = liveUrl ? "LIVE" : "CODE";
+                return (
+                  <div key={project.id} className="project-item">
                     <h4>
-                      {project.title} - {project.subtitle}
+                      {project.title} — {project.subtitle}
                       {projectUrl && (
                         <>
                           {" ("}
@@ -145,35 +173,31 @@ function Resume() {
                       ))}
                     </ul>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </section>
 
-            {resumeData.experience.map((job, index) => (
-              <div key={job.id} className={`box-${index + 6}`}>
-                {index === 0 && <h3>Experience</h3>}
-                <div className="experience-item">
+            <section className="resume-right-section">
+              <h3>Experience</h3>
+              {resumeData.experience.map((job) => (
+                <div key={job.id} className="experience-item">
                   <h4>{job.company} | {job.role}</h4>
-                  <p className="company-period">
-                    {job.period}
-                  </p>
+                  <p className="company-period">{job.period}</p>
                   <ul>
                     {job.bullets.map((bullet) => (
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
                 </div>
-              </div>
-            ))}
+              ))}
+            </section>
 
-            <div className="box-8">
+            <section className="resume-right-section">
               <h3>Education</h3>
               {resumeData.education.map((edu) => (
                 <div key={edu.id} className="education-item">
                   <h4>{edu.school}</h4>
-                  <p className="program-period">
-                    {edu.program} | {edu.period}
-                  </p>
+                  <p className="program-period">{edu.program} | {edu.period}</p>
                   <ul>
                     {edu.details.map((detail) => (
                       <li key={detail}>{detail}</li>
@@ -181,32 +205,9 @@ function Resume() {
                   </ul>
                 </div>
               ))}
-            </div>
-          </section>
+            </section>
+          </main>
 
-          <aside className="resume-right">
-            <div className="box-9 technical-skills-section">
-              <h3>Technical Skills</h3>
-              {Object.entries(groupedTechnical).map(([category, skills]) => (
-                <div key={category}>
-                  <h4>{category}</h4>
-                  <p>{skills.join(", ")}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mobile-sub-grid-inner">
-              <div className="box-10 soft-skills-section">
-                <h3>Soft Skills</h3>
-                <p>{softSkills.map((skill) => skill.name).join(", ")}</p>
-              </div>
-
-              <div className="box-11 hobbies-section">
-                <h3>Hobbies</h3>
-                <p>{resumeData.hobbies.map((hobby) => hobby.name).join(", ")}</p>
-              </div>
-            </div>
-          </aside>
         </div>
       </div>
     </div>
