@@ -383,6 +383,11 @@
 	.programming-levels-details {
 		font-size: 0.95rem;
 	}
+
+	.programming-levels-period {
+		padding: 0.1rem 3.5rem;
+		font-size: 0.68rem;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {

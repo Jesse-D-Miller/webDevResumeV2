@@ -319,3 +319,13 @@
     letter-spacing: 0.03em;
   }
 }
+
+@media (max-width: 480px) {
+  .pixel-hero-card {
+    height: 300px;
+  }
+
+  .hero-sprite {
+    --hero-frame-size: 152px;
+  }
+}

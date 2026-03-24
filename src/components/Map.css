@@ -122,6 +122,18 @@
   bottom: auto;
 }
 
+/* Prevent tooltip from overflowing the visible left/right map edge */
+.node-tooltip--left-edge {
+  left: 0;
+  transform: none;
+}
+
+.node-tooltip--right-edge {
+  left: auto;
+  right: 0;
+  transform: none;
+}
+
 .node-tooltip strong {
   font-size: 0.76rem;
   font-weight: 700;

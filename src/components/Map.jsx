@@ -13,6 +13,7 @@ function Map() {
   const [scrollState, setScrollState] = useState({ atStart: true, atEnd: false });
   const [activeNodeId, setActiveNodeId] = useState(null);
   const [tooltipAbove, setTooltipAbove] = useState(false);
+  const [tooltipSide, setTooltipSide] = useState('center');
   const [litNodeIds, setLitNodeIds] = useState(() => new Set());
   const { grantXp, hasClicked } = useXP();
 
@@ -42,15 +43,27 @@ function Map() {
   };
 
   const activateNode = (node) => {
-    // Tooltip flips above/below cursor area to avoid clipping near map edges.
+    // Tooltip flips above/below and left/right to avoid clipping near map edges.
     const nodeElement = nodeRefs.current.get(node.id);
     const canvasElement = mapCanvasRef.current;
-    if (nodeElement && canvasElement) {
+    const scrollEl = scrollRef.current;
+    if (nodeElement && canvasElement && scrollEl) {
       const nodeRect = nodeElement.getBoundingClientRect();
       const canvasRect = canvasElement.getBoundingClientRect();
+      const scrollRect = scrollEl.getBoundingClientRect();
       const nodeCenterY = nodeRect.top + nodeRect.height / 2;
       const canvasMidY = canvasRect.top + canvasRect.height / 2;
       setTooltipAbove(nodeCenterY >= canvasMidY);
+      // Flip tooltip left/right if node is within ~half tooltip width of the visible edge.
+      const nodeCenterX = nodeRect.left + nodeRect.width / 2;
+      const EDGE = 130;
+      if (nodeCenterX - scrollRect.left < EDGE) {
+        setTooltipSide('left');
+      } else if (scrollRect.right - nodeCenterX < EDGE) {
+        setTooltipSide('right');
+      } else {
+        setTooltipSide('center');
+      }
     }
 
     setActiveNodeId(node.id);
@@ -152,7 +165,7 @@ function Map() {
                   <span
                     className={`node-tooltip ${
                       tooltipAbove ? "node-tooltip--above" : "node-tooltip--below"
-                    }`}
+                    }${tooltipSide === "left" ? " node-tooltip--left-edge" : tooltipSide === "right" ? " node-tooltip--right-edge" : ""}`}
                   >
                     <strong>{label}</strong>
                     <span>{node.intel}</span>

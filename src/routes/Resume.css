@@ -20,11 +20,17 @@
   align-items: center;
   justify-content: center;
   background: var(--bg);
-  overflow-x: hidden;
+  overflow-x: auto;
   overflow-y: auto;
   position: relative;
   padding: 1rem 0;
   box-sizing: border-box;
+}
+
+@media (max-width: 860px) {
+  .resume-page {
+    justify-content: flex-start;
+  }
 }
 
 .resume-actions {
@@ -106,8 +112,7 @@
 
 @media (max-width: 600px) {
   .resume-page {
-    overflow-x: auto;
-    justify-content: flex-start;
+    padding: 0.5rem 0;
   }
 }
 
