@@ -233,6 +233,19 @@
   font-weight: 700;
 }
 
+@media (max-width: 1024px) {
+  .stats {
+    height: auto;
+    min-height: 350px;
+  }
+
+  .stats-grid {
+    flex: none;
+    min-height: 200px;
+    overflow: visible;
+  }
+}
+
 @media (max-width: 900px) {
   .stats {
     padding: 1rem;

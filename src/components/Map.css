@@ -251,6 +251,11 @@
 }
 
 @media (max-width: 600px) {
+  .map-wrap,
+  .map {
+    height: 280px;
+  }
+
   .map-node {
     width: 18px;
     height: 18px;

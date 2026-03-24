@@ -80,6 +80,7 @@
 @media (max-width: 1024px) {
   .render-window {
     padding: 1rem;
+    min-height: 350px;
   }
 
   .render-window-body {
@@ -100,6 +101,10 @@
 @media (max-width: 600px) {
   .render-window {
     padding: 0.75rem;
+  }
+
+  .render-window-rail {
+    display: none;
   }
 
   .render-window-link {

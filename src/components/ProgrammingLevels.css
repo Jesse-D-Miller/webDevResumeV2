@@ -54,6 +54,10 @@
 		min-width: 300px;
 		width: clamp(300px, 100%, 100%);
 	}
+
+	.programming-levels-stats {
+		min-height: 200px;
+	}
 }
 
 .programming-levels-item--stats .programming-levels-education {

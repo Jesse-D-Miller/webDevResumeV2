@@ -157,25 +157,35 @@
 
 @media (max-width: 600px) {
   .nav-top {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    text-align: center;
+    text-align: left;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
   }
 
-  .nav-top-name,
-  .nav-top-availability {
-    align-items: center;
-    text-align: center;
+  .nav-top-name {
+    flex: 1 1 auto;
+    min-width: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .nav-top-title {
+    font-size: 1.1rem;
   }
 
   .nav-top-menu {
-    order: 3;
-    width: 100%;
-    justify-content: center;
+    order: 0;
+    width: auto;
+    justify-content: flex-start;
   }
 
   .nav-top-availability {
-    align-items: center;
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
   }
 }
 
