@@ -450,10 +450,61 @@
     border: none;
     overflow: hidden;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-synthesis: none;
   }
 
   .resume-left-col {
     background: #3a5a40 !important;
     color: #e8f5e2 !important;
+  }
+
+  .resume-left-col h3,
+  .resume-left-skill-category,
+  .resume-right-col h3 {
+    letter-spacing: normal;
+    font-kerning: normal;
+    font-variant-ligatures: none;
+  }
+
+  .resume-right-header h1,
+  .resume-right-title,
+  .resume-left-col p,
+  .resume-left-links li,
+  .resume-left-links a,
+  .resume-right-col h4,
+  .resume-right-col p,
+  .resume-right-col li,
+  .resume-right-col .tech-stack,
+  .resume-right-col .company-period,
+  .resume-right-col .program-period,
+  .resume-right-col .project-link {
+    font-kerning: normal;
+    font-variant-ligatures: none;
+  }
+
+  .resume-left-col h3,
+  .resume-left-skill-category,
+  .resume-right-header h1,
+  .resume-right-col h3,
+  .resume-right-col h4,
+  .resume-right-col .project-link {
+    font-weight: 700;
+  }
+
+  .resume-right-title,
+  .resume-left-col p,
+  .resume-left-links li,
+  .resume-left-links a,
+  .resume-right-col p,
+  .resume-right-col li,
+  .resume-right-col .tech-stack,
+  .resume-right-col .company-period,
+  .resume-right-col .program-period {
+    font-weight: 400;
+  }
+
+  .resume-photo-img {
+    transform: none;
   }
 }
