@@ -149,7 +149,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
   .nav-top-menu {
     display: inline-flex;
   }
@@ -189,7 +189,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
   .nav-top-contact {
     display: none;
   }
