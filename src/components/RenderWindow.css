@@ -18,7 +18,7 @@
   background-color: var(--surface);
   border: 0.125rem solid var(--border);
   padding: 1.5rem;
-  overflow: hidden;
+  overflow: hidden auto;
 }
 
 .render-window-body {
